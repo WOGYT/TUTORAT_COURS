@@ -5,6 +5,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz, lipsum,lmodern}
 \usepackage[most]{tcolorbox}
+\usepackage{hyperref}
 \usepackage{bm}
 \usepackage{geometry}
 \geometry{hmargin=2.25cm,vmargin=2cm}
@@ -46,7 +47,7 @@ Certains concepts abordés sont compliqués et nécessite parfois du recul, du t
 Voici le code couleur:
 
 \section{Introduction*}
-\subsection{Présentation et origine du problème}
+\subsection{Présentation et origine du problème}\label{intro}
 Tout d'abord, c'est quoi une équation différentielle ?\\
 En fait, c'est simplement une équation de la forme:
 \begin{align}
@@ -126,7 +127,7 @@ On appelle équation différentielle de première ordre homogène une ED de la f
 $$
 (E_0): \text{   } y' + a(t)y = 0
 $$
-Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidement, ça peut être une fonction constant auquel cas $a(t)$ est un scalaire.
+Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidement, ça peut être une fonction constante auquel cas $a(t)$ est un scalaire.)
 \end{tcolorbox}
 \textbf{L'équation homogène à toujours une solution} ($y=0$ par exemple) et l'ensemble des solutions de $E_0$ est un espace vectoriel.
 
@@ -237,7 +238,7 @@ Pour se faire, on va utiliser ce qu'on appelle la \textbf{Méthode de variation 
 L'idée de la méthode n'est pas complexe. On utilise la formule de dérivation d'un produit: $(uv)' = u'v + v'u$ pour trouver une égalité entre $\lambda'(t)$ et $b(t)e^{f}$ avec f une certaine fonction. C'est possible car en dérivant, comme $\lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}}$ est solution de (E), on va la retrouver e calculant la dérivée du produit.\\
 L'idée c'est que cette égalité est intégrable et va nous permettre de trouver la fonction $\lambda (t)$ qui transforme la solution homogène en solution générale
 
-\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
 Si on a une équation différentielle de la forme (E):
 $$
 (E): \text{   } y' + a(t)y = b(t)
@@ -312,7 +313,7 @@ $$
 $$
 Et les solutions de $E_0$ sont: 
 $$\text{		Si 		} \Delta > 0: \quad \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}}$$
-De plus si $r_1 = r_2$ ($\Delta = 0$), on a: 
+De plus si $\Delta = 0$ ($r_1 = r_2$), on a: 
 $$\bbbold{y = (\lambda t + \mu)e^{r_1t}}$$
 Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexe et conjugués, on peut alors écrire les solutions sous la forme:
 $$\bbbold{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
@@ -346,7 +347,62 @@ Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc p
 Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse conne que le balais utilisé pour balayer la remarque) on va réfléchir à pourquoi une autre définition ne peut pas marcher. On va raisonner par l'absurde (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
 \end{tcolorbox}
 
-\subsection{Exemples}\label{ex3}
+\subsubsection{Exemples}\label{ex3}
+Voyons maintenant un résumé en quelques exercices des méthodes et des théorèmes que nous venons de voir juste avant.
+
+\begin{tcolorbox}[breakable,pad at break*=3mm,colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.1: Cas $\Delta < 0$}},halign title=left]
+Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + 6y = 0$.\\
+Son équation caractéristique associée est: $2r^2 + 4r + 6 = 0$ est une équation à coefficients réels et donc on peut calculer son discriminant: $\Delta = 4^2 - 4\times2\times 6 = -32$. On applique la formule dans le cas réel pour $\Delta < 0$, les solutions de l'équation caractérique sont: 
+$$
+r_1 = \frac{-4 + 2i\sqrt{8}}{4} = -1 +i\sqrt{2} \quad\quad\quad r_2 = \frac{-4 - 2i\sqrt{8}}{4} = -1 -i\sqrt{2}
+$$
+Et donc en utilisant la formule, on peut exprimer les solutions de (E) sous la forme:
+$$
+y = e^{-t}(\lambda \sin(\sqrt{2}t)+ \mu \cos(\sqrt{2}t)) \quad \quad \lambda, \mu \in \mathbb{R}
+$$
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+Deux petites remarques. \\
+D'abord, il est absoluement faux de prendre une approximation de la racine. Si on prend par exemple: $\sqrt{32} \approx 6$, ça change complètement les solutions et on peut se retrouver avec des solutions qui n'ont plus du tout les mêmes propriétés. \textbf{IL NE FAUT JAMAIS FAIRE ÇA.} À la place, on va utiliser des petites astuces pour simplifier les racines.\\ \textbf{On peut décomposer la racine qu'on veut calculer en produit plus simple dont on connait les racines.} Pour le cas de $32$, on a normalement tous appris la table de $4$ au primaire et donc on sait que $32 = 4 \times 8$ et $\sqrt{4} = 2$ (notez que c'est donc possible de prendre cette équation dans le sens droite gauche et donc de remplacer $2$ par $\sqrt{4}$). On a alors: $\sqrt{32} = 2 \sqrt{8}$. Cependant, dans l'exercice, on va chercher $\frac{\sqrt{32}}{4}$, donc on a $\frac{\sqrt{32}}{4} = \frac{2\sqrt{8}}{2\sqrt{4}} = \sqrt{\frac{8}{4}} = \sqrt{2}$. On peut étendre cette méthode à presque toutes les racines.\\
+Ensuite, on peut remarquer qu'on a jamais besoin de calculer les deux solutions de l'équation caractéristique car elles sont conjugués (c'est toujours le cas si $\Delta < 0$ par le théorème du dessus). Il suffit de calculer la première et puis de prendre le conjugué de celle-ci, c'est à dire, changer le signe de la partie imaginaire.}
+\end{tcolorbox}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.2: Cas $\Delta = 0$}},halign title=left]
+Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + 2y = 0$.\\
+À cette équation différentielle on peut associer une équation caractéristique: $2r^2 +4r +2 = 0$. On calcul son didscriminant: $\Delta = 16 - 16 = 0$. La solution double de l'équation caractéristique s'écrit: $r = - \frac{-4}{2 \times 2} = -1$. Donc on utilise la formule approprié dans le théorème ci-dessus. Les solutions de (E) s'écrivent:
+$$
+y = (\lambda t + \mu)e^{-t} \quad \quad \lambda, \mu \in \mathbb{R}
+$$
+\end{tcolorbox}
+
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.3: Cas $\Delta > 0$}},halign title=left]
+Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + y = 0$.\\
+À cette équation différnetielle on peut associer une équation caractéristique: $2r^2 + 4r + 1 = 0$. Son discriminant $\Delta$ s'écrit: $\Delta = 8$. On note donc les solutions de l'éqaution caractéristique:
+$$
+r_1 = \frac{-4 + i\sqrt{8}}{4} = -1 +i\frac{\sqrt{2}}{2} \quad\quad\quad r_2 = \frac{-4 - i\sqrt{8}}{4} = -1 -i\frac{\sqrt{2}}{2}
+$$
+D'où, en appliquant le théorème dans le cas $\Delta >0$:
+$$
+y = \lambda e^{(1+\frac{\sqrt{2}}{2})t} + \mu e^{(1-\frac{\sqrt{2}}{2})} \quad \quad \lambda, \mu \in \mathbb{R}
+$$
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+Petit remarque sur la simplification et le calcul des racines.\\
+J'ai expliqué plus haut qu'il était possible d'écrire presque toute les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simple mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonction pour toutes les racines. Ex:\\
+$$\frac{1}{\sqrt{9}} = \frac{1}{\sqrt{9}}\times \frac{\sqrt{9}}{\sqrt{9}} = \frac{\sqrt{9}}{9}$$. \\
+Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux racines d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a à faire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
+$$
+\pi = e^{14} \times \cos(\frac{3}{2}) \times \pi e^{-14} \frac{1}{\cos(\frac{3}{2})}
+$$
+Bien que ça n'a aucun intéret ici (mais ça reste une égalité.)
+}
+\end{tcolorbox}
+\end{tcolorbox}
+
+\section{Les modèles d'équations différentielles}\label{modeles}
+On en revient à la question initiale (et on va enfin pouvoir y répondre si vous n'avez pas été dégouté jusqu'ici): Mais à quoi ça sert de faire des équations différentielles ? Non parce que c'est chiant à résoudre, c'est pas hyper fun, le côté théorique est inintéressant à votre niveau et vraiment, à part mon prof d'équation différentielle qui a écrit un bouquin dessus, ça emmerde presque tout le monde du côté mathématicien aussi.\\
+Mais en fait, si on fait des équations différentielles, c'est parce que c'est hyper utile, et c'est un outil qui a été spécialement conçu pour faire de la modélisation. En fait, simplement, faire de la modélisation c'est mettre en équation solvable (au moins partiellement) un problème de la vie. Comme expliqué à \ref{intro}, les équation différentielles n'apparaissent pas naturellement dans le monde, c'est parce que c'est une méthode très efficace avec beaucoup de résultat qu'on fait de la modélisation avec les équations différentielles.\\
+
+Bref, une part important de cette modélisation (et celle qui vous concerne, parce que jusqu'ici, moi aussi je me demandais ce que des médecins ou des biologistea allaient bien pouvoir faire de tout ce merdier)
 
 
 \end{document}
