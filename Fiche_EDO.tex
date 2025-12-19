@@ -1,0 +1,352 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz, lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{bm}
+\usepackage{geometry}
+\geometry{hmargin=2.25cm,vmargin=2cm}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\usepackage{scalerel}
+\usepackage[french]{babel}
+\title{Draft fiche équations différentielles ordinaires (EDO)}
+\author{Gabriel Legout}
+\date{\today}
+
+\newlength\bshft
+\bshft=.18pt\relax
+\def\bbbold#1{\ThisStyle{\ooalign{$\SavedStyle#1$\cr%
+  \kern-\bshft$\SavedStyle#1$\cr%
+  \kern\bshft$\SavedStyle#1$}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette fiche fera une introduction au concept d'équation différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolutions essentielles.\\
+Il s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
+Les prérequis sont minimes et les définitions s'autosuffisent sans avoir besoin d'une grande connaissance en analyse au delà des notions classique de fonctions et de résolution d'équations d'ordre 1.
+
+Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Les médecins sont souvent amener à prendre des décisions qui peuvent avoir de graves conséquences. Mieux vaut qu'ils les prennent en ayant une bonne connaissance des outils qu'ils utilisent.
+
+Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section*{Avant-propos: Comment utiliser efficacement cette fiche}
+Certains concepts abordés sont compliqués et nécessite parfois du recul, du travail et des démonstration pour éviter de voir apparaitre magiquement des formules.
+Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles. Si votre objectif est d'apprendre tout par coeur, vous pouvez les sauter ausssi.\\
+
+Voici le code couleur:
+
+\section{Introduction*}
+\subsection{Présentation et origine du problème}
+Tout d'abord, c'est quoi une équation différentielle ?\\
+En fait, c'est simplement une équation de la forme:
+\begin{align}
+y^{(n)}(t) = f(t, y^{(n-1)}(t), y^{(n-2)}(t), ..., y(t))
+\end{align}
+Où $y^{(n)}$ désigne la dérivée n-ième de y. Récursivement, ça correspond à appliquer la dérivation classique n fois sur la fonction y. Dans la suite du document, on pourra écrire $y$ à la place de $y(t)$ pour être plus consis mais y reste une fonction de t.
+\\
+
+Qu'est ce que j'appelle "équation différentielle ordinaire" ? \\
+C'est tout simplement une équation de la forme (1) mais avec une fonction y qui ne dépend que d'une seule variable. C'est le cas le plus classique et l'objet d'étude de cette fiche. On désignera par "équations différentielle (ED)" les "équations différentielles ordinaires (EDO)"par abus de language sans que cela puisse porter à confusion.
+\\\\
+
+À quoi servent les équations différentielles ? \\
+C'est en fait une très bonne question dont la réponse n'est pas forcément évident. Celui qui vous dit qu'il ne s'est jamais demandé pourquoi on voyait apparaitre magiquement des équations reliant une fonction avec ses dérivées successives en physique n'est probablement pas très honnête avec vous. \\
+En fait, il faut revenir au base de ce qu'est la dérivation à la base:\\
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Définition dérivation}},halign title=center]
+Si $f: \mathbb{R} \rightarrow \mathbb{R}$ (c'est à dire une fonction qui prend des antécédents/nombre de départ réels et renvoie une image/résultat réel) est une fonction continue et dérivable de dérivée continue, alors pour tout $x$ dans $\mathbb{R}$ (ce qui se note en math: $\forall x \in \mathbb{R}$):
+$$
+f'(x) = \lim_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h}
+$$
+Si on pose $x + h = y$, on voit que la dérivée c'est la limite du taux de variation quand $x$ tend vers $y$ (ou l'inverse, c'est pas tout à fait pareil mais ici, ça ne change rien d'important car on a supposé que f était de dérivée continue.)
+\end{tcolorbox}
+
+On peut donc comprendre que dérivée une fonction, ça revient à linéariser la fonction point par point(c'est pour cela que la dérivée est le coefficient directeur de la tangente en un point de la fonction de départ.) Par conséquent, on peut plus facilement entre voir pourquoi les ED sont omniprésentes en physique. En effet, si on réflechit à l'équation du mouvement, on a une relation entre la position (sur un axe) et la vitesse:
+$$
+v = \frac{d}{t} \quad \text{   et   } \quad v = \dfrac{dx}{dt}
+$$
+
+\noindent Car avoir une fonction vitesse revient à calculer le taux de variation de la fonction $x$ (la fonction de la position) en fonction du temps quand deux positions sont très proches, c'est à dire la dériver. C'est important de comprendre qu'ici, $x$ est une fonction réelle car elle donne la position sur l'axe x (un réel) à un temps donné (un réel aussi) et qu'elle est évidement continue car malheuresement, dans tous les systèmes physiques classique, la téléportation n'existe pas.\\\\
+Ceci est une bonne intuition car toutes les vitesses (y compris pas reliés au mouvement, comme la vitesse d'augmentation d'une populaion par exmeple) se calcule de la même manière et donc sont la dérivée de la fonction première sur laquelle on calcule la vitesse (la taille de la population dans notre exemple.)\\
+Au lieu de devoir résoudre une équation avec plusieurs fonctions (position et vitesse, taille et vitesse etc) on est réduit à chercher une seule fonction qui va vérifier des conditions sur ses dérivées. \\
+
+Une équation différentielle peut donc servir à modéliser de nombreux phenomènes comme le mouvement d'un pendule, des oscillations dans un circuit électrique, l'évolution de population dans le \textbf{modèle logistique (de Verhulst}) ou le modèle proie-prédateur de \textbf{Lokta-Volterra}. 
+La plupart des équations différentielles ne sont pas solvable de manière analytique (en fait c'est souvent le cas pour les EDO non linéaire.)\\
+
+Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur laquelle je me base donc j'imagine que c'est à connaitre. \\
+
+Résoudre une équation différentielle ça va donc être chercher les différentes fonctions qui à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
+Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
+\subsection{Rappels de logique mathématique et des principes de raisonnements}
+
+\section{Un peu de formalisation du problème}\label{formalisation}
+
+\subsection{Petits rappels d'algèbre linéaire*}\label{rappels1}
+Un $\mathbb{K}$-espace vectoriel ($\mathbb{K}$-EV) est un ensemble de nombre qui est stable par additions et multiplication par un scalaire.\\
+Ici, $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Un scalaire va donc être un nombre qui va appartenir à $\mathbb{K}$. 
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Défintion stabilité par addition et multiplication scalaire}},halign title=center]
+Si E est un $\mathbb{K}$-EV, soit $x,y \in E$ et $\lambda \in \mathbb{K}$, la stabitlité par addition et multiplication scalaire va s'écrire respectivement:
+$$
+x + y \in E \quad \text{    et    } \quad \lambda x \in E
+$$
+
+\noindent Qui peut facilement se combiner en:
+$$
+x + \lambda y \in E
+$$
+\end{tcolorbox}
+Ici, le role de $x$ et $y$ est interchageable. Il suffit que la propriété soit vraie pour un point quelconque et ça implique qu'il est vrai pour tous donc $\lambda x \in E$ montre la même chose que $\lambda y \in E$.\\
+Pour la suite, on se place dans $\mathbb{K}^n$ c'est à dire l'ensemble des n-uplets (donc les élements de $\mathbb{K}^n$ sont de la forme $x = (x_1, x_2, ..., x_ n)$ avec $x_i \in \mathbb{K} \forall i \in \{1, 2,..., n\}$). \\
+
+$\mathbb{C}$ est l'ensemble des nombres compexes, c'est à dire les nombres qui s'écrivent $x = a + ib$ avec $a,b \in \mathbb{R}$ et $i^2 = -1$. On va pas rentrer dans le détail des propriétés des nombres complexes ni de pourquoi ils sont utiles. Ce qu'il faut bien noter c'est qu'on ne peut pas ordonner les nombres complexe mais qu'on peut comparer leur module qu'on note $\lvert x \rvert = \lvert a + ib \rvert = \sqrt[]{a^2 + b^2}$ ce qui va servir à la définition de norme.\\
+Pour tout norme complexe $x = a + ib$, il existe un unique couple de réels $(r, \theta') \in \mathbb{R}^{2}$ avec $\theta\  = \theta' + 2k\pi, k\in \mathbb{Z}$ qui permet d'écrire $x$ sous forme exponentielle ou polaire: $x = re^{\theta} = r(\cos(\theta) + i\sin(\theta))$ avec $r = \lvert x \rvert$ (la distante à 0) et $\theta$ l'angle de $x$ rapporté sur le cercle trigonométrique. 
+
+\subsection{Formalisation d'une équation différentielle à l'ordre 1}\label{ordre1}
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition équation différentielle d'ordre 1}},halign title=center]
+Soit E un $\mathbb{K}$-EV, on considère l'ED $y' = f(t,y)$, I un intervalle de $\mathbb{R}$ et $\Omega$ un ouvert de $(\mathbb{K}, E)$, $f:\Omega \rightarrow E$ une fonction continue. \\
+On appelle solution de cette équation une fonction $\phi$ dérivable sur I tel que $\forall t \in I$, $(t, \phi (t)) \in \Omega$ et $\phi ' = f(t, \phi (t))$.
+\end{tcolorbox}
+
+Clairement, la formulation est assez barbare. Ce qu'il faut comprendre c'est que $\Omega$ est un ensemble qui a des bonnes propriétés (des genres d'intervalles), on veut que l'image de $\phi$ par tous les $t$ reste dans l'ensemble de départ de $\phi$ et que $\phi$ vérifie l'équation différentielle. 
+En pratique, les deux premières conditions sont toujours réunies, on a juste besoin de vérifier la dernière.
+
+Il est important de noter qu'on énonce les théorèmes suivant dans les cas \textbf{linéaire}. Quand on dit linéaire c'est en $y$, c'est à dire qu'on a pas $y^2$ ou $\cos(y)$ mais elle peut évidement ne pas être linéaire en $t$ (c'est d'ailleurs tout l'intérêt) donc on peut avoir par exemple: $y' = t^2y + \cos(t)$
+\subsubsection{Forme des solutions cas homogène}\label{sol1}
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition EDO linéaire homogène}},halign title=center]
+On appelle équation différentielle de première ordre homogène une ED de la forme:
+$$
+(E_0): \text{   } y' + a(t)y = 0
+$$
+Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidement, ça peut être une fonction constant auquel cas $a(t)$ est un scalaire.
+\end{tcolorbox}
+\textbf{L'équation homogène à toujours une solution} ($y=0$ par exemple) et l'ensemble des solutions de $E_0$ est un espace vectoriel.
+
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Solutions équation homogène}},halign title=center]
+\noindent Les solutions de l'équation différentielle homogène sont:
+\begin{align}
+y = \lambda e^{-\int_{t_0}^{t}{a(x)dx}} \quad \text{avec} \quad \lambda \in \mathbb{R}
+\end{align}
+\begin{tcolorbox}[colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
+\subparagraph{Preuve (Optionelle)} si on prend $f(t, y(t)) = -a(t)y(t)$ il suffit d'intégrer la relation: \\ $y' + a(t)y(t) = 0 \Leftrightarrow y' = -a(t)y(t) \Leftrightarrow \frac{y'}{y} = a(t)$ d'où:
+$$
+\int_{t_0}^{t} \frac{y'(x)}{y(x)}dx = \int_{t_0}^{t}-a(x)dx \quad \Leftrightarrow \quad ln(y) - ln(\lambda) = -\int_{t_0}^{t} a(x)dx
+$$
+$$
+e^{ln(\frac{y}{\lambda})} = e^{-\int_{t_0}^{t} a(x)dx} \quad \Leftrightarrow \quad \frac{y}{\lambda} = e^{-\int_{t_0}^{t} a(x)dx}
+$$
+D'où le résultat.}
+\end{tcolorbox}
+\end{tcolorbox}
+
+On voit qu'\textbf{il faut faire attention au signe} en fonction de si on se trouve dans la forme $y' + a(t)y(t) = 0$ ou $y' = a(t)y(t)$. Dans la preuve, il faut aussi supposer que $y \neq 0$ mais comme c'est une des solution à part, il suffit de la traiter à part. \\
+On constate ensuite qu'il induit $\lambda \neq 0$ qu'il suffit de prendre $\lambda = 0$ pour la rajouter dans l'ensemble des solutions ce qui garanti que toutes les solutions sont de la forme (2). \\ 
+Si on veut déterminer C, il suffit de poser une condition initiale $y(t_0) = y_0$ et on a $\lambda=t_0$ et on a alors unicité de la solution par le théorème de Cauchy-Lipschitz. Sinon il suffit de calculer une primitive pour un $t_0$ quelconque dans le domaine de définition de l'intégrale de $a(t)$. \\
+
+\textbf{En particulier}, si $a(t)$ est constant, $\bm{-\int_{t_0}^{t} a(x)dx = -at}$ (en fait pas exactement car le résultat de l'intégration nous donne un terme $-A(t_0)$ si $A$ est une primitive de $A$, on choisis alors $t_0$ tel que $A(t_0) =0$ pour simplifier les calculs. \\
+Dans le cas scalaire, vous allez donc avoir des solutions de la forme: 
+\begin{align}
+\bm{y = \lambda e^{-at} \quad \textbf{avec} \quad \lambda} \in \bbbold{\mathbb{R}} 
+\end{align}
+Parce que sans condition initiale il n'y a pas d'unique solution, on dit que (2) est \textbf{une} solution d'un certain ($E_0$). Si on trouve C, on dira que c'est \textbf{la} solution d'un certain ($E_0$)
+
+\subsubsection{Exemples}\label{ex1}
+
+J'espère qu'à ce stade vous n'êtes pas perdu. Si c'est encore le cas, c'est pas grave, on va formaliser tout ça avec des exemples:\\
+J'en profite pour vous signaler qu'en math, les notions sont parfois assez abstraites mais il y a toujours un moyen de se rapprocher de quelque chose de plus "réel" sur lequel on peut avoir de l'intuition mais pour cela, il faut faire des exercices et en connaîte suffisament sur le sujet pour être capable de faire des liens. C'est pour cela qu'il y a des parties optionelles dans ce cours qui bien quelles ne soient pas au programme, aident à la comprehension globale des notions.
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.1}},halign title=left]
+On considère l'ED suivante: $y' +\frac{3}{4}y = 0$ \\
+On voit qu'il n'y a ni de scalaire ni de fonction qui dépend de $t$ devant le $y$ et on a bien une égalité avec le second membre nul et que des expressions qui dépendent de $y$ à gauche donc on peut appliquer la formule (3):
+$$
+y = \lambda e^{-\frac{3}{4}t}
+$$
+Si on pose comme condition initiale $t_0 = 0$ et $y(t_0) = 3$ alors on a:
+$$
+y(t_0) = \lambda e^{0} = \lambda = 3
+$$
+Donc $y=3e^{-\frac{3}{4}t}$ est la solution 
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.2}},halign title=left]
+On considère l'ED suivante: $7y' = 10y $. \\
+On se ramène d'abord sous forme homogène en mettant tous les termes qui dépendent de y à gauche de tel sorte qu'on ait un 0 à droite puis on divise par 7 l'équation afin de ne plus avoir de termes devant le $y'$. On obtient donc $y' -\frac{10}{7}y = 0$. On applique donc (3):
+$$
+y = \lambda e^{\frac{10}{7}t}
+$$
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.3 (Optionnel)}},halign title=left]
+On considère l'ED suivante: $y' + (1+t)y = 0 $. \\
+On constate qu'on a effectivement une équation homogène mais cette fois-ci $a(t)$ n'est pas constant donc il faut utiliser la formule (2). On commence par primitiver (car ici on a pas de conditions initiales, sinon il faudrait intégrer) $a(t)$:
+$$
+\int_{t_0}^{t} a(x)dx = \int_{t_0}^{t} 1+ t dx = [x +\frac{x^2}{2}]^{t}_{t_0} = t + \frac{t^2}{2}
+$$
+En prenant $t_0$ = 0 (ce que l'on peut faire car on chercher une solution pas celle qui satisfait certaines conditions initiales.
+D'où en appliquant (2):
+$$
+y = \lambda e^{-t -\frac{t^2}{2}}
+$$
+\end{tcolorbox}
+
+\subsubsection{Forme des solutions cas linéaire avec second membre}\label{sol2}
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition EDO linéaire avec second membre}},halign title=center]
+On appelle équation différentielle de première ordre homogène une ED de la forme:
+$$
+(E_0): \text{   } y' + a(t)y = b(t)
+$$
+Avec $a(t), b(t) \in E $ des fonctions continues qui dépendent de t (évidement, ça peut être des fonctions constantes auquel cas $a(t)$ et $b(t)$ sont des scalaires.) \\
+On appelle \textbf{second membre d'une EDO} un terme (une constante, une fonction, plusieurs fonctions) qui n'est pas dans un produit avec $y$ ou une de ses dérivées. On peut donc "l'isolé" de $y$. Si on soustrait le second membre d'une EDO, on trouve toujours une EDO homogène. 
+\end{tcolorbox}
+
+L'idée, c'est donc de trouver une méthode pour pouvoir calculer la solution générale.
+
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Le théorème génial}},halign title=center]
+Si on a une équation différentielle de la forme (E):
+$$
+(E): \text{   } y' + a(t)y = b(t)
+$$
+Alors, la \textbf{solution générale} de (E) est sous la forme $\boldsymbol{y = y_p + y_0}$\\
+Avec $y_p$ une solution particulière (c'est à dire n'importe qu'elle fonction $y_p$ tel que $y_p' + a(t)y_p = b(t)$) et $y_0$ la solution de l'équation homogène associée (donc ici, une solution de $y' + a(t)y = 0$.)
+\end{tcolorbox}
+Évidemment, j'ai écrit la solution générale et la solution homogène mais on unicité de la solution seulement si on pose une condition initiale. Sinon, c'est toujours à une constante multiplicative près (le $\lambda$ dans (2) et (3).)\\
+
+Il y a deux cas simples, si $a(t)$ et $b(t)$ sont constante et si on nous donne une solution particulière à tester:
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Deux cas classiques}},halign title=center]
+Si on a une équation différentielle de la forme (E):
+$$
+(E): \text{   } y' + ay = b \quad \text{avec} \quad a,b \in \mathbb{R}
+$$
+Alors, on vérifie facilement qu'une solution particulière est: $\bm{y_p} \bbbold{= \frac{-b}{a}}$ et il suffit d'utiliser le théorème ci-dessus en ajoutant la solution homogène.\\
+
+Si on nous donne une fonction $y_p$, il suffit de vérifier qu'elle est solution puis d'utiliser le théorème du dessus.
+\end{tcolorbox}
+
+
+Maintenant, l'idée ça va être de réussir à trouver une solution particulière car on a une formule pour trouver la solution de l'équation homogène donc on veut en tirer partie.\\
+Pour se faire, on va utiliser ce qu'on appelle la \textbf{Méthode de variation de la constante} que je vais vous démontrer et qui pourra vous donner une forme explicite des solutions d'une EDO linéaire avec second membre.\\
+
+L'idée de la méthode n'est pas complexe. On utilise la formule de dérivation d'un produit: $(uv)' = u'v + v'u$ pour trouver une égalité entre $\lambda'(t)$ et $b(t)e^{f}$ avec f une certaine fonction. C'est possible car en dérivant, comme $\lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}}$ est solution de (E), on va la retrouver e calculant la dérivée du produit.\\
+L'idée c'est que cette égalité est intégrable et va nous permettre de trouver la fonction $\lambda (t)$ qui transforme la solution homogène en solution générale
+
+\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
+Si on a une équation différentielle de la forme (E):
+$$
+(E): \text{   } y' + a(t)y = b(t)
+$$
+Alors, la solution homogène $y_0$ s'écrit: $y_0 = \lambda e^{-\int_{t_0}^{t}{a(x)dx}} \quad \text{avec} \quad \lambda \in \mathbb{R}$ avec $A(t)$ une primitive de $a(t)$. \\
+On va chercher à faire varier la constante $\lambda$ donc on va supposer que ce n'est plus une constante et donc on va la noter $\lambda (t)$.
+
+$$
+y(t) = \lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}} \quad \Rightarrow \quad y'(t) = \lambda '(t)e^{-\int_{t_0}^{t}{a(x)dx}} -\lambda (t)a(t)e^{-\int_{t_0}^{t}{a(x)dx}}
+$$
+D'où
+$$
+y'(t) = \lambda '(t)e^{-\int_{t_0}^{t}{a(x)dx}} - a(t)y \quad \Rightarrow \quad b(t) = \lambda '(t)e^{-\int_{t_0}^{t}{a(x)dx}} \quad \Rightarrow \quad \lambda '(t) = b(t)e^{\int_{t_0}^{t}{a(x)dx}}
+$$
+
+On a donc plus qu'à intégrer $\lambda '(t)$:
+$$
+\lambda '(t) = b(t)e^{\int_{t_0}^t a(s)\,ds} \Rightarrow \lambda (t) = \lambda_0 + \int_{t_0}^t b(s)e^{\int_{t_0}^s a(x)\,dx}\, ds
+$$
+Puis on remplace dans l'équation $y(t) = \lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}}$:
+$$
+y(t) = \lambda e^{\int_{t_0}^t a(s)\,ds}
++ \int_{t_0}^t b(s)e^{-\int_{t_0}^{s} a(x)\,dx}e^{\int_{t_0}^t a(x)\,dx}\,ds
+$$ 	
+On obtient en "simplifiant" un peu l'expression des solutions générales pour une équation linéaire d'ordre 1 avec second membre:
+$$
+y(t) = \lambda e^{\int_{t_0}^t a(s)\,ds} + \int_{t_0}^t b(s)e^{\int_{s}^t a(x)\,dx}\,ds
+$$
+Ce qui conclut la démonstration de la formule et l'explicitation de celle-ci.
+\end{tcolorbox}
+La démonstration est un peu compliqué par la multiplication de symboles abstraits mais elle suit la trame décrite ci-dessus qui est plutôt logique une fois comprise. Je déconseille personellement d'apprendre cette formule par coeur, elle est longue et ne sert pas à grand chose, si la MVC est bien comprise elle permet de retrouver la formule facilement en l'appliquant à l'équation quelconque.
+
+\subsubsection{Exemples}\label{ex2}
+
+Bon, on a vu pleins de théorèmes, des formules, des méthodes, mais pour fixer les choses, voyons comment toutes ces choses vont s'utiliser dans la résolution d'une équation différentielle.
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.4: Un premier exemple dans le cas constant}},halign title=left]
+On considère l'ED suivante: (E): $2y'+ 6y - 3 = 0$. \\
+On va d'abord mettre (E) sous forme normale, c'est à dire sans rien devant $y'$: $y' + 3y = \frac{3}{2}$ puis on sait par les théorème de \ref{sol1} que $y_0 = \lambda e^{-6t}$ est solution générale de $(E_0)$.\\
+
+On va maintenant chercher une solution particulière. Par le troisième encadrée de la partie \ref{sol2}, on a que $y_p = -\frac{\frac{3}{2}}{3} = \frac{1}{2}$ est solution particulière. Et donc on a la solution générale $y$ qui s'écrit solution homogène $+$ solution particulière: $y = \lambda e^{-6t} + \frac{1}{2}$. \\
+La solution n'est pas unique car on a pas posé de conditions initiales.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.5: Si la solution est donnée}},halign title=left]
+On considère (E) : $2ty' - y = t$ sur $\mathbb{R}^{*}_{+}$: et on considère la fonction $f(t) = t$\\
+On va mettre (E) sous forme normale en divisant par $2t$ (on peut car on est dans $\mathbb{R}^{*}_{+}$) d'où $y' - \frac{y}{2t} = \frac{1}{2}$ et comme une primitive de $\frac{-1}{2t}$ est $\frac{-1}{2}\ln(t) = -\ln(\sqrt{t})$ donc par (3), les solutions de l'équation homogène sont:
+$$
+y_0 = \lambda e^{\ln(\sqrt{t})} = \lambda \sqrt{t}
+$$
+
+Vérifions maintenant que $f(t)$ est bien une solution particulière de (E): \\
+La dérivée $f'(t)$ de $f(t)$ est $1$, donc en remplaçant, on a $2t - t = t$ donc $f(t) = t$ est solution particulière est les solutions générale de (E) s'écrivent sous la forme: $y = \lambda \sqrt{t} + t$
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.6: MVC sur une EDO linéaire non scalaire}},halign title=left]
+On considère l'ED suivante: 
+\end{tcolorbox}
+
+\subsection{Formalisation d'une équation différentielle à l'ordre 2}\label{ordre2}
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Solutions EDO linéaire homogène d'ordre 2}},halign title=center]
+On appelle équation différentielle de première ordre homogène une ED de la forme:
+$$
+(E_0): \text{   } ay'' + by'+ cy = 0
+$$
+Avec $a,b,c \in \mathbb{K}$ (c'est très important car si $a, b$ et $c$ ne sont pas des scalaire, la suite ne fonctionne pas.)\\
+
+Alors, on appelle polynôme caractéristique associé à $E_0$ le polynôme: $aX^2 + bX + c = 0$. Si on note $\Delta = b^2 - 4ac$ son discriminant, les solutions $r_1$ et $r_2$ du polynôme sont décrites par:\\
+\textbf{Cas 1: $\mathbb{K} = \mathbb{R}$}
+$$
+\frac{-b \pm \sqrt{\Delta}}{2a} \text{    si    } \Delta \geq 0 \quad \quad \frac{-b \pm i\sqrt{-\Delta}}{2a} \text{   si   } \Delta < 0
+$$
+Et les solutions de $E_0$ sont: 
+$$\text{		Si 		} \Delta > 0: \quad \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}}$$
+De plus si $r_1 = r_2$ ($\Delta = 0$), on a: 
+$$\bbbold{y = (\lambda t + \mu)e^{r_1t}}$$
+Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexe et conjugués, on peut alors écrire les solutions sous la forme:
+$$\bbbold{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
+\begin{tcolorbox}[colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
+\subparagraph{Preuve (Optionnel)} On ne va pas expliquer comment trouver la formule $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}$ (c'est pas dur mais vraiment chiant et pas intéressant) mais on va expliquer comment trouver les deux autres car c'est plutôt simple.\\
+
+Si on a $r_1 = r_2$, on a $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_1t}$, mais les deux exponentielles sont linéairement dépendantes et donc l'espace des solutions décrit par $y$ est de dimension $1$ alors que l'espace des solutions d'une EDO d'ordre 2 est de dimension 2. Donc on veut trouver une fonction qui est solution et linéairement indépendante de $e^{r_1t}$. On vérifie par le calcul que $te^{r_1t}$ est solution linéairement indépendante de $e^{r_1t}$. \\
+Donc les solutions s'écrivent $y = \lambda te^{r_1t} + \mu e^{r_1t} = e^{r_1}(\lambda t + \mu)$.\\
+Si on a $\Delta < 0$, les solutions sont complexes conjugués (explication à \ref{rappels1}). Or un nombre complexe peut s'écrire sous forme polaire: $me^{i\omega} = m(\cos(\omega) + i\sin(\omega))$ (voir \ref{rappels1}) donc je peux écrire (avec $\bbbold{\mu = a+ ib, \lambda = x + iy \in \mathbb{C}}$): \\
+$y = \lambda e^{mt + i\omega t} + \mu e^{mt - i\omega t} = e^{mt}(\lambda e^{i\omega t} + \mu e^{-i\omega t}) = e^{mt}((a+ ib)e^{i\omega t} + (x+ iy)e^{-i\omega t})$\\
+
+\noindent Or, on cherche une solution réelle, donc $\text{Re}(y) = y$ et on sait que $e^{i\omega t} = \cos(\omega t) + i\sin(\omega)t$ d'où en développant: $y = e^{mt}((\text{Re}(\mu)+\text{Re}(\lambda))\cos(wt) + (\text{Im}(\mu)-\text{Im}(\lambda))\sin(\omega t))$\\
+Donc en posant: $\lambda^{'} = \text{Re}(\mu)+\text{Re}(\lambda)$ et $\mu^{'} = \text{Im}(\mu)-\text{Im}(\lambda)$, on obtient le résultat voulu.}
+\end{tcolorbox}
+
+\noindent \textbf{Cas 1: $\mathbb{K} = \mathbb{C}$}
+$$
+\text{		Si 		} \Delta \neq 0: \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}, \lambda_1 , \lambda_2 \in \mathbb{C}} \quad \quad \text{		Si 		} \Delta = 0: \bbbold{y = (\lambda t + \mu)e^{r_1t}, \lambda, \mu \in \mathbb{C}}
+$$
+\end{tcolorbox}
+
+Deux petites précisions avant de passer aux exercices et aux dernières méthodes. Déjà, il est important de bien faire attention aux constantes ($\mu, \lambda, \lambda^{'}$ etc) car elles sont quelconques mais en fait c'est pas parce qu'elles sont quelconques qu'il n'y a pas des conditions sur elles. En particulier, dans la preuve du cas réel, au début on a $\mu, \lambda \in \mathbb{C}$ puis ensuite on change les constantes pour avoir des solutions réelles. \\
+C'est le deuxième point important: \textbf{On cherche toujours des solutions réelles} (réelles signifie ici dans $\mathbb{R}$, pas qu'autrement elles n'existerait pas ou une autre connerie du genre qu'on entend souvent). \\
+Mais pourquoi me direz-vous ? Et bien, c'est pas parce qu'elles existent qu'on peut leur donner un sens physique. Les solutions complexes permettent de résoudre des problèmes, c'est un artifice mathématique qui permet de simplifier (et même souvent est la seule manière de trouver) les solutions mais elles donnent des conditions réalisable générales qui ne sont parfois pas d'un grand intérêt physique. Les solutions complexes sont des solutions mais on leur préfère les solutions réelles pour une raison d'interprétabilité physique. Je dirai que c'est même une question de si vous faites des maths ou de la physique. Le physiciens veut des solutions réelles à son problème. Le mathématicien s'en fou complètement (ça ne veut pas dire que l'un ou l'autre à raison pour autant.)\\
+
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+\subparagraph{Hors-programme} Enfin bref, le dernier point important et de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et c'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
+Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc pour revenir à notre histoire de $\Delta < 0$, avec ces notations, on peut noter $\delta \in \mathbb{C}$ (en fait comme $\Delta \in \mathbb{R}$, on sait que $\delta \in i\mathbb{R}$) tel que $\delta^2 = \Delta$ et donc $\delta^2 = i^2 |\Delta| \Rightarrow \delta = \pm \sqrt{i^2|\Delta|} = \pm i\sqrt{|\Delta|} = \pm i\sqrt{-\Delta}$, tout simplement. Ces notations permettent donc de donner un sens à une quantité qu'on ne peut pas exprimer à l'aide de notations dans $\mathbb{R}$.\\
+
+\noindent Maintenant, pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ? Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$ (notation qui est un petit artifice mathématique circulaire car on a pas définit la puissance et en plus je suis entrain de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n'apparait pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie tel quel, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négatif (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrai pas prendre une autre définition qui autoriserait les images d'antécédent négatifs ?" et c'est en fait une très bonne question. \\
+Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse conne que le balais utilisé pour balayer la remarque) on va réfléchir à pourquoi une autre définition ne peut pas marcher. On va raisonner par l'absurde (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
+\end{tcolorbox}
+
+\subsection{Exemples}\label{ex3}
+
+
+\end{document}

@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz, lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{esvect}
+\geometry{hmargin=2.25cm,vmargin=2cm}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\usepackage{scalerel}
+\usepackage[french]{babel}
+\title{Draft fiche introduction à l'algèbre linéaire}
+\author{Gabriel Legout: gabriel.legout9@gmail.com}
+\date{\today}
+
+
+\newlength\bshft
+\bshft=.18pt\relax
+\def\bbbold#1{\ThisStyle{\ooalign{$\SavedStyle#1$\cr%
+  \kern-\bshft$\SavedStyle#1$\cr%
+  \kern\bshft$\SavedStyle#1$}}}
+
+\newcommand{\tcolordef}[2][]{%
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{#1}},halign title=center]
+#2
+\end{tcolorbox}}
+
+\newcommand{\tcolorHP}[2][]{%
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{#1}},halign title=center]
+#2
+\end{tcolorbox}}
+   
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cette fiche fera une introduction à l'algèbre linéaire qui pourra intéresser les étudiants non mathématiciens des portails ST et SV ainsi que certains étudiant du portail Éco-Gestion. Une partie de cette fiche est consacré aux étudiants au tutorat de médecine dans le cadre du cours de BioStatistique dans un parcours qui est expliqué dans la section \ref{apropos}. Même si une grande partie (sans que ce soit les plus simples) des notions abordés ici ne sont pas à proprement parlé dans le programme de l'UE Biostatistique, elles permettent d'inscrire les notions abordés dans un contexte plus global qui faicilite l'assimilatioon des notions.
+
+Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Les médecins sont souvent amener à prendre des décisions qui peuvent avoir de graves conséquences. Mieux vaut qu'ils les prennent en ayant une bonne connaissance des outils qu'ils utilisent.
+
+Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique et de les replacer dans un contexte mathématique plus global.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section*{Avant-propos: Comment utiliser efficacement cette fiche}\label{apropos}
+Certains concepts abordés sont compliqués et nécessite parfois du recul, du travail et des démonstration pour éviter de voir apparaitre magiquement des formules.
+Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles. Si votre objectif est d'apprendre tout par coeur, vous pouvez les sauter ausssi.\\
+
+Voici le code couleur:
+
+\section{Introduction}
+
+Historiquement, les mathématiques se résumaient à l'étude des nombres et des opérations être eux, d'abord avec des entiers, puis avec des nombres plus complexes. On appelle ça l'arithmétique. Plus tard, on a développé l'idée de fonctions dans des ensembles de nombre. Ce n'est ni plus ni moins qu'un objet qui va associer un nombre à un autre (notez donc bien que les suites sont un cas particulier de fonctions sous cette définition.) Ce sont d'ailleurs des fonctions de $\mathbb{N} \rightarrow E$ avec $E$ quelconque. En général, on appelle Analyse, l'étude des fonctions. Enfin, à partir du 18e siècle, grâce à des avancées et un effort considérable en Europe pour la physique, on a eu besoin de définir des espaces plus compliqués que les espaces de nombres avec lesquelles on travaillait depuis plus de 2000 ans. C'est alors qu'est apparu l'Algèbre, c'est à dire l'étude du comportement (opérations, compositions etc) d'objets qui ne sont pas forcéments des nombres. 
+Biensûr, ce n'est pas une catégorisation absolue des maths en ces quelques domaines (il en existe d'autres comme la Topologie) et ces différents domaines s'entre-coupent régulièrement.
+
+Enfin, l'Algèbre Linéaire c'est donc le domaine des mathématiques qui va s'intéresser aux objets des espaces linéaire.
+
+Ces domaines peuvent paraître abstrait mais ils ont des applications pratiques assez faciles à expliquer. L'arithmétique s'occupe beaucoup de problèmes sur les nombres premiers (pour en faire des décompositions, leur distribution etc) ce qui s'est révélé essentiel est cryptographie. L'analyse permet de calculer, par exemple, la fréquence de résonance d'un pont, on sait alors qu'un régiment qui marche au pas sur un pont peut le faire entrer en résonance et qu'il risque donc de s'éffondrer. Enfin, l'Algèbre linéaire est essentiel pour la résolutions d'équations différentielle ou pour toute l'informatique moderne (théorie des graphe, machine learning etc.) Je ferais des petites parties hors programme sur les méthodes d'apprentissages pour l'intelligence artificielle afin d'illustrer certaines notions car je pense que ces notions vont vous intéresser et que je connais bien le domaine car j'effectue un stage de recherche dans le domaine.
+
+\section{Les espaces vectoriels}\label{EV1}
+\subsection{Définition et exemple}\label{EV_def}
+Un $\mathbb{K}$-espace vectoriel ($\mathbb{K}$-EV) est un ensemble de nombre qui est stable par additions et multiplication par un scalaire.\\
+Ici, $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Un scalaire va donc être un nombre qui va appartenir à $\mathbb{K}$. 
+\begin{tcolordef}[Défintion stabilité par addition et multiplication scalaire]{
+Si E est un $\mathbb{K}$-EV, soit $x,y \in E$ et $\lambda \in \mathbb{K}$, la stabitlité par addition et multiplication scalaire va s'écrire respectivement:
+$$
+\bbbold{x + y \in E} \quad \text{    et    } \quad \bbbold{\lambda x \in E}
+$$
+
+\noindent Qui peut facilement se combiner en:
+$$
+\bbbold{x + \lambda y \in E}
+$$
+}
+\end{tcolordef}
+
+Ici, le role de $x$ et $y$ est interchageable. Il suffit que la propriété soit vraie pour un point quelconque et ça implique qu'il est vrai pour tous donc $\lambda x \in E$ montre la même chose que $\lambda y \in E$.\\
+
+Il y a pleins d'exemple d'espaces vectoriels. Déjà, l'ensemble des nombres réels $\mathbb{R}$ est un espace vectoriel. C'est le cas de tous les espaces de la forme $\mathbb{K}^n$, avec $\mathbb{K}$ un corps (ici ça sera $\mathbb{R}$ ou $\mathbb{C}$) et $n \in \mathbb{N}$ qui ne sont rien d'autres que des n-uplets. Un point $x$ de $\mathbb{K}^n$ s'écrit simplement $x = (x_1, x_2, x_3, ..., x_n) \text{		avec		} x_i \in \mathbb{K} \text{		pour		} i \in \{1, 2, 3, ..., n\}$ qui sont simplement ses composantes dans l'espace. On dit que $x$ est un vecteur de $\mathbb{K}^n$. En physique on l'écrirait $\vv{x}$ mais comme en math les vecteurs n'ont pas la même fonction qu'en physique (en particulier au niveau des points d'applications), on ne met pas la flèche au dessus (il y a aussi moins de risque de confusion et ça allège les notations.)
+
+On a aussi d'autres espaces vectoriels comme $M_{n,p}(\mathbb{K})$ l'espace des matrices à $n$ lignes et $p$ colonnes à coefficients dans $\mathbb{K}$ ou $\mathbb{K}_n$[X], l'espace des polynômes de degré au plus n. 
+
+\subsection{Les matrices}\label{matrices}
+On peut voir les matrices de comme des tableaux de nombres et donc celles de $M_{n,p}(\mathbb{K})$ comme des tableaux à $n$ lignes et $p$ colonnes. Par exemple, si $M = \begin{pmatrix}
+2 &4\\
+5 &-1 \\
+2 & 10
+\end{pmatrix}$ , alors $M \in M_{3,2}(\mathbb{K})$\\
+Cependant, comme je l'ai expliqué au dessus, $M_{n,p}(\mathbb{K})$ est un espace vectoriel donc les matrices sont des points de l'espaces des matrices et se sont ce qu'on appelle en math des vecteurs. C'est essentiel de comprendre cela car c'est la raison pour laquelle on utilise des matrices et elles vérifient donc la stabilité par addition et multiplication scalaire expliqué plus haut. 
+
+ 
+\section{Test section}\label{test}
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Définition dérivation}},halign title=center]
+test HP
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition équation différentielle d'ordre 1}},halign title=center]
+test def classique
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.1}},halign title=left]
+test exemples
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
+test méthode 
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,attach boxed title to top left={yshift=-3mm,yshifttext=-1mm, xshift=10mm},
+  colback=Magenta!5!white,colframe=Magenta!75!black,colbacktitle=Magenta!75!black,
+  title=Définition: stabilité par addition et multiplication scalaire,fonttitle=\bfseries,
+  boxed title style={size=small,colframe=Magenta!75!black} ]
+test B
+\end{tcolorbox}
+
+
+
+\end{document}
