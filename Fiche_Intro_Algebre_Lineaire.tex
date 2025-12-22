@@ -9,21 +9,20 @@
 \usepackage{geometry}
 \usepackage{esvect}
 \usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{scalerel}
+\usepackage[french]{babel}
+
 \geometry{hmargin=2.25cm,vmargin=2cm}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-\usepackage{scalerel}
-\usepackage[french]{babel}
-\title{Draft fiche introduction à l'algèbre linéaire}
-\author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
-\date{\today}
-
 
 \newlength\bshft
 \bshft=.18pt\relax
 \def\bbbold#1{\ThisStyle{\ooalign{$\SavedStyle#1$\cr%
   \kern-\bshft$\SavedStyle#1$\cr%
   \kern\bshft$\SavedStyle#1$}}}
+
 
 \newcommand{\tcolordef}[2][]{%
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{#1}},halign title=center]
@@ -34,16 +33,31 @@
 \begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{#1}},halign title=center]
 #2
 \end{tcolorbox}}
+
+
+\title{Draft fiche introduction à l'algèbre linéaire}
+\author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
+\date{\today}
+
    
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Cette fiche fera une introduction à l'algèbre linéaire qui pourra intéresser les étudiants non mathématiciens des portails ST et SV ainsi que certains étudiant du portail Éco-Gestion. Une partie de cette fiche est consacré aux étudiants au tutorat de médecine dans le cadre du cours de BioStatistique dans un parcours qui est expliqué dans la section \ref{apropos}. Même si une grande partie (sans que ce soit les plus simples) des notions abordés ici ne sont pas à proprement parlé dans le programme de l'UE Biostatistique, elles permettent d'inscrire les notions abordés dans un contexte plus global qui faicilite l'assimilatioon des notions.
+Cette fiche fera une introduction à l'algèbre linéaire qui pourra intéresser les étudiants non mathématiciens des portails ST et SV ainsi que certains étudiant du portail Éco-Gestion. Une partie de cette fiche est consacré aux étudiants au tutorat de médecine dans le cadre du cours de BioStatistique dans un parcours qui est expliqué dans la section \nameref{apropos}.\\
 
-Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Les médecins sont souvent amener à prendre des décisions qui peuvent avoir de graves conséquences. Mieux vaut qu'ils les prennent en ayant une bonne connaissance des outils qu'ils utilisent.
+\noindent Même si une grande partie (sans que ce soit les plus simples) des notions abordés ici ne sont pas à proprement parlé dans le programme de l'UE Biostatistique, elles permettent d'inscrire les notions abordés dans un contexte plus global qui faicilite l'assimilatioon des notions.\\
 
-Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique et de les replacer dans un contexte mathématique plus global.
+\noindent Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
+
+\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispenser par votre prof mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.\\
+
+Enfin, si cette fiche contient des typos, des fautes d'orthographes ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionné au début de la fiche.
+Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça! (reste à montrer leur unicité.)\\
+\begin{center}
+  \textbf{Bonne lecture.}
+\end{center}
+
 \end{abstract}
 
 \newpage
@@ -51,10 +65,35 @@ Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte de
 \newpage
 
 \section*{Avant-propos: Comment utiliser efficacement cette fiche}\label{apropos}
-Certains concepts abordés sont compliqués et nécessite parfois du recul, du travail et des démonstration pour éviter de voir apparaitre magiquement des formules.
-Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles. Si votre objectif est d'apprendre tout par coeur, vous pouvez les sauter ausssi.\\
+Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaitre magiquement des formules.
+Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles.
 
-Voici le code couleur:
+\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des sections "optionnelles" qui pourront être sautées en première lecture mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaire pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérix (*) ou par la mention optionnel dans le corps du texte.} \\
+Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour ce donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
+
+\subparagraph{Code couleur} Les théorèmes, défintions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
+\begin{multicols}{2}
+\center
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Les blocs bleus: Hors-programme}},halign title=center]
+  Ils contiennent des défintions hors programmes, qui ne sont pas à apprendre mais qui aident à la définition de concepts qui vont nous aider pour la suite.
+\end{tcolorbox}
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Les blocs magentas: Cours}},halign title=center]
+Ils  contiennent les défintions à connaîtres. Il faut les comprendre et les apprendre
+\end{tcolorbox}
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+\subparagraph{Les blocs gris} Ils contiennent des informations complémentaires ou des notions annexes. Ils sont complémentaires au blocs bleus.
+}
+\end{tcolorbox}
+\columnbreak
+\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Les blocs jaunes: Méthodes}},halign title=center]
+Ils contiennent des explications de méthodes annexes ou hors programme pour résoudre certains exercices.
+\end{tcolorbox}
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Les blocs verts: Exercices}},halign title=left]
+Ils contiennent des exercices corrigés portant sur les thèmes des sections et qui aident à assimiler les notions. Ils sont tous abordables.
+\end{tcolorbox}
+\end{multicols}
+
+\newpage
 
 \section{Introduction}
 

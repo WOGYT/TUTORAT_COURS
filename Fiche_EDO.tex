@@ -32,16 +32,16 @@
 \maketitle
 
 \begin{abstract}
-Cette fiche fera une introduction au concept d'équations différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentielles.\\
+Cette fiche fera une introduction au concept d'équations différentielles ordinaires, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentiels.\\
 
-\noindent Elle s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
-Les prérequis sont minimes et les définitions s'autosuffisent sans avoir besoin d'une grande connaissance en analyse au delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
+\noindent Elle s'adresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple bagage en maths de lycée.\\
+Les prérequis sont minimes et les définitions se suffisent à elles-même sans avoir besoin d'une grande connaissance en analyse au-delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
 
-\noindent Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
+\noindent Comprendre les outils mathématiques de base en modélisation (statistique, probas, équadiffs) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
 
-\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispenser par votre prof mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.\\
+\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispensé par votre prof mais apporte des précisions et des explications qui permettent une meilleure compréhension des notions pas évidentes qui sont présentées dans le cours de Biostatistique.\\
 
-Enfin, si cette fiche contient des typos, des fautes d'orthographes ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionné au début de la fiche.
+Enfin, si cette fiche contient des typos, des fautes d'orthographe ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionnée au début de la fiche.
 Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça! (reste à montrer leur unicité.)\\
 \begin{center}
   \textbf{Bonne lecture.}
@@ -54,23 +54,23 @@ Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas
 \newpage
 
 \section*{Avant-propos: Comment utiliser efficacement cette fiche}
-Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaitre magiquement des formules.
-Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles.
+Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaître magiquement des formules.
+Évidemment, les démonstrations ne sont pas à connaître et peuvent être sautées. Certaines parties ont été ajoutées pour donner du contexte ou expliquer certaines parties plus subtiles.
 
-\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des sections "optionnelles" qui pourront être sautées en première lecture mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaire pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérix (*) ou par la mention optionnel dans le corps du texte.} \\
-Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour ce donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
+\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des sections "optionnelles" qui pourront être sautées en première lecture mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaires pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérisque (*) ou par la mention optionnelle dans le corps du texte.} \\
+Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour se donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
 
-\subparagraph{Code couleur} Les théorèmes, défintions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
+\subparagraph{Code couleur} Les théorèmes, définitions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
 \begin{multicols}{2}
 \center
 \begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Les blocs bleus: Hors-programme}},halign title=center]
-  Ils contiennent des défintions hors programmes, qui ne sont pas à apprendre mais qui aident à la définition de concepts qui vont nous aider pour la suite.
+  Ils contiennent des définitions hors programme, qui ne sont pas à apprendre mais qui aident à la définition de concepts qui vont nous aider pour la suite.
 \end{tcolorbox}
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Les blocs magentas: Cours}},halign title=center]
-Ils  contiennent les défintions à connaîtres. Il faut les comprendre et les apprendre
+Ils  contiennent les définitions à connaître. Il faut les comprendre et les apprendre
 \end{tcolorbox}
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Les blocs gris} Ils contiennent des informations complémentaires ou des notions annexes. Ils sont complémentaires au blocs bleus.
+\subparagraph{Les blocs gris} Ils contiennent des informations complémentaires ou des notions annexes. Ils sont complémentaires aux blocs bleus.
 }
 \end{tcolorbox}
 \columnbreak
@@ -91,39 +91,39 @@ En fait, c'est simplement une équation de la forme:
 \begin{align}
 y^{(n)}(t) = f(t, y^{(n-1)}(t), y^{(n-2)}(t), ..., y(t))
 \end{align}
-Où $y^{(n)}$ désigne la dérivée n-ième de y. Récursivement, ça correspond à appliquer la dérivation classique n fois sur la fonction y. Dans la suite du document, on pourra écrire $y$ à la place de $y(t)$ pour être plus consis mais y reste une fonction de t.
+Où $y^{(n)}$ désigne la dérivée n-ième de y. Récursivement, ça correspond à appliquer la dérivation classique n fois sur la fonction y. Dans la suite du document, on pourra écrire $y$ à la place de $y(t)$ pour être plus concis mais y reste une fonction de t.
 \\
 
 Qu'est ce que j'appelle "équation différentielle ordinaire" ? \\
-C'est tout simplement une équation de la forme (1) mais avec une fonction y qui ne dépend que d'une seule variable. C'est le cas le plus classique et l'objet d'étude de cette fiche. On désignera par "équations différentielle (ED)" les "équations différentielles ordinaires (EDO)"par abus de language sans que cela puisse porter à confusion.
+C'est tout simplement une équation de la forme (1) mais avec une fonction y qui ne dépend que d'une seule variable. C'est le cas le plus classique et l'objet d'étude de cette fiche. On désignera par "équations différentielles (ED)" les "équations différentielles ordinaires (EDO)"par abus de langage sans que cela puisse porter à confusion.
 \\\\
 
 À quoi servent les équations différentielles ? \\
-C'est en fait une très bonne question dont la réponse n'est pas forcément évident. Celui qui vous dit qu'il ne s'est jamais demandé pourquoi on voyait apparaitre magiquement des équations reliant une fonction avec ses dérivées successives en physique n'est probablement pas très honnête avec vous. \\
-En fait, il faut revenir au base de ce qu'est la dérivation à la base:\\
+C'est en fait une très bonne question dont la réponse n'est pas forcément évidente. Celui qui vous dit qu'il ne s'est jamais demandé pourquoi on voyait apparaître magiquement des équations reliant une fonction avec ses dérivées successives en physique n'est probablement pas très honnête avec vous. \\
+En fait, il faut revenir aux bases de ce qu'est la dérivation:\\
 \begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Définition dérivation}},halign title=center]
-Si $f: \mathbb{R} \rightarrow \mathbb{R}$ (c'est à dire une fonction qui prend des antécédents/nombre de départ réels et renvoie une image/résultat réel) est une fonction continue et dérivable de dérivée continue, alors pour tout $x$ dans $\mathbb{R}$ (ce qui se note en math: $\forall x \in \mathbb{R}$):
+Si $f: \mathbb{R} \rightarrow \mathbb{R}$ (c'est-à-dire une fonction qui prend des antécédents/nombre de départ réels et renvoie une image/résultat réel) est une fonction continue et dérivable de dérivée continue, alors pour tout $x$ dans $\mathbb{R}$ (ce qui se note en math: $\forall x \in \mathbb{R}$):
 $$
 f'(x) = \lim_{h\rightarrow 0} \frac{f(x+h) - f(x)}{h}
 $$
-Si on pose $x + h = y$, on voit que la dérivée c'est la limite du taux de variation quand $x$ tend vers $y$ (ou l'inverse, c'est pas tout à fait pareil mais ici, ça ne change rien d'important car on a supposé que f était de dérivée continue.)
+Si on pose $x + h = y$, on voit que la dérivée c'est la limite du taux de variation quand $x$ tend vers $y$ (ou l'inverse, ce n'est pas tout à fait pareil mais ici, ça ne change rien d'important car on a supposé que f était de dérivée continue.)
 \end{tcolorbox}
 
-On peut donc comprendre que dérivée une fonction, ça revient à linéariser la fonction point par point(c'est pour cela que la dérivée est le coefficient directeur de la tangente en un point de la fonction de départ.) Par conséquent, on peut plus facilement entre voir pourquoi les ED sont omniprésentes en physique. En effet, si on réflechit à l'équation du mouvement, on a une relation entre la position (sur un axe) et la vitesse:
+On peut donc comprendre que dériver une fonction, ça revient à linéariser la fonction point par point(c'est pour cela que la dérivée est le coefficient directeur de la tangente en un point de la fonction de départ.) Par conséquent, on peut plus facilement entrevoir pourquoi les ED sont omniprésentes en physique. En effet, si on réfléchit à l'équation du mouvement, on a une relation entre la position (sur un axe) et la vitesse:
 $$
 v = \frac{d}{t} \quad \text{   et   } \quad v = \dfrac{dx}{dt}
 $$
 
-\noindent Car avoir une fonction vitesse revient à calculer le taux de variation de la fonction $x$ (la fonction de la position) en fonction du temps quand deux positions sont très proches, c'est à dire la dériver. C'est important de comprendre qu'ici, $x$ est une fonction réelle car elle donne la position sur l'axe x (un réel) à un temps donné (un réel aussi) et qu'elle est évidement continue car malheuresement, dans tous les systèmes physiques classique, la téléportation n'existe pas.\\\\
-Ceci est une bonne intuition car toutes les vitesses (y compris pas reliés au mouvement, comme la vitesse d'augmentation d'une populaion par exmeple) se calcule de la même manière et donc sont la dérivée de la fonction première sur laquelle on calcule la vitesse (la taille de la population dans notre exemple.)\\
+\noindent Car avoir une fonction vitesse revient à calculer le taux de variation de la fonction $x$ (la fonction de la position) en fonction du temps quand deux positions sont très proches, c'est à dire la dériver. C'est important de comprendre qu'ici, $x$ est une fonction réelle car elle donne la position sur l'axe x (un réel) à un temps donné (un réel aussi) et qu'elle est évidemment continue car malheureusement, dans tous les systèmes physiques classiques, la téléportation n'existe pas.\\\\
+Ceci est une bonne intuition car toutes les vitesses (y compris pas reliées au mouvement, comme la vitesse d'augmentation d'une population par exmeple) se calcule de la même manière et donc sont la dérivée de la fonction première sur laquelle on calculent la vitesse (la taille de la population dans notre exemple.)\\
 Au lieu de devoir résoudre une équation avec plusieurs fonctions (position et vitesse, taille et vitesse etc) on est réduit à chercher une seule fonction qui va vérifier des conditions sur ses dérivées. \\
 
-Une équation différentielle peut donc servir à modéliser de nombreux phenomènes comme le mouvement d'un pendule, des oscillations dans un circuit électrique, l'évolution de population dans le \textbf{modèle logistique (de Verhulst}) ou le modèle proie-prédateur de \textbf{Lokta-Volterra}. 
-La plupart des équations différentielles ne sont pas solvable de manière analytique (en fait c'est souvent le cas pour les EDO non linéaire.)\\
+Une équation différentielle peut donc servir à modéliser de nombreux phénomènes comme le mouvement d'un pendule, des oscillations dans un circuit électrique, l'évolution de population dans le \textbf{modèle logistique (de Verhulst}) ou le modèle proie-prédateur de \textbf{Lokta-Volterra}. 
+La plupart des équations différentielles ne sont pas solvables de manière analytique (en fait c'est souvent le cas pour les EDO non linéaires.)\\
 
-Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur laquelle je me base donc j'imagine que c'est à connaitre. \\
+Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur laquelle je me base donc j'imagine que c'est à connaître. \\
 
-Résoudre une équation différentielle ça va donc être chercher les différentes fonctions qui à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
+Résoudre une équation différentielle, ça va donc être chercher les différentes fonctions qui, à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
 Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
 
 
@@ -133,27 +133,27 @@ Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer 
 Afin de pouvoir mieux comprendre la suite, de vous aider dans vos UE, en mathématiques ou en physique, on va faire un rapide retour sur les techniques de logique permettant de déduire des résultats ainsi qu'un rapide retour sur les méthodes de démonstration en mathématiques.
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Implications et Équivalences} Quand on fait face à une affirmation en mathématiques, notre objectif est d'essayer de la déduire à partir de tous les résultats à notre disposion, qu'on appelle axiomes, et qui ensemble forment une théorie. Les axiomes ne peuvent pas être démontrés au sein de la théorie, mais un théorème est vrai au sein d'une théorie si et seulement si on peut le déduire par une suite d'implication vrai à partir des axiomes de la théorie.\\
-J'ai dit pleins de mots compliqués donc revenons rapidement dessus. D'abord, parlons du fameux "si et seulement si". En maths, on fait face à deux grands types de résultats: les implications et les équivalence.\\\\
-\textbf{Une implication c'est une proposition} (synonyme d'affirmation, mais dans le monde mathématique on préfère le mot "proposition" à "affirmation" car en maths une affirmation peut être fausse, en tout cas, avant d'avoir cherché à la démontrer ou à l'infirmer, elle est considéré comme ni vrai ni fausse) \textbf{de la forme} $\bm{A \Rightarrow B}$, c'est à dire qu'on peut déduire $B$ à partir de $A$ mais on a aucun moyen de savoir si on peut déduire $B$ à partir de $A$. \\
-\textbf{Une équivalence, c'est la combinaison des propostions} $\bm{A \Rightarrow B}$ \textbf{et} $\bm{B \Rightarrow A}$ \textbf{que l'on note} $\bm{A \Leftrightarrow B}$. La locution "si et seulement si" (qu'on note parfois "ssi") c'est simplement la retranscription à l'ecrit d'une équivalence. \textbf{On peut donc tout à fait écrire} $\bm{A}$ \textbf{ssi} $\bm{B}$ \textbf{à la place de} $\bm{A \Leftrightarrow B}$. 
-Et donc, la locution simple "si" retranscript en français la flèche simple "$\Rightarrow$". Il convient donc de faire attention au sens dans lequel énonce les propositions, car ce qu'on nomme "l'opérateur d'implication" (c'est à dire: "$\Rightarrow$" ou "si") n'est pas symétrique. \\\\
-Cependant, pour pouvoir procéder à une preuve, il faut que l'on \textbf{suppose nos hypothèses vrai}. On dit qu'on suppose l'antécédent vrai, c'est à dire qu'on note une implication dans le cadre d'une affirmation sous la forme: $\bm{A}$ \textbf{vrai et} $\bm{A \Rightarrow B}$\textbf{, alors }$\bm{B}$.
+\subparagraph{Implications et Équivalences} Quand on fait face à une affirmation en mathématiques, notre objectif est d'essayer de la déduire à partir de tous les résultats à notre disposition, qu'on appelle axiomes, et qui ensemble forment une théorie. Les axiomes ne peuvent pas être démontrés au sein de la théorie, mais un théorème est vrai au sein d'une théorie si et seulement si on peut le déduire par une suite d'implications vraies à partir des axiomes de la théorie.\\
+J'ai dit plein de mots compliqués donc revenons rapidement dessus. D'abord, parlons du fameux "si et seulement si". En maths, on fait face à deux grands types de résultats: les implications et les équivalences.\\\\
+\textbf{Une implication c'est une proposition} (synonyme d'affirmation, mais dans le monde mathématique on préfère le mot "proposition" à "affirmation" car en maths une affirmation peut être fausse, en tout cas, avant d'avoir cherché à la démontrer ou à l'infirmer, elle est considérée comme ni vraie ni fausse) \textbf{de la forme} $\bm{A \Rightarrow B}$, c'est à dire qu'on peut déduire $B$ à partir de $A$ mais on a aucun moyen de savoir si on peut déduire $B$ à partir de $A$. \\
+\textbf{Une équivalence, c'est la combinaison des propositions} $\bm{A \Rightarrow B}$ \textbf{et} $\bm{B \Rightarrow A}$ \textbf{que l'on note} $\bm{A \Leftrightarrow B}$. La locution "si et seulement si" (qu'on note parfois "ssi") c'est simplement la retranscription à l'écrit d'une équivalence. \textbf{On peut donc tout à fait écrire} $\bm{A}$ \textbf{ssi} $\bm{B}$ \textbf{à la place de} $\bm{A \Leftrightarrow B}$. 
+Et donc, la locution simple "si" retranscrit en français la flèche simple "$\Rightarrow$". Il convient donc de faire attention au sens dans lequel on énonce les propositions, car ce qu'on nomme "l'opérateur d'implication" (c'est à dire: "$\Rightarrow$" ou "si") n'est pas symétrique. \\\\
+Cependant, pour pouvoir procéder à une preuve, il faut que l'on \textbf{suppose nos hypothèses vraies}. On dit qu'on suppose l'antécédent vrai, c'est à dire qu'on note une implication dans le cadre d'une affirmation sous la forme: $\bm{A}$ \textbf{vrai et} $\bm{A \Rightarrow B}$\textbf{, alors }$\bm{B}$.
 On comprend alors qu'un théorème est simplement une implication ou une équivalence avec laquelle on a supposé l'antécédent vrai, c'est ce qu'on appelle le \textit{modus ponens.}}
 \end{tcolorbox}
 
 \noindent C'est peut être abstrait, donc prenons un exemple:\\
 Prenons la proposition suivante: "S'il pleut, alors le sol est mouillé". Je peux aussi l'écrire: "(Il pleut) $\Rightarrow$ (Le sol est mouillé)". \\
-n exemple d'équivalence pourrait être le suivant: "(Je mange si et seulement si j'ai faim)", qui signifie qu'on ne mange pas si on a pas faim mais que si on a faim, et bien on va bien finir par manger (normalement). On peut donc écrire: "(Je mange) $\Leftrightarrow$ (J'ai faim)". 
+Un exemple d'équivalence pourrait être le suivant: "(Je mange si et seulement si j'ai faim)", qui signifie qu'on ne mange pas si on n'a pas faim mais que si on a faim, et bien on va bien finir par manger (normalement). On peut donc écrire: "(Je mange) $\Leftrightarrow$ (J'ai faim)". 
 
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 \subparagraph{Les méthodes de déduction logique} On a donc expliqué une partie du formalisme mathématique (en français et en maths). On va maintenant voir comment tirer partie de ce formalisme pour faire des déductions efficaces et surtout, des déductions justes.\\
-D'abord on désigne par le symbol $\neg$ pour désigner la négation (ou simplement le NON) logique. Si $A$ est une proposition, elle est soit vraie soit fausse. On définit alors $\neg A =$Vrai si $A$ est fausse et $\neg A=$Faux si $A$ est vraie. \\
+D'abord on désigne par le symbole $\neg$ pour désigner la négation (ou simplement le NON) logique. Si $A$ est une proposition, elle est soit vraie soit fausse. On définit alors $\neg A =$Vrai si $A$ est fausse et $\neg A=$Faux si $A$ est vraie. \\
 Si je veux démontrer $\bm{A \Rightarrow B}$ c'est équivalent à montrer sa contraposée, c'est à dire $\bm{\neg{B} \Rightarrow \neg{A}}$ (\textbf{ET SURTOUT PAS} $\bm{\neg{A} \Rightarrow \neg B}$ qu'on appelle sa négation.) qu'il convient de ne pas confondre avec la réciproque que l'on écrit $B \Rightarrow A$. Je ne vais pas en proposer une preuve ici mais je vous laisse faire une comparaison des tables de vérité (vous trouverez une explication (peut-être un peu technique) \href{https://fr.wikipedia.org/wiki/Modus_tollens#Justification_par_la_table_de_v%C3%A9rit%C3%A9}{ici}). \\
 
-Maintenant, parlons du \textbf{raisonement par l'absurde}. C'est un type de raisonement rarement présenté comme tel au lycée alors qu'il est bien utile et même à l'origine du procédé de preuve par contraposé expliqué ci-dessus. On a dit plus haut que prouver en mathématique, ça voulait dire montrer une suite correcte d'implications à partir des axiomes de la théorie. Cela nécessite alors de faire une preuve que l'on nomme \textit{constructive}, c'est à dire il faut trouver explicitement les bons axiomes et les bonnes implications pour trouver le résultat.\\
-Le raisonnement par l'absurde permet de s'abroger de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\\
+Maintenant, parlons du \textbf{raisonement par l'absurde}. C'est un type de raisonnement rarement présenté comme tel au lycée alors qu'il est bien utile et même à l'origine du procédé de preuve par contraposée expliqué ci-dessus. On a dit plus haut que prouver en mathématique, ça voulait dire montrer une suite correcte d'implications à partir des axiomes de la théorie. Cela nécessite alors de faire une preuve que l'on nomme \textit{constructive}, c'est à dire qu'il faut trouver explicitement les bons axiomes et les bonnes implications pour trouver le résultat.\\
+Le raisonnement par l'absurde permet de s'affranchir de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\\
 
 \textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste, c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux. 
 }
@@ -162,10 +162,10 @@ Le raisonnement par l'absurde permet de s'abroger de ces contraintes en montrant
 \section{Un peu de formalisation du problème}\label{formalisation}
 
 \subsection{Petits rappels d'algèbre linéaire*}\label{rappels1}
-Un $\mathbb{K}$-espace vectoriel ($\mathbb{K}$-EV) est un ensemble de nombre qui est stable par additions et multiplication par un scalaire.\\
+Un $\mathbb{K}$-espace vectoriel ($\mathbb{K}$-EV) est un ensemble de nombres qui est stable par addition et multiplication par un scalaire.\\
 Ici, $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Un scalaire va donc être un nombre qui va appartenir à $\mathbb{K}$. 
 \begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Défintion stabilité par addition et multiplication scalaire}},halign title=center]
-Si E est un $\mathbb{K}$-EV, soit $x,y \in E$ et $\lambda \in \mathbb{K}$, la stabitlité par addition et multiplication scalaire va s'écrire respectivement:
+Si E est un $\mathbb{K}$-EV, soit $x,y \in E$ et $\lambda \in \mathbb{K}$, la stabilité par addition et multiplication scalaire va s'écrire respectivement:
 $$
 x + y \in E \quad \text{    et    } \quad \lambda x \in E
 $$
@@ -176,30 +176,30 @@ x + \lambda y \in E
 $$
 \end{tcolorbox}
 Ici, le rôle de $x$ et $y$ est interchangeable. Il suffit que la propriété soit vraie pour un point quelconque et ça implique qu’elle est vraie pour tous, donc $\lambda x \in E$ montre la même chose que $\lambda y \in E$.
-Pour la suite, on se place dans $\mathbb{K}^n$ c'est à dire l'ensemble des n-uplets (donc les élements de $\mathbb{K}^n$ sont de la forme $x = (x_1, x_2, ..., x_ n)$ avec $x_i \in \mathbb{K} \forall i \in \{1, 2,..., n\}$). \\
+Pour la suite, on se place dans $\mathbb{K}^n$ c'est à dire l'ensemble des n-uplets (donc les éléments de $\mathbb{K}^n$ sont de la forme $x = (x_1, x_2, ..., x_ n)$ avec $x_i \in \mathbb{K} \forall i \in \{1, 2,..., n\}$). \\
 
-$\mathbb{C}$ est l'ensemble des nombres compexes, c'est à dire les nombres qui s'écrivent $x = a + ib$ avec $a,b \in \mathbb{R}$ et $i^2 = -1$ (on pourra donc considérer que $\mathbb{C}$ est simplement un ensemble à deux dimension, homogène à un plan (donc $\mathbb{R}^2$) qu'on écrirait $\mathbb{R}\times i\mathbb{R}$, on voit donc les points de $\mathbb{C}$ comme des points du plan de la forme $x = (a,b)$). On va pas rentrer dans le détail des propriétés des nombres complexes ni de pourquoi ils sont utiles. Ce qu'il faut bien noter c'est qu'on ne peut pas ordonner les nombres complexe mais qu'on peut comparer leur module qu'on note $\lvert x \rvert = \lvert a + ib \rvert = \sqrt[]{a^2 + b^2}$ ce qui va servir à la définition de norme.\\
-Pour tout norme complexe $x = a + ib$, il existe un unique couple de réels $(r, \theta') \in \mathbb{R}^{2}$ avec $\theta\  = \theta' + 2k\pi, k\in \mathbb{Z}$ qui permet d'écrire $x$ sous forme exponentielle ou polaire: $x = re^{\theta} = r(\cos(\theta) + i\sin(\theta))$ avec $r = \lvert x \rvert$ (la distante à 0) et $\theta$ l'angle de $x$ rapporté sur le cercle trigonométrique. 
+$\mathbb{C}$ est l'ensemble des nombres complexes, c'est à dire les nombres qui s'écrivent $x = a + ib$ avec $a,b \in \mathbb{R}$ et $i^2 = -1$ (on pourra donc considérer que $\mathbb{C}$ est simplement un ensemble à deux dimensions, homogène à un plan (donc $\mathbb{R}^2$) qu'on écrirait $\mathbb{R}\times i\mathbb{R}$, on voit donc les points de $\mathbb{C}$ comme des points du plan de la forme $x = (a,b)$). On ne va pas rentrer dans le détail des propriétés des nombres complexes ni de pourquoi ils sont utiles. Ce qu'il faut bien noter c'est qu'on ne peut pas ordonner les nombres complexes mais qu'on peut comparer leur module qu'on note $\lvert x \rvert = \lvert a + ib \rvert = \sqrt[]{a^2 + b^2}$ ce qui va servir à la définition de norme.\\
+Pour toute norme complexe $x = a + ib$, il existe un unique couple de réels $(r, \theta') \in \mathbb{R}^{2}$ avec $\theta\  = \theta' + 2k\pi, k\in \mathbb{Z}$ qui permet d'écrire $x$ sous forme exponentielle ou polaire: $x = re^{\theta} = r(\cos(\theta) + i\sin(\theta))$ avec $r = \lvert x \rvert$ (la distance à 0) et $\theta$ l'angle de $x$ rapporté sur le cercle trigonométrique. 
 
 \subsection{Formalisation d'une équation différentielle à l'ordre 1}\label{ordre1}
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition équation différentielle d'ordre 1}},halign title=center]
 Soit E un $\mathbb{K}$-EV, on considère l'ED $y' = f(t,y)$, I un intervalle de $\mathbb{R}$ et $\Omega$ un ouvert de $(\mathbb{K}, E)$, $f:\Omega \rightarrow E$ une fonction continue. \\
-On appelle solution de cette équation une fonction $\phi$ dérivable sur I tel que $\forall t \in I$, $(t, \phi (t)) \in \Omega$ et $\phi ' = f(t, \phi (t))$.
+On appelle solution de cette équation une fonction $\phi$ dérivable sur I telle que $\forall t \in I$, $(t, \phi (t)) \in \Omega$ et $\phi ' = f(t, \phi (t))$.
 \end{tcolorbox}
 
 Clairement, la formulation est assez barbare. Ce qu'il faut comprendre, c'est que $\Omega$ est un ensemble qui a de bonnes propriétés (des genres d'intervalles), on veut que l'image de $\phi$ par tous les $t$ reste dans l'ensemble de départ de $\phi$ et que $\phi$ vérifie l'équation différentielle. 
 En pratique, les deux premières conditions sont toujours réunies, on a juste besoin de vérifier la dernière.
 
-Il est important de noter qu'on énonce les théorèmes suivant dans les cas \textbf{linéaire}. Quand on dit linéaire c'est en $y$, c'est à dire qu'on a pas $y^2$ ou $\cos(y)$ mais elle peut évidement ne pas être linéaire en $t$ (c'est d'ailleurs tout l'intérêt) donc on peut avoir par exemple: $y' = t^2y + \cos(t)$
+Il est important de noter qu'on énonce les théorèmes suivants dans les cas \textbf{linéaires}. Quand on dit linéaire c'est en $y$, c'est à dire qu'on n'a pas $y^2$ ou $\cos(y)$ mais elle peut évidemment ne pas être linéaire en $t$ (c'est d'ailleurs tout l'intérêt) donc on peut avoir par exemple: $y' = t^2y + \cos(t)$
 \subsubsection{Forme des solutions cas homogène}\label{sol1}
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition EDO linéaire homogène}},halign title=center]
-On appelle équation différentielle de première ordre homogène une ED de la forme:
+On appelle équation différentielle du premier ordre homogène une ED de la forme:
 $$
 (E_0): \text{   } y' + a(t)y = 0
 $$
-Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidement, ça peut être une fonction constante auquel cas $a(t)$ est un scalaire.)
+Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidemment, ça peut être une fonction constante auquel cas $a(t)$ est un scalaire.)
 \end{tcolorbox}
-\textbf{L'équation homogène à toujours une solution} ($y=0$ par exemple) et l'ensemble des solutions de $E_0$ est un espace vectoriel.
+\textbf{L'équation homogène a toujours une solution} ($y=0$ par exemple) et l'ensemble des solutions de $E_0$ est un espace vectoriel.
 
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Solutions équation homogène}},halign title=center]
 \noindent Les solutions de l'équation différentielle homogène sont:
@@ -207,7 +207,7 @@ Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidement, ça peu
 y = \lambda e^{-\int_{t_0}^{t}{a(x)dx}} \quad \text{avec} \quad \lambda \in \mathbb{R}
 \end{align}
 \begin{tcolorbox}[colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
-\subparagraph{Preuve (Optionelle)} si on prend $f(t, y(t)) = -a(t)y(t)$ il suffit d'intégrer la relation: \\ $y' + a(t)y(t) = 0 \Leftrightarrow y' = -a(t)y(t) \Leftrightarrow \frac{y'}{y} = a(t)$ d'où:
+\subparagraph{Preuve (optionnelle)} si on prend $f(t, y(t)) = -a(t)y(t)$ il suffit d'intégrer la relation: \\ $y' + a(t)y(t) = 0 \Leftrightarrow y' = -a(t)y(t) \Leftrightarrow \frac{y'}{y} = a(t)$ d'où:
 $$
 \int_{t_0}^{t} \frac{y'(x)}{y(x)}dx = \int_{t_0}^{t}-a(x)dx \quad \Leftrightarrow \quad ln(y) - ln(\lambda) = -\int_{t_0}^{t} a(x)dx
 $$
@@ -218,11 +218,11 @@ D'où le résultat.}
 \end{tcolorbox}
 \end{tcolorbox}
 
-On voit qu'\textbf{il faut faire attention au signe} en fonction de si on se trouve dans la forme $y' + a(t)y(t) = 0$ ou $y' = a(t)y(t)$. Dans la preuve, il faut aussi supposer que $y \neq 0$ mais comme c'est une des solution à part, il suffit de la traiter à part. \\
-On constate ensuite qu'il induit $\lambda \neq 0$ qu'il suffit de prendre $\lambda = 0$ pour la rajouter dans l'ensemble des solutions ce qui garanti que toutes les solutions sont de la forme (2). \\ 
-Si on veut déterminer C, il suffit de poser une condition initiale $y(t_0) = y_0$ et on a $\lambda=t_0$ et on a alors unicité de la solution par le théorème de Cauchy-Lipschitz. Sinon il suffit de calculer une primitive pour un $t_0$ quelconque dans le domaine de définition de l'intégrale de $a(t)$. \\
+On voit qu'\textbf{il faut faire attention au signe} en fonction de si on se trouve dans la forme $y' + a(t)y(t) = 0$ ou $y' = a(t)y(t)$. Dans la preuve, il faut aussi supposer que $y \neq 0$ mais comme c'est une des solutions à part, il suffit de la traiter à part. \\
+On constate ensuite que cela induit $\lambda \neq 0$ et qu'il suffit de prendre $\lambda = 0$ pour la rajouter dans l'ensemble des solutions ce qui garantit que toutes les solutions sont de la forme (2). \\ 
+Si on veut déterminer $\lambda$, il suffit de poser une condition initiale $y(t_0) = y_0$ et on a $\lambda=t_0$ et on a alors unicité de la solution par le théorème de Cauchy-Lipschitz. Sinon il suffit de calculer une primitive pour un $t_0$ quelconque dans le domaine de définition de l'intégrale de $a(t)$. \\
 
-\textbf{En particulier}, si $a(t)$ est constant, $\bm{-\int_{t_0}^{t} a(x)dx = -at}$ (en fait pas exactement car le résultat de l'intégration nous donne un terme $-A(t_0)$ si $A$ est une primitive de $A$, on choisis alors $t_0$ tel que $A(t_0) =0$ pour simplifier les calculs. \\
+\textbf{En particulier}, si $a(t)$ est constant, $\bm{-\int_{t_0}^{t} a(x)dx = -at}$ (en fait pas exactement car le résultat de l'intégration nous donne un terme $-A(t_0)$ si $A$ est une primitive de $a$, on choisis alors $t_0$ tel que $A(t_0) =0$ pour simplifier les calculs. \\
 Dans le cas scalaire, vous allez donc avoir des solutions de la forme: 
 \begin{align}
 \bm{y = \lambda e^{-at} \quad \textbf{avec} \quad \lambda} \in \bbbold{\mathbb{R}} 
@@ -231,8 +231,8 @@ Parce que sans condition initiale il n'y a pas d'unique solution, on dit que (2)
 
 \subsubsection{Exemples}\label{ex1}
 
-J'espère qu'à ce stade vous n'êtes pas perdu. Si c'est encore le cas, c'est pas grave, on va formaliser tout ça avec des exemples:\\
-J'en profite pour vous signaler qu'en math, les notions sont parfois assez abstraites mais il y a toujours un moyen de se rapprocher de quelque chose de plus "réel" sur lequel on peut avoir de l'intuition mais pour cela, il faut faire des exercices et en connaîte suffisament sur le sujet pour être capable de faire des liens. C'est pour cela qu'il y a des parties optionelles dans ce cours qui bien quelles ne soient pas au programme, aident à la comprehension globale des notions.
+J'espère qu'à ce stade vous n'êtes pas perdus. Si c'est le cas, c'est pas grave, on va formaliser tout ça avec des exemples:\\
+J'en profite pour vous signaler qu'en maths, les notions sont parfois assez abstraites mais il y a toujours un moyen de se rapprocher de quelque chose de plus "réel" sur lequel on peut avoir de l'intuition, mais pour cela, il faut faire des exercices et en connaître suffisamment sur le sujet pour être capable de faire des liens.
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.1}},halign title=left]
 On considère l'ED suivante: $y' +\frac{3}{4}y = 0$ \\
 On voit qu'il n'y a ni de scalaire ni de fonction qui dépend de $t$ devant le $y$ et on a bien une égalité avec le second membre nul et que des expressions qui dépendent de $y$ à gauche donc on peut appliquer la formule (3):
@@ -249,19 +249,19 @@ Donc $y=3e^{-\frac{3}{4}t}$ est la solution
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.2}},halign title=left]
 On considère l'ED suivante: $7y' = 10y $. \\
-On se ramène d'abord sous forme homogène en mettant tous les termes qui dépendent de y à gauche de tel sorte qu'on ait un 0 à droite puis on divise par 7 l'équation afin de ne plus avoir de termes devant le $y'$. On obtient donc $y' -\frac{10}{7}y = 0$. On applique donc (3):
+On se ramène d'abord sous forme homogène en mettant tous les termes qui dépendent de y à gauche de tel sorte qu'on ait un 0 à droite,  puis on divise par 7 l'équation afin de ne plus avoir de termes devant le $y'$. On obtient donc $y' -\frac{10}{7}y = 0$. On applique donc (3):
 $$
 y = \lambda e^{\frac{10}{7}t}
 $$
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.3 (Optionnel)}},halign title=left]
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.3 (optionnel)}},halign title=left]
 On considère l'ED suivante: $y' + (1+t)y = 0 $. \\
-On constate qu'on a effectivement une équation homogène mais cette fois-ci $a(t)$ n'est pas constant donc il faut utiliser la formule (2). On commence par primitiver (car ici on a pas de conditions initiales, sinon il faudrait intégrer) $a(t)$:
+On constate qu'on a effectivement une équation homogène mais cette fois-ci $a(t)$ n'est pas constant donc il faut utiliser la formule (2). On commence par primitiver (car ici on n'a pas de conditions initiales, sinon il faudrait intégrer) $a(t)$:
 $$
 \int_{t_0}^{t} a(x)dx = \int_{t_0}^{t} 1+ t dx = [x +\frac{x^2}{2}]^{t}_{t_0} = t + \frac{t^2}{2}
 $$
-En prenant $t_0$ = 0 (ce que l'on peut faire car on chercher une solution pas celle qui satisfait certaines conditions initiales.
+En prenant $t_0$ = 0 (ce que l'on peut faire car on cherche une solution en général, pas une particulière, la solution qui satisfait certaines conditions initiales)
 D'où en appliquant (2):
 $$
 y = \lambda e^{-t -\frac{t^2}{2}}
@@ -270,12 +270,12 @@ $$
 
 \subsubsection{Forme des solutions cas linéaire avec second membre}\label{sol2}
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition EDO linéaire avec second membre}},halign title=center]
-On appelle équation différentielle de première ordre homogène une ED de la forme:
+On appelle équation différentielle du premier ordre homogène une ED de la forme:
 $$
 (E_0): \text{   } y' + a(t)y = b(t)
 $$
-Avec $a(t), b(t) \in E $ des fonctions continues qui dépendent de t (évidement, ça peut être des fonctions constantes auquel cas $a(t)$ et $b(t)$ sont des scalaires.) \\
-On appelle \textbf{second membre d'une EDO} un terme (une constante, une fonction, plusieurs fonctions) qui n'est pas dans un produit avec $y$ ou une de ses dérivées. On peut donc "l'isolé" de $y$. Si on soustrait le second membre d'une EDO, on trouve toujours une EDO homogène. 
+Avec $a(t), b(t) \in E $ des fonctions continues qui dépendent de t (évidemment, ça peut être des fonctions constantes auquel cas $a(t)$ et $b(t)$ sont des scalaires.) \\
+On appelle \textbf{second membre d'une EDO} un terme (une constante, une fonction, plusieurs fonctions) qui n'est pas dans un produit avec $y$ ou une de ses dérivées. On peut donc "l'isoler" de $y$. Si on soustrait le second membre d'une EDO, on trouve toujours une EDO homogène. 
 \end{tcolorbox}
 
 L'idée, c'est donc de trouver une méthode pour pouvoir calculer la solution générale.
@@ -286,11 +286,11 @@ $$
 (E): \text{   } y' + a(t)y = b(t)
 $$
 Alors, la \textbf{solution générale} de (E) est sous la forme $\boldsymbol{y = y_p + y_0}$\\
-Avec $y_p$ une solution particulière (c'est à dire n'importe qu'elle fonction $y_p$ tel que $y_p' + a(t)y_p = b(t)$) et $y_0$ la solution de l'équation homogène associée (donc ici, une solution de $y' + a(t)y = 0$.)
+Avec $y_p$ une solution particulière (c'est à dire n'importe quelle fonction $y_p$ telle que $y_p' + a(t)y_p = b(t)$) et $y_0$ la solution de l'équation homogène associée (donc ici, une solution de $y' + a(t)y = 0$.)
 \end{tcolorbox}
-Évidemment, j'ai écrit la solution générale et la solution homogène mais on unicité de la solution seulement si on pose une condition initiale. Sinon, c'est toujours à une constante multiplicative près (le $\lambda$ dans (2) et (3).)\\
+Évidemment, j'ai écrit la solution générale et la solution homogène mais on a unicité de la solution seulement si on pose une condition initiale. Sinon, c'est toujours à une constante multiplicative près (le $\lambda$ dans (2) et (3).)\\
 
-Il y a deux cas simples, si $a(t)$ et $b(t)$ sont constante et si on nous donne une solution particulière à tester:
+Il y a deux cas simples, si $a(t)$ et $b(t)$ sont constantes et si on nous donne une solution particulière à tester:
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Deux cas classiques}},halign title=center]
 Si on a une équation différentielle de la forme (E):
 $$
@@ -303,12 +303,12 @@ Si on nous donne une fonction $y_p$, il suffit de vérifier qu'elle est solution
 
 
 Maintenant, l'idée ça va être de réussir à trouver une solution particulière car on a une formule pour trouver la solution de l'équation homogène donc on veut en tirer partie.\\
-Pour se faire, on va utiliser ce qu'on appelle la \textbf{Méthode de variation de la constante} que je vais vous démontrer et qui pourra vous donner une forme explicite des solutions d'une EDO linéaire avec second membre.\\
+Pour ce faire, on va utiliser ce qu'on appelle la \textbf{Méthode de variation de la constante} que je vais vous démontrer et qui pourra vous donner une forme explicite des solutions d'une EDO linéaire avec second membre.\\
 
-L'idée de la méthode n'est pas complexe. On utilise la formule de dérivation d'un produit: $(uv)' = u'v + v'u$ pour trouver une égalité entre $\lambda'(t)$ et $b(t)e^{f}$ avec f une certaine fonction. C'est possible car en dérivant, comme $\lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}}$ est solution de (E), on va la retrouver e calculant la dérivée du produit.\\
+L'idée de la méthode n'est pas complexe. On utilise la formule de dérivation d'un produit: $(uv)' = u'v + v'u$ pour trouver une égalité entre $\lambda'(t)$ et $b(t)e^{f}$ avec f une certaine fonction. C'est possible car en dérivant, comme $\lambda (t)e^{-\int_{t_0}^{t}{a(x)dx}}$ est solution de (E), on va la retrouver en calculant la dérivée du produit.\\
 L'idée c'est que cette égalité est intégrable et va nous permettre de trouver la fonction $\lambda (t)$ qui transforme la solution homogène en solution générale
 
-\begin{tcolorbox}[breakable,pad at break*=3mm, colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (optionnelle)}},halign title=center]
 Si on a une équation différentielle de la forme (E):
 $$
 (E): \text{   } y' + a(t)y = b(t)
@@ -339,18 +339,18 @@ y(t) = \lambda e^{\int_{t_0}^t a(s)\,ds} + \int_{t_0}^t b(s)e^{\int_{s}^t a(x)\,
 $$
 Ce qui conclut la démonstration de la formule et l'explicitation de celle-ci.
 \end{tcolorbox}
-La démonstration est un peu compliqué par la multiplication de symboles abstraits mais elle suit la trame décrite ci-dessus qui est plutôt logique une fois comprise. Je déconseille personellement d'apprendre cette formule par coeur, elle est longue et ne sert pas à grand chose, si la MVC est bien comprise elle permet de retrouver la formule facilement en l'appliquant à l'équation quelconque.
+La démonstration est un peu compliquée par la multiplication de symboles abstraits mais elle suit la trame décrite ci-dessus qui est plutôt logique une fois comprise. Je déconseille personnellement d'apprendre cette formule par c\oe ur, elle est longue et ne sert pas à grand chose, si la MVC est bien comprise elle permet de retrouver la formule facilement en l'appliquant à l'équation quelconque.
 
 \subsubsection{Exemples}\label{ex2}
 
-Bon, on a vu pleins de théorèmes, des formules, des méthodes, mais pour fixer les choses, voyons comment toutes ces choses vont s'utiliser dans la résolution d'une équation différentielle.
+Bon, on a vu plein de théorèmes, des formules, des méthodes, mais pour fixer les choses, voyons comment toutes ces choses vont s'utiliser dans la résolution d'une équation différentielle.
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.4: Un premier exemple dans le cas constant}},halign title=left]
 On considère l'ED suivante: (E): $2y'+ 6y - 3 = 0$. \\
-On va d'abord mettre (E) sous forme normale, c'est à dire sans rien devant $y'$: $y' + 3y = \frac{3}{2}$ puis on sait par les théorème de \ref{sol1} que $y_0 = \lambda e^{-6t}$ est solution générale de $(E_0)$.\\
+On va d'abord mettre (E) sous forme normale, c'est à dire sans rien devant $y'$: $y' + 3y = \frac{3}{2}$ puis on sait par les théorèmes de \ref{sol1} que $y_0 = \lambda e^{-6t}$ est solution générale de $(E_0)$.\\
 
-On va maintenant chercher une solution particulière. Par le troisième encadrée de la partie \ref{sol2}, on a que $y_p = -\frac{\frac{3}{2}}{3} = \frac{1}{2}$ est solution particulière. Et donc on a la solution générale $y$ qui s'écrit solution homogène $+$ solution particulière: $y = \lambda e^{-6t} + \frac{1}{2}$. \\
-La solution n'est pas unique car on a pas posé de conditions initiales.
+On va maintenant chercher une solution particulière. Par le troisième encadré de la partie \ref{sol2}, on a que $y_p = -\frac{\frac{3}{2}}{3} = \frac{1}{2}$ est solution particulière. Et donc on a la solution générale $y$ qui s'écrit solution homogène $+$ solution particulière: $y = \lambda e^{-6t} + \frac{1}{2}$. \\
+La solution n'est pas unique car on n'a pas posé de conditions initiales.
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.5: Si la solution est donnée}},halign title=left]
@@ -361,7 +361,7 @@ y_0 = \lambda e^{\ln(\sqrt{t})} = \lambda \sqrt{t}
 $$
 
 Vérifions maintenant que $f(t)$ est bien une solution particulière de (E): \\
-La dérivée $f'(t)$ de $f(t)$ est $1$, donc en remplaçant, on a $2t - t = t$ donc $f(t) = t$ est solution particulière est les solutions générale de (E) s'écrivent sous la forme: $y = \lambda \sqrt{t} + t$
+La dérivée $f'(t)$ de $f(t)$ est $1$, donc en remplaçant, on a $2t - t = t$ donc $f(t) = t$ est solution particulière et les solutions générales de (E) s'écrivent sous la forme: $y = \lambda \sqrt{t} + t$
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.6: MVC sur une EDO linéaire non scalaire}},halign title=left]
@@ -370,11 +370,11 @@ On considère l'ED suivante:
 
 \subsection{Formalisation d'une équation différentielle à l'ordre 2}\label{ordre2}
 \begin{tcolorbox}[breakable,pad at break*=3mm, colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Solutions EDO linéaire homogène d'ordre 2}},halign title=center]
-On appelle équation différentielle de première ordre homogène une ED de la forme:
+On appelle équation différentielle du premier ordre homogène une ED de la forme:
 $$
 (E_0): \text{   } ay'' + by'+ cy = 0
 $$
-Avec $a,b,c \in \mathbb{K}$ (c'est très important car si $a, b$ et $c$ ne sont pas des scalaire, la suite ne fonctionne pas.)\\
+Avec $a,b,c \in \mathbb{K}$ (c'est très important car si $a, b$ et $c$ ne sont pas des scalaires, la suite ne fonctionne pas.)\\
 
 Alors, on appelle polynôme caractéristique associé à $E_0$ le polynôme: $aX^2 + bX + c = 0$. Si on note $\Delta = b^2 - 4ac$ son discriminant, les solutions $r_1$ et $r_2$ du polynôme sont décrites par:\\
 \textbf{Cas 1: $\mathbb{K} = \mathbb{R}$}
@@ -385,14 +385,14 @@ Et les solutions de $E_0$ sont:
 $$\text{		Si 		} \Delta > 0: \quad \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}}$$
 De plus si $\Delta = 0$ ($r_1 = r_2$), on a: 
 $$\bbbold{y = (\lambda t + \mu)e^{r_1t}}$$
-Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexe et conjugués, on peut alors écrire les solutions sous la forme:
+Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexes et conjuguées, on peut alors écrire les solutions sous la forme:
 $$\bbbold{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
-\subparagraph{Preuve (Optionnel)} On ne va pas expliquer comment trouver la formule $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}$ (c'est pas dur mais vraiment chiant et pas intéressant) mais on va expliquer comment trouver les deux autres car c'est plutôt simple.\\
+\subparagraph{Preuve (optionnelle)} On ne va pas expliquer comment trouver la formule $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}$ (ce n'est pas dur mais vraiment chiant et pas intéressant) mais on va expliquer comment trouver les deux autres car c'est plutôt simple.\\
 
-Si on a $r_1 = r_2$, on a $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_1t}$, mais les deux exponentielles sont linéairement dépendantes et donc l'espace des solutions décrit par $y$ est de dimension $1$ alors que l'espace des solutions d'une EDO d'ordre 2 est de dimension 2. Donc on veut trouver une fonction qui est solution et linéairement indépendante de $e^{r_1t}$. On vérifie par le calcul que $te^{r_1t}$ est solution linéairement indépendante de $e^{r_1t}$. \\
+Si on a $r_1 = r_2$, on a $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_1t}$, mais les deux exponentielles sont linéairement dépendantes et donc l'espace des solutions décrit par $y$ est de dimension $1$ alors que l'espace des solutions d'une EDO d'ordre 2 est de dimension 2. Donc on veut trouver une fonction qui est solution et linéairement indépendante de $e^{r_1t}$. On vérifie par le calcul que $te^{r_1t}$ est une solution linéairement indépendante de $e^{r_1t}$. \\
 Donc les solutions s'écrivent $y = \lambda te^{r_1t} + \mu e^{r_1t} = e^{r_1}(\lambda t + \mu)$.\\
-Si on a $\Delta < 0$, les solutions sont complexes conjugués (explication à \ref{rappels1}). Or un nombre complexe peut s'écrire sous forme polaire: $me^{i\omega} = m(\cos(\omega) + i\sin(\omega))$ (voir \ref{rappels1}) donc je peux écrire (avec $\bbbold{\mu = a+ ib, \lambda = x + iy \in \mathbb{C}}$): \\
+Si on a $\Delta < 0$, les solutions sont complexes conjuguées (explication à \ref{rappels1}). Or un nombre complexe peut s'écrire sous forme polaire: $me^{i\omega} = m(\cos(\omega) + i\sin(\omega))$ (voir \ref{rappels1}) donc je peux écrire (avec $\bbbold{\mu = a+ ib, \lambda = x + iy \in \mathbb{C}}$): \\
 $y = \lambda e^{mt + i\omega t} + \mu e^{mt - i\omega t} = e^{mt}(\lambda e^{i\omega t} + \mu e^{-i\omega t}) = e^{mt}((a+ ib)e^{i\omega t} + (x+ iy)e^{-i\omega t})$\\
 
 \noindent Or, on cherche une solution réelle, donc $\text{Re}(y) = y$ et on sait que $e^{i\omega t} = \cos(\omega t) + i\sin(\omega)t$ d'où en développant: $y = e^{mt}((\text{Re}(\mu)+\text{Re}(\lambda))\cos(wt) + (\text{Im}(\mu)-\text{Im}(\lambda))\sin(\omega t))$\\
@@ -405,16 +405,16 @@ $$
 $$
 \end{tcolorbox}
 
-Deux petites précisions avant de passer aux exercices et aux dernières méthodes. Déjà, il est important de bien faire attention aux constantes ($\mu, \lambda, \lambda^{'}$ etc) car elles sont quelconques mais en fait c'est pas parce qu'elles sont quelconques qu'il n'y a pas des conditions sur elles. En particulier, dans la preuve du cas réel, au début on a $\mu, \lambda \in \mathbb{C}$ puis ensuite on change les constantes pour avoir des solutions réelles. \\
-C'est le deuxième point important: \textbf{On cherche toujours des solutions réelles} (réelles signifie ici dans $\mathbb{R}$, pas qu'autrement elles n'existerait pas ou une autre connerie du genre qu'on entend souvent). \\
-Mais pourquoi me direz-vous ? Et bien, c'est pas parce qu'elles existent qu'on peut leur donner un sens physique. Les solutions complexes permettent de résoudre des problèmes, c'est un artifice mathématique qui permet de simplifier (et même souvent est la seule manière de trouver) les solutions mais elles donnent des conditions réalisable générales qui ne sont parfois pas d'un grand intérêt physique. Les solutions complexes sont des solutions mais on leur préfère les solutions réelles pour une raison d'interprétabilité physique. Je dirai que c'est même une question de si vous faites des maths ou de la physique. Le physiciens veut des solutions réelles à son problème. Le mathématicien s'en fou complètement (ça ne veut pas dire que l'un ou l'autre à raison pour autant.)\\
+Deux petites précisions avant de passer aux exercices et aux dernières méthodes. Déjà, il est important de bien faire attention aux constantes ($\mu, \lambda, \lambda^{'}$ etc) car elles sont quelconques, mais en fait ce n'est pas parce qu'elles sont quelconques qu'il n'y a pas des conditions sur elles. En particulier, dans la preuve du cas réel, au début on a $\mu, \lambda \in \mathbb{C}$ puis ensuite on change les constantes pour avoir des solutions réelles. \\
+C'est le deuxième point important: \textbf{On cherche toujours des solutions réelles} (réelles signifie ici dans $\mathbb{R}$, pas qu'autrement elles n'existeraient pas ou une autre connerie du genre qu'on entend souvent). \\
+Mais pourquoi me direz-vous ? Eh bien, c'est pas parce qu'elles existent qu'on peut leur donner un sens physique. Les solutions complexes permettent de résoudre des problèmes, c'est un artifice mathématique qui permet de simplifier (et même souvent qui est la seule manière de trouver) les solutions, mais elles donnent des conditions réalisables générales qui ne sont parfois pas d'un grand intérêt physique. Les solutions complexes sont des solutions mais on leur préfère les solutions réelles pour une raison d'interprétabilité physique. Je dirai que c'est même une question de si vous faites des maths ou de la physique. Le physicien veut des solutions réelles à son problème. Le mathématicien s'en fout complètement (ça ne veut pas dire que l'un ou l'autre a raison pour autant.)\\
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Remarques} Enfin bref, le dernier point important et de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et c'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
+\subparagraph{Remarques} Enfin bref, le dernier point important est de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et ce n'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
 Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc pour revenir à notre histoire de $\Delta < 0$, avec ces notations, on peut noter $\delta \in \mathbb{C}$ (en fait comme $\Delta \in \mathbb{R}$, on sait que $\delta \in i\mathbb{R}$) tel que $\delta^2 = \Delta$ et donc $\delta^2 = i^2 |\Delta| \Rightarrow \delta = \pm \sqrt{i^2|\Delta|} = \pm i\sqrt{|\Delta|} = \pm i\sqrt{-\Delta}$, tout simplement. Ces notations permettent donc de donner un sens à une quantité qu'on ne peut pas exprimer à l'aide de notations dans $\mathbb{R}$.\\
 
-\noindent Maintenant, \textbf{pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$ (notation qui est un petit artifice mathématique circulaire car on a pas définit la puissance et en plus je suis entrain de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n'apparait pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie tel quel, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négatif (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrai pas prendre une autre définition qui autoriserait les images d'antécédent négatifs ?" et c'est en fait une très bonne question. \\
-Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse complètement conne) on va réfléchir à pourquoi une autre définition ne peut pas marcher. \textbf{On va raisonner par l'absurde} (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
+\noindent Maintenant, \textbf{pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$, notation qui est un petit artifice mathématique circulaire car on n'a pas défini la puissance et en plus je suis en train de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n’apparaît pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie telle quelle, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négative (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrait pas prendre une autre définition qui autoriserait les images d'antécédents négatifs ?" et c'est en fait une très bonne question. \\
+Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les définitions, il suffit d'appliquer" (ce qui par ailleurs est une réponse complètement conne), on va réfléchir à pourquoi une autre définition ne peut pas marcher. \textbf{On va raisonner par l'absurde} (vous allez voir, c'est pas si dur et en plus ça a le grand avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle-ci, on a alors $x = y$. Évidemment, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
 \end{tcolorbox}
 
 \subsubsection{Exemples}\label{ex3}
@@ -422,7 +422,7 @@ Voyons maintenant un résumé en quelques exercices des méthodes et des théor�
 
 \begin{tcolorbox}[breakable,pad at break*=3mm,colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.1: Cas $\Delta < 0$}},halign title=left]
 Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + 6y = 0$.\\
-Son équation caractéristique associée est: $2r^2 + 4r + 6 = 0$ est une équation à coefficients réels et donc on peut calculer son discriminant: $\Delta = 4^2 - 4\times2\times 6 = -32$. On applique la formule dans le cas réel pour $\Delta < 0$, les solutions de l'équation caractérique sont: 
+Son équation caractéristique associée est: $2r^2 + 4r + 6 = 0$ est une équation à coefficients réels et donc on peut calculer son discriminant: $\Delta = 4^2 - 4\times2\times 6 = -32$. On applique la formule dans le cas réel pour $\Delta < 0$, les solutions de l'équation caractéristique sont: 
 $$
 r_1 = \frac{-4 + 2i\sqrt{8}}{4} = -1 +i\sqrt{2} \quad\quad\quad r_2 = \frac{-4 - 2i\sqrt{8}}{4} = -1 -i\sqrt{2}
 $$
@@ -432,14 +432,14 @@ y = e^{-t}(\lambda \sin(\sqrt{2}t)+ \mu \cos(\sqrt{2}t)) \quad \quad \lambda, \m
 $$
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 Deux petites remarques. \\
-D'abord, il est absoluement faux de prendre une approximation de la racine. Si on prend par exemple: $\sqrt{32} \approx 6$, ça change complètement les solutions et on peut se retrouver avec des solutions qui n'ont plus du tout les mêmes propriétés. \textbf{IL NE FAUT JAMAIS FAIRE ÇA.} À la place, on va utiliser des petites astuces pour simplifier les racines.\\ \textbf{On peut décomposer la racine qu'on veut calculer en produit plus simple dont on connait les racines.} Pour le cas de $32$, on a normalement tous appris la table de $4$ au primaire et donc on sait que $32 = 4 \times 8$ et $\sqrt{4} = 2$ (notez que c'est donc possible de prendre cette équation dans le sens droite gauche et donc de remplacer $2$ par $\sqrt{4}$). On a alors: $\sqrt{32} = 2 \sqrt{8}$. Cependant, dans l'exercice, on va chercher $\frac{\sqrt{32}}{4}$, donc on a $\frac{\sqrt{32}}{4} = \frac{2\sqrt{8}}{2\sqrt{4}} = \sqrt{\frac{8}{4}} = \sqrt{2}$. On peut étendre cette méthode à presque toutes les racines.\\
-Ensuite, on peut remarquer qu'on a jamais besoin de calculer les deux solutions de l'équation caractéristique car elles sont conjugués (c'est toujours le cas si $\Delta < 0$ par le théorème du dessus). Il suffit de calculer la première et puis de prendre le conjugué de celle-ci, c'est à dire, changer le signe de la partie imaginaire.}
+D'abord, il est absolument faux de prendre une approximation de la racine. Si on prend par exemple: $\sqrt{32} \approx 6$, ça change complètement les solutions et on peut se retrouver avec des solutions qui n'ont plus du tout les mêmes propriétés. \textbf{IL NE FAUT JAMAIS FAIRE ÇA.} À la place, on va utiliser des petites astuces pour simplifier les racines.\\ \textbf{On peut décomposer la racine qu'on veut calculer en produit plus simple dont on connait les racines.} Pour le cas de $32$, on a normalement tous appris la table de $4$ au primaire et donc on sait que $32 = 4 \times 8$ et $\sqrt{4} = 2$ (notez que c'est donc possible de prendre cette équation dans le sens droite gauche et donc de remplacer $2$ par $\sqrt{4}$). On a alors: $\sqrt{32} = 2 \sqrt{8}$. Cependant, dans l'exercice, on va chercher $\frac{\sqrt{32}}{4}$, donc on a $\frac{\sqrt{32}}{4} = \frac{2\sqrt{8}}{2\sqrt{4}} = \sqrt{\frac{8}{4}} = \sqrt{2}$. On peut étendre cette méthode à presque toutes les racines.\\
+Ensuite, on peut remarquer qu'on n'a jamais besoin de calculer les deux solutions de l'équation caractéristique car elles sont conjuguées (c'est toujours le cas si $\Delta < 0$ par le théorème du dessus). Il suffit de calculer la première et puis de prendre le conjugué de celle-ci, c'est à dire, changer le signe de la partie imaginaire.}
 \end{tcolorbox}
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.2: Cas $\Delta = 0$}},halign title=left]
 Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + 2y = 0$.\\
-À cette équation différentielle on peut associer une équation caractéristique: $2r^2 +4r +2 = 0$. On calcul son didscriminant: $\Delta = 16 - 16 = 0$. La solution double de l'équation caractéristique s'écrit: $r = - \frac{-4}{2 \times 2} = -1$. Donc on utilise la formule approprié dans le théorème ci-dessus. Les solutions de (E) s'écrivent:
+À cette équation différentielle on peut associer une équation caractéristique: $2r^2 +4r +2 = 0$. On calcule son discriminant: $\Delta = 16 - 16 = 0$. La solution double de l'équation caractéristique s'écrit: $r = - \frac{-4}{2 \times 2} = -1$. Donc on utilise la formule appropriée dans le théorème ci-dessus. Les solutions de (E) s'écrivent:
 $$
 y = (\lambda t + \mu)e^{-t} \quad \quad \lambda, \mu \in \mathbb{R}
 $$
@@ -447,7 +447,7 @@ $$
 
 \begin{tcolorbox}[breakable,pad at break*=3mm, colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.3: Cas $\Delta > 0$}},halign title=left]
 Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + y = 0$.\\
-À cette équation différnetielle on peut associer une équation caractéristique: $2r^2 + 4r + 1 = 0$. Son discriminant $\Delta$ s'écrit: $\Delta = 8$. On note donc les solutions de l'éqaution caractéristique:
+À cette équation différentielle on peut associer une équation caractéristique: $2r^2 + 4r + 1 = 0$. Son discriminant $\Delta$ s'écrit: $\Delta = 8$. On note donc les solutions de l'équation caractéristique:
 $$
 r_1 = \frac{-4 + i\sqrt{8}}{4} = -1 +i\frac{\sqrt{2}}{2} \quad\quad\quad r_2 = \frac{-4 - i\sqrt{8}}{4} = -1 -i\frac{\sqrt{2}}{2}
 $$
@@ -457,22 +457,55 @@ y = \lambda e^{(1+\frac{\sqrt{2}}{2})t} + \mu e^{(1-\frac{\sqrt{2}}{2})} \quad \
 $$
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 Petit remarque sur la simplification et le calcul des racines.\\
-J'ai expliqué plus haut qu'il était possible d'écrire presque toute les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simple mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonction pour toutes les racines. Ex:\\
+J'ai expliqué plus haut qu'il était possible d'écrire presque toutes les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simples mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonctionne pour toutes les racines. Ex:\\
 $$\frac{1}{\sqrt{9}} = \frac{1}{\sqrt{9}}\times \frac{\sqrt{9}}{\sqrt{9}} = \frac{\sqrt{9}}{9}$$. \\
-Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux racines d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a à faire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
+Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux racines d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a affaire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
 $$
 \pi = e^{14} \times \cos(\frac{3}{2}) \times \pi e^{-14} \frac{1}{\cos(\frac{3}{2})}
 $$
-Bien que ça n'a aucun intéret ici (mais ça reste une égalité.)
+Bien que ça n'a aucun n'ait intérêt ici (mais ça reste une égalité.)
 }
 \end{tcolorbox}
 \end{tcolorbox}
 
 \section{Les modèles d'équations différentielles}\label{modeles}
-On en revient à la question initiale (et on va enfin pouvoir y répondre si vous n'avez pas été dégouté jusqu'ici): Mais à quoi ça sert de faire des équations différentielles ? Non parce que c'est chiant à résoudre, c'est pas hyper fun, le côté théorique est inintéressant à votre niveau et vraiment, à part mon prof d'équation différentielle qui a écrit un bouquin dessus, ça emmerde presque tout le monde du côté mathématicien aussi.\\
-Mais en fait, si on fait des équations différentielles, c'est parce que c'est hyper utile, et c'est un outil qui a été spécialement conçu pour faire de la modélisation. En fait, simplement, faire de la modélisation c'est mettre en équation solvable (au moins partiellement) un problème de la vie. Comme expliqué à \ref{intro}, les équation différentielles n'apparaissent pas naturellement dans le monde, c'est parce que c'est une méthode très efficace avec beaucoup de résultat qu'on fait de la modélisation avec les équations différentielles.\\
+On en revient à la question initiale (et on va enfin pouvoir y répondre si vous n'avez pas été dégoûté jusqu'ici): Mais à quoi ça sert de faire des équations différentielles ? Non parce que c'est chiant à résoudre, c'est pas hyper fun, le côté théorique est inintéressant à votre niveau et vraiment, à part mon prof d'équation différentielle qui a écrit un bouquin dessus, ça emmerde presque tout le monde du côté mathématicien aussi.\\
+Mais en fait, si on fait des équations différentielles, c'est parce que c'est hyper utile, et \textbf{c'est un outil qui a été spécialement conçu pour faire de la modélisation}. En fait, simplement, faire de la modélisation c'est mettre en équation solvable (au moins partiellement) un problème de la vie. Comme expliqué à \ref{intro}, les équations différentielles n'apparaissent pas naturellement dans le monde, c'est parce que c'est une méthode très efficace avec beaucoup de résultat qu'on fait de la modélisation avec les équations différentielles.\\
 
-Bref, une part important de cette modélisation (et celle qui vous concerne, parce que jusqu'ici, moi aussi je me demandais ce que des médecins ou des biologistea allaient bien pouvoir faire de tout ça) 
+Bref, une part importante de cette modélisation (et celle qui vous concerne, parce que jusqu'ici, moi aussi je me demandais ce que des médecins ou des biologistes allaient bien pouvoir faire de tout ça) concerne la modélisation du vivant. \\
+On va donc présenter deux modèles: le modèle de \textbf{Verhulst} (ou modèle logistique) qui modélise, entre autres, la dynamique d'une population dans un écosystème sans interactions puis le modèle de \textbf{Lotka-Volterra} (ou modèle \textbf{proie-prédateur}), qui modélise, entre autres, la dynamique d'un écosystème simple avec interactions. 
+
+\subsection{Modèle de Verhulst: le modèle logistique}\label{Verhulst}
+Historiquement, le premier modèle de modélisation biologique a été proposé par Malthus au milieu du \textsc{xiv}\ieme~siècle afin de modéliser la croissance de la population aux États-Unis. 
+
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Modèle de Malthus}},halign title=center]
+Si $n(t)$ est la fonction qui à un temps $t$ associe la population totale considérée et $r$ un paramètre qui représente la croissance intrinsèque de la population (\textbf{indépendamment du temps et de la croissance de la population}), on a:
+$$
+n' = rn \text{,}
+$$
+dont les solutions s'écrivent:
+$$
+n(t) = n(t_0)e^{r(t-t_0)}
+$$
+Ce modèle est efficace pour modéliser des petites populations sur des courtes périodes de temps mais perd vite de son intérêt dans les autres cas car selon ce modèle, \textbf{la population croît rapidement vers l'infini} sans prendre en compte les ressources, l'avancement de la population ou la taille du territoire.\\
+On peut remarquer que c'est une \textbf{EDO linéaire d'ordre 1}, on sait donc la résoudre directement.
+\end{tcolorbox}
+En réponse au modèle de Malthus, jugé insuffisant, Verhulst publia le sien en 1845, prenant en compte le taux de natalité et le taux de décès en fonction de la taille de la population.
+
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Modèle de Verhulst}},halign title=center]
+Si $n(t)$ est la fonction qui à un temps $t$ associe la population totale considérée et $r, K \in \mathbb{R}^{+}$, alors on a:
+$$
+n' = rn(1 - \frac{n}{K})
+$$
+C'est une EDO non linéaire (en effet, si on développe la ligne du dessus, on obtient: $n' = rn - \frac{rn^2}{K}$) et on peut trouver des solutions en effectuant le changement de variable $y = \frac{1}{n} - \frac{1}{K}$, on trouve que les solutions s'écrivent:
+$$
+n = \frac{1}{1 + (\frac{K}{n_0} - 1)e^{-rt}}
+$$
+et donc 
+\end{tcolorbox}
+
+
+\subsection{Modèle Proie-Prédateur de Lotka-Volterra}\label{Lokta-Volterra}
 
 
 \end{document}
