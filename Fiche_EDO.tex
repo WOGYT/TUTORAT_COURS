@@ -8,13 +8,14 @@
 \usepackage{hyperref}
 \usepackage{bm}
 \usepackage{geometry}
+\usepackage{multicol}
 \geometry{hmargin=2.25cm,vmargin=2cm}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 \usepackage{scalerel}
 \usepackage[french]{babel}
-\title{Draft fiche équations différentielles ordinaires (EDO)}
-\author{Gabriel Legout}
+\title{Fiche équations différentielles ordinaires (EDO)}
+\author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
 \date{\today}
 
 \newlength\bshft
@@ -27,13 +28,13 @@
 \maketitle
 
 \begin{abstract}
-Cette fiche fera une introduction au concept d'équation différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolutions essentielles.\\
-Il s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
-Les prérequis sont minimes et les définitions s'autosuffisent sans avoir besoin d'une grande connaissance en analyse au delà des notions classique de fonctions et de résolution d'équations d'ordre 1.
+Cette fiche fera une introduction au concept d'équations différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolutions essentielles.\\
+Elle s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
+Les prérequis sont minimes et les définitions s'autosuffisent sans avoir besoin d'une grande connaissance en analyse au delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
 
-Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Les médecins sont souvent amener à prendre des décisions qui peuvent avoir de graves conséquences. Mieux vaut qu'ils les prennent en ayant une bonne connaissance des outils qu'ils utilisent.
+Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
 
-Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.
+Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispenser par votre prof mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.
 \end{abstract}
 
 \newpage
@@ -41,10 +42,35 @@ Cette fiche ne se substitue pas entièrement à celle du tutorat mais apporte de
 \newpage
 
 \section*{Avant-propos: Comment utiliser efficacement cette fiche}
-Certains concepts abordés sont compliqués et nécessite parfois du recul, du travail et des démonstration pour éviter de voir apparaitre magiquement des formules.
-Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles. Si votre objectif est d'apprendre tout par coeur, vous pouvez les sauter ausssi.\\
+Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaitre magiquement des formules.
+Évidemment, les démonstrations ne sont pas à connaitre et peuvent être sautés. Certaines parties ont été ajouté pour donner du contexte ou expliquer certaines parties plus subtiles.
 
-Voici le code couleur:
+\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des sections "optionnelles" qui pourront être sautées en première lecture mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaire pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérix (*) ou par la mention optionnel dans le corps du texte.} \\
+Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour ce donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
+
+\subparagraph{Code couleur} Les théorèmes, défintions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
+\begin{multicols}{2}
+\center
+\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Les blocs bleus: Hors-programme}},halign title=center]
+  Ils contiennent des défintions hors programmes, qui ne sont pas à apprendre mais qui aident à la définition de concepts qui vont nous aider pour la suite.
+\end{tcolorbox}
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Les blocs magentas: Cours}},halign title=center]
+Ils  contiennent les défintions à connaîtres. Il faut les comprendre et les apprendre
+\end{tcolorbox}
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+\subparagraph{Les blocs gris} Ils contiennent des informations complémentaires ou des notions annexes. Ils sont complémentaires au blocs bleus.
+}
+\end{tcolorbox}
+\columnbreak
+\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Les blocs jaunes: Méthodes}},halign title=center]
+Ils contiennent des explications de méthodes annexes ou hors programme pour résoudre certains exercices.
+\end{tcolorbox}
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Les blocs verts: Exercices}},halign title=left]
+Ils contiennent des exercices corrigés portant sur les thèmes des sections et qui aident à assimiler les notions. Ils sont tous abordables.
+\end{tcolorbox}
+\end{multicols}
+
+\newpage
 
 \section{Introduction*}
 \subsection{Présentation et origine du problème}\label{intro}
@@ -87,22 +113,36 @@ Il est possible d'appeler l'ensemble des solutions d'une équation différentiel
 
 Résoudre une équation différentielle ça va donc être chercher les différentes fonctions qui à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
 Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
-\subsection{Rappels de logique mathématique et des principes de raisonnements}
-Afin de pouvoir mieux comprendre la suite, de vous aider dans dans UE, en mathématiques ou en physique, on va faire un rapide retour sur les technique de logique permettant de déduire des résultats ainsi qu'un rapide retour sur les méthodes de démonstration en mathématiques.\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+
+
+\subsection{Rappels de logique mathématique et des principes de raisonnement}
+
+
+Afin de pouvoir mieux comprendre la suite, de vous aider dans vos UE, en mathématiques ou en physique, on va faire un rapide retour sur les techniques de logique permettant de déduire des résultats ainsi qu'un rapide retour sur les méthodes de démonstration en mathématiques.
+
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 \subparagraph{Implications et Équivalences} Quand on fait face à une affirmation en mathématiques, notre objectif est d'essayer de la déduire à partir de tous les résultats à notre disposion, qu'on appelle axiomes, et qui ensemble forment une théorie. Les axiomes ne peuvent pas être démontrés au sein de la théorie, mais un théorème est vrai au sein d'une théorie si et seulement si on peut le déduire par une suite d'implication vrai à partir des axiomes de la théorie.\\
-J'ai dit pleins de mots compliqués donc revenons rapidement dessus. D'abord, parlons du fameux "si et seulement si". En maths, on fait face à deux grands types de résultats: les implications et les équivalence.\\
-\textbf{Une implication c'est une proposition} (synonyme d'affirmation, mais dans le monde mathématique on préfère le mot "proposition" à "affirmation" car en maths une affirmation peut être fausse, en tout cas, avant d'avoir cherché à la démontrer ou à l'infirmer, elle est considéré comme ni vrai ni fausse) \textbf{de la forme} $\bm{A \Rightarrow B}$, c'est à dire qu'on peut déduire $B$ à partir de $A$ mais on a aucun moyen de savoir si on peut déduire $B$ à partir de $B$. \\
+J'ai dit pleins de mots compliqués donc revenons rapidement dessus. D'abord, parlons du fameux "si et seulement si". En maths, on fait face à deux grands types de résultats: les implications et les équivalence.\\\\
+\textbf{Une implication c'est une proposition} (synonyme d'affirmation, mais dans le monde mathématique on préfère le mot "proposition" à "affirmation" car en maths une affirmation peut être fausse, en tout cas, avant d'avoir cherché à la démontrer ou à l'infirmer, elle est considéré comme ni vrai ni fausse) \textbf{de la forme} $\bm{A \Rightarrow B}$, c'est à dire qu'on peut déduire $B$ à partir de $A$ mais on a aucun moyen de savoir si on peut déduire $B$ à partir de $A$. \\
 \textbf{Une équivalence, c'est la combinaison des propostions} $\bm{A \Rightarrow B}$ \textbf{et} $\bm{B \Rightarrow A}$ \textbf{que l'on note} $\bm{A \Leftrightarrow B}$. La locution "si et seulement si" (qu'on note parfois "ssi") c'est simplement la retranscription à l'ecrit d'une équivalence. \textbf{On peut donc tout à fait écrire} $\bm{A}$ \textbf{ssi} $\bm{B}$ \textbf{à la place de} $\bm{A \Leftrightarrow B}$. 
-Et donc, la locution simple "si" retranscript en français la flèche simple "$\Rightarrow$". Il convient donc de faire attention au sens dans lequel énonce les propositions, car ce qu'on nomme "l'opérateur d'implication" (c'est à dire: "$\Rightarrow$" ou "si") n'est pas symétrique. \\
+Et donc, la locution simple "si" retranscript en français la flèche simple "$\Rightarrow$". Il convient donc de faire attention au sens dans lequel énonce les propositions, car ce qu'on nomme "l'opérateur d'implication" (c'est à dire: "$\Rightarrow$" ou "si") n'est pas symétrique. \\\\
+Cependant, pour pouvoir procéder à une preuve, il faut que l'on \textbf{suppose nos hypothèses vrai}. On dit qu'on suppose l'antécédent vrai, c'est à dire qu'on note une implication dans le cadre d'une affirmation sous la forme: $\bm{A}$ \textbf{vrai et} $\bm{A \Rightarrow B}$\textbf{, alors }$\bm{B}$.
+On comprend alors qu'un théorème est simplement une implication ou une équivalence avec laquelle on a supposé l'antécédent vrai, c'est ce qu'on appelle le \textit{modus ponens.}}
+\end{tcolorbox}
 
 \noindent C'est peut être abstrait, donc prenons un exemple:\\
 Prenons la proposition suivante: "S'il pleut, alors le sol est mouillé". Je peux aussi l'écrire: "Le sol est seulement si 
-}
-\end{tcolorbox}
+
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Les méthodes de déduction logique} On donc expliqué une partie du formalisme mathématique autour de la formulation (en français et en maths). On va maintenant voir comment tirer partie de ce formalisme pour faire déduction efficaces et surtout, des déductions justes.\\
-Si je veux démontrer $\bm{A \Rightarrow B}$ c'est équivalent à montrer sa contraposée, c'est à dire $\bm{\neg{B} \Rightarrow \neg{A}}$ (\textbf{ET SURTOUT PAS} $\bm{\neg{A} \Rightarrow \neg B}$ qu'on appelle sa négation.) 
+\subparagraph{Les méthodes de déduction logique} On a donc expliqué une partie du formalisme mathématique (en français et en maths). On va maintenant voir comment tirer partie de ce formalisme pour faire des déductions efficaces et surtout, des déductions justes.\\
+D'abord on désigne par le symbol $\neg$ pour désigner la négation (ou simplement le NON) logique. Si $A$ est une proposition, elle est soit vraie soit fausse. On définit alors $\neg A =$Vrai si $A$ est fausse et $\neg A=$Faux si $A$ est vraie. \\
+Si je veux démontrer $\bm{A \Rightarrow B}$ c'est équivalent à montrer sa contraposée, c'est à dire $\bm{\neg{B} \Rightarrow \neg{A}}$ (\textbf{ET SURTOUT PAS} $\bm{\neg{A} \Rightarrow \neg B}$ qu'on appelle sa négation.) qu'il convient de ne pas confondre avec la réciproque que l'on écrit $B \Rightarrow A$. Je ne vais pas en proposer une preuve ici mais je vous laisse faire une comparaison des tables de vérité (vous trouverez une explication (peut-être un peu technique) \href{https://fr.wikipedia.org/wiki/Modus_tollens#Justification_par_la_table_de_v%C3%A9rit%C3%A9}{ici}). \\
+
+Maintenant, parlons du \textbf{raisonement par l'absurde}. C'est un type de raisonement rarement présenté comme tel au lycée alors qu'il est bien utile et même à l'origine du procédé de preuve par contraposé expliqué ci-dessus. On a dit plus haut que prouver en mathématique, ça voulait dire montrer une suite correcte d'implications à partir des axiomes de la théorie. Cela nécessite alors de faire une preuve que l'on nomme \textit{constructive}, c'est à dire il faut trouver explicitement les bons axiomes et les bonnes implications pour trouver le résultat.\\
+Le raisonnement par l'absurde permet de s'abroger de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\\
+
+\textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste, c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux. 
 }
 \end{tcolorbox}
 
@@ -122,7 +162,7 @@ $$
 x + \lambda y \in E
 $$
 \end{tcolorbox}
-Ici, le role de $x$ et $y$ est interchageable. Il suffit que la propriété soit vraie pour un point quelconque et ça implique qu'il est vrai pour tous donc $\lambda x \in E$ montre la même chose que $\lambda y \in E$.\\
+Ici, le rôle de $x$ et $y$ est interchangeable. Il suffit que la propriété soit vraie pour un point quelconque et ça implique qu’elle est vraie pour tous, donc $\lambda x \in E$ montre la même chose que $\lambda y \in E$.
 Pour la suite, on se place dans $\mathbb{K}^n$ c'est à dire l'ensemble des n-uplets (donc les élements de $\mathbb{K}^n$ sont de la forme $x = (x_1, x_2, ..., x_ n)$ avec $x_i \in \mathbb{K} \forall i \in \{1, 2,..., n\}$). \\
 
 $\mathbb{C}$ est l'ensemble des nombres compexes, c'est à dire les nombres qui s'écrivent $x = a + ib$ avec $a,b \in \mathbb{R}$ et $i^2 = -1$ (on pourra donc considérer que $\mathbb{C}$ est simplement un ensemble à deux dimension, homogène à un plan (donc $\mathbb{R}^2$) qu'on écrirait $\mathbb{R}\times i\mathbb{R}$, on voit donc les points de $\mathbb{C}$ comme des points du plan de la forme $x = (a,b)$). On va pas rentrer dans le détail des propriétés des nombres complexes ni de pourquoi ils sont utiles. Ce qu'il faut bien noter c'est qu'on ne peut pas ordonner les nombres complexe mais qu'on peut comparer leur module qu'on note $\lvert x \rvert = \lvert a + ib \rvert = \sqrt[]{a^2 + b^2}$ ce qui va servir à la définition de norme.\\
@@ -134,7 +174,7 @@ Soit E un $\mathbb{K}$-EV, on considère l'ED $y' = f(t,y)$, I un intervalle de 
 On appelle solution de cette équation une fonction $\phi$ dérivable sur I tel que $\forall t \in I$, $(t, \phi (t)) \in \Omega$ et $\phi ' = f(t, \phi (t))$.
 \end{tcolorbox}
 
-Clairement, la formulation est assez barbare. Ce qu'il faut comprendre c'est que $\Omega$ est un ensemble qui a des bonnes propriétés (des genres d'intervalles), on veut que l'image de $\phi$ par tous les $t$ reste dans l'ensemble de départ de $\phi$ et que $\phi$ vérifie l'équation différentielle. 
+Clairement, la formulation est assez barbare. Ce qu'il faut comprendre, c'est que $\Omega$ est un ensemble qui a de bonnes propriétés (des genres d'intervalles), on veut que l'image de $\phi$ par tous les $t$ reste dans l'ensemble de départ de $\phi$ et que $\phi$ vérifie l'équation différentielle. 
 En pratique, les deux premières conditions sont toujours réunies, on a juste besoin de vérifier la dernière.
 
 Il est important de noter qu'on énonce les théorèmes suivant dans les cas \textbf{linéaire}. Quand on dit linéaire c'est en $y$, c'est à dire qu'on a pas $y^2$ ou $\cos(y)$ mais elle peut évidement ne pas être linéaire en $t$ (c'est d'ailleurs tout l'intérêt) donc on peut avoir par exemple: $y' = t^2y + \cos(t)$
@@ -334,7 +374,7 @@ De plus si $\Delta = 0$ ($r_1 = r_2$), on a:
 $$\bbbold{y = (\lambda t + \mu)e^{r_1t}}$$
 Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexe et conjugués, on peut alors écrire les solutions sous la forme:
 $$\bbbold{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
-\begin{tcolorbox}[colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
 \subparagraph{Preuve (Optionnel)} On ne va pas expliquer comment trouver la formule $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}$ (c'est pas dur mais vraiment chiant et pas intéressant) mais on va expliquer comment trouver les deux autres car c'est plutôt simple.\\
 
 Si on a $r_1 = r_2$, on a $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_1t}$, mais les deux exponentielles sont linéairement dépendantes et donc l'espace des solutions décrit par $y$ est de dimension $1$ alors que l'espace des solutions d'une EDO d'ordre 2 est de dimension 2. Donc on veut trouver une fonction qui est solution et linéairement indépendante de $e^{r_1t}$. On vérifie par le calcul que $te^{r_1t}$ est solution linéairement indépendante de $e^{r_1t}$. \\
@@ -357,11 +397,11 @@ C'est le deuxième point important: \textbf{On cherche toujours des solutions r�
 Mais pourquoi me direz-vous ? Et bien, c'est pas parce qu'elles existent qu'on peut leur donner un sens physique. Les solutions complexes permettent de résoudre des problèmes, c'est un artifice mathématique qui permet de simplifier (et même souvent est la seule manière de trouver) les solutions mais elles donnent des conditions réalisable générales qui ne sont parfois pas d'un grand intérêt physique. Les solutions complexes sont des solutions mais on leur préfère les solutions réelles pour une raison d'interprétabilité physique. Je dirai que c'est même une question de si vous faites des maths ou de la physique. Le physiciens veut des solutions réelles à son problème. Le mathématicien s'en fou complètement (ça ne veut pas dire que l'un ou l'autre à raison pour autant.)\\
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Hors-programme} Enfin bref, le dernier point important et de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et c'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
+\subparagraph{Remarques} Enfin bref, le dernier point important et de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et c'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
 Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc pour revenir à notre histoire de $\Delta < 0$, avec ces notations, on peut noter $\delta \in \mathbb{C}$ (en fait comme $\Delta \in \mathbb{R}$, on sait que $\delta \in i\mathbb{R}$) tel que $\delta^2 = \Delta$ et donc $\delta^2 = i^2 |\Delta| \Rightarrow \delta = \pm \sqrt{i^2|\Delta|} = \pm i\sqrt{|\Delta|} = \pm i\sqrt{-\Delta}$, tout simplement. Ces notations permettent donc de donner un sens à une quantité qu'on ne peut pas exprimer à l'aide de notations dans $\mathbb{R}$.\\
 
-\noindent \textbf{Maintenant, pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$ (notation qui est un petit artifice mathématique circulaire car on a pas définit la puissance et en plus je suis entrain de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n'apparait pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie tel quel, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négatif (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrai pas prendre une autre définition qui autoriserait les images d'antécédent négatifs ?" et c'est en fait une très bonne question. \\
-Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse conne que le balais utilisé pour balayer la remarque) on va réfléchir à pourquoi une autre définition ne peut pas marcher. On va raisonner par l'absurde (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
+\noindent Maintenant, \textbf{pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$ (notation qui est un petit artifice mathématique circulaire car on a pas définit la puissance et en plus je suis entrain de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n'apparait pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie tel quel, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négatif (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrai pas prendre une autre définition qui autoriserait les images d'antécédent négatifs ?" et c'est en fait une très bonne question. \\
+Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse conne que le balais utilisé pour balayer la remarque) on va réfléchir à pourquoi une autre définition ne peut pas marcher. \textbf{On va raisonner par l'absurde} (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
 \end{tcolorbox}
 
 \subsubsection{Exemples}\label{ex3}
