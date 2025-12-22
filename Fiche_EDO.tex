@@ -9,14 +9,13 @@
 \usepackage{bm}
 \usepackage{geometry}
 \usepackage{multicol}
+\usepackage{scalerel}
+\usepackage[french]{babel}
+
+
 \geometry{hmargin=2.25cm,vmargin=2cm}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-\usepackage{scalerel}
-\usepackage[french]{babel}
-\title{Fiche équations différentielles ordinaires (EDO)}
-\author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
-\date{\today}
 
 \newlength\bshft
 \bshft=.18pt\relax
@@ -24,17 +23,30 @@
   \kern-\bshft$\SavedStyle#1$\cr%
   \kern\bshft$\SavedStyle#1$}}}
 
+
+\title{Fiche équations différentielles ordinaires (EDO)}
+\author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
+\date{\today}
+
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Cette fiche fera une introduction au concept d'équations différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolutions essentielles.\\
-Elle s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
+Cette fiche fera une introduction au concept d'équations différentielles ordinaire, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentielles.\\
+
+\noindent Elle s'addresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple baguage en math de lycée.\\
 Les prérequis sont minimes et les définitions s'autosuffisent sans avoir besoin d'une grande connaissance en analyse au delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
 
-Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
+\noindent Comprendre les outils mathématiques de base en modélisation (statistique, proba, équadiff) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
 
-Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispenser par votre prof mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.
+\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispenser par votre prof mais apporte des précisions et des explications qui permette une meilleure compréhension des notions pas évidentes qui sont présentés dans le cours de Biostatistique.\\
+
+Enfin, si cette fiche contient des typos, des fautes d'orthographes ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionné au début de la fiche.
+Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça! (reste à montrer leur unicité.)\\
+\begin{center}
+  \textbf{Bonne lecture.}
+\end{center}
+
 \end{abstract}
 
 \newpage
@@ -131,7 +143,8 @@ On comprend alors qu'un théorème est simplement une implication ou une équiva
 \end{tcolorbox}
 
 \noindent C'est peut être abstrait, donc prenons un exemple:\\
-Prenons la proposition suivante: "S'il pleut, alors le sol est mouillé". Je peux aussi l'écrire: "Le sol est seulement si 
+Prenons la proposition suivante: "S'il pleut, alors le sol est mouillé". Je peux aussi l'écrire: "(Il pleut) $\Rightarrow$ (Le sol est mouillé)". \\
+n exemple d'équivalence pourrait être le suivant: "(Je mange si et seulement si j'ai faim)", qui signifie qu'on ne mange pas si on a pas faim mais que si on a faim, et bien on va bien finir par manger (normalement). On peut donc écrire: "(Je mange) $\Leftrightarrow$ (J'ai faim)". 
 
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
@@ -401,7 +414,7 @@ Mais pourquoi me direz-vous ? Et bien, c'est pas parce qu'elles existent qu'on p
 Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc pour revenir à notre histoire de $\Delta < 0$, avec ces notations, on peut noter $\delta \in \mathbb{C}$ (en fait comme $\Delta \in \mathbb{R}$, on sait que $\delta \in i\mathbb{R}$) tel que $\delta^2 = \Delta$ et donc $\delta^2 = i^2 |\Delta| \Rightarrow \delta = \pm \sqrt{i^2|\Delta|} = \pm i\sqrt{|\Delta|} = \pm i\sqrt{-\Delta}$, tout simplement. Ces notations permettent donc de donner un sens à une quantité qu'on ne peut pas exprimer à l'aide de notations dans $\mathbb{R}$.\\
 
 \noindent Maintenant, \textbf{pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$ (notation qui est un petit artifice mathématique circulaire car on a pas définit la puissance et en plus je suis entrain de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n'apparait pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie tel quel, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négatif (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrai pas prendre une autre définition qui autoriserait les images d'antécédent négatifs ?" et c'est en fait une très bonne question. \\
-Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse conne que le balais utilisé pour balayer la remarque) on va réfléchir à pourquoi une autre définition ne peut pas marcher. \textbf{On va raisonner par l'absurde} (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
+Au lieu de balayer cette bonne remarque d'un revers de la main comme le font souvent les profs en disant "oui mais c'est comme ça, c'est les défintions, il suffit d'appliquer" (ce qui par ailleurs est une réponse complètement conne) on va réfléchir à pourquoi une autre définition ne peut pas marcher. \textbf{On va raisonner par l'absurde} (vous allez voir, c'est pas si dur et en plus ça a le bon avantage de forger l'esprit critique). Si on possède une telle fonction, mais qu'on veut garder sa propriété de fonction réciproque de la fonction carré. Soit $y \in \mathbb{R}^{-}$, si son image par la fonction racine est positive, alors il existe un $x \in \mathbb{R}^{+}$ tel que $\sqrt{x} = \sqrt{y}$ (et oui, la fonction $\sqrt{.}$ est bijective sur $\mathbb{R}^+$ donc toute image dans $\mathbb{R}^+$ possède un unique antécédent dans $\mathbb{R}^+$ par la fonction racine), alors comme $.^{2}$ est la fonction réciproque de racine, on peut composer les deux membres de l'égalité par celle ci, on a alors $x = y$. Évidement, c'est impossible ($x$ et $y$ ne sont pas de même signe donc ils ne peuvent pas être égaux) et donc notre hypothèse est fausse. }
 \end{tcolorbox}
 
 \subsubsection{Exemples}\label{ex3}
@@ -459,7 +472,7 @@ Bien que ça n'a aucun intéret ici (mais ça reste une égalité.)
 On en revient à la question initiale (et on va enfin pouvoir y répondre si vous n'avez pas été dégouté jusqu'ici): Mais à quoi ça sert de faire des équations différentielles ? Non parce que c'est chiant à résoudre, c'est pas hyper fun, le côté théorique est inintéressant à votre niveau et vraiment, à part mon prof d'équation différentielle qui a écrit un bouquin dessus, ça emmerde presque tout le monde du côté mathématicien aussi.\\
 Mais en fait, si on fait des équations différentielles, c'est parce que c'est hyper utile, et c'est un outil qui a été spécialement conçu pour faire de la modélisation. En fait, simplement, faire de la modélisation c'est mettre en équation solvable (au moins partiellement) un problème de la vie. Comme expliqué à \ref{intro}, les équation différentielles n'apparaissent pas naturellement dans le monde, c'est parce que c'est une méthode très efficace avec beaucoup de résultat qu'on fait de la modélisation avec les équations différentielles.\\
 
-Bref, une part important de cette modélisation (et celle qui vous concerne, parce que jusqu'ici, moi aussi je me demandais ce que des médecins ou des biologistea allaient bien pouvoir faire de tout ce merdier)
+Bref, une part important de cette modélisation (et celle qui vous concerne, parce que jusqu'ici, moi aussi je me demandais ce que des médecins ou des biologistea allaient bien pouvoir faire de tout ça) 
 
 
 \end{document}
