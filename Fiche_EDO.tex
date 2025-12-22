@@ -487,25 +487,43 @@ dont les solutions s'écrivent:
 $$
 n(t) = n(t_0)e^{r(t-t_0)}
 $$
-Ce modèle est efficace pour modéliser des petites populations sur des courtes périodes de temps mais perd vite de son intérêt dans les autres cas car selon ce modèle, \textbf{la population croît rapidement vers l'infini} sans prendre en compte les ressources, l'avancement de la population ou la taille du territoire.\\
+Ce modèle est efficace pour modéliser des petites populations sur des courtes périodes de temps mais perd vite de son intérêt dans les autres cas car, selon ce modèle, \textbf{la population croît rapidement vers l'infini} sans prendre en compte les ressources, l'avancement de la population ou la taille du territoire.\\
 On peut remarquer que c'est une \textbf{EDO linéaire d'ordre 1}, on sait donc la résoudre directement.
 \end{tcolorbox}
 En réponse au modèle de Malthus, jugé insuffisant, Verhulst publia le sien en 1845, prenant en compte le taux de natalité et le taux de décès en fonction de la taille de la population.
 
-\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Modèle de Verhulst}},halign title=center]
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Modèle de Verhulst}},halign title=center]
 Si $n(t)$ est la fonction qui à un temps $t$ associe la population totale considérée et $r, K \in \mathbb{R}^{+}$, alors on a:
 $$
-n' = rn(1 - \frac{n}{K})
+\bm{n' = rn(1 - \frac{n}{K})}
 $$
-C'est une EDO non linéaire (en effet, si on développe la ligne du dessus, on obtient: $n' = rn - \frac{rn^2}{K}$) et on peut trouver des solutions en effectuant le changement de variable $y = \frac{1}{n} - \frac{1}{K}$, on trouve que les solutions s'écrivent:
+C'est une \textbf{équation différentielle non linéaire} (en effet, si on développe la ligne du dessus, on obtient~: $n' = rn - \frac{rn^2}{K}$) et on peut trouver des solutions en effectuant le changement de variable $y = \frac{1}{n} - \frac{1}{K}$, on trouve que les solutions s'écrivent~:
 $$
 n = \frac{1}{1 + (\frac{K}{n_0} - 1)e^{-rt}}
 $$
-et donc 
+
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
+}
+\subparagraph{Preuve et origine de la formule (optionnelle)} On va rapidement aborder l'origine de la formule puis on va démontrer la formule qui nous permet de trouver les solutions.\\
+On va poser $f : \mathbb{R} \rightarrow \mathbb{R}$ le taux de croissance intrinsèque de la population (qui cette fois-ci dépend de la taille de la population, on pourra alors parler de taux de naissance) et de $d: \mathbb{R} \rightarrow \mathbb{R}$ le taux de décès de la population.\\
+On va alors pouvoir poser que la variation de la population ($n'$) peut s'écrire~:
+$$
+n' = n(f(n) - d(n))
+$$
+On suppose ensuite que les fonctions $f$ et $g$ sont affines (cela signifie que \textbf{le taux de naissance et de décès varie de manière linéaire} en fonction de l'environnement et qu'au départ, le taux de naissance ou de décès peut être différent de $0$.) Comme on suppose que $\bm d$ \textbf{est croissante} et $\bm f$ \textbf{est décroissante}, la différence $(f-d)(n)$ peut s'écrire $(f-d)(n) = -an + b$ avec $a,b \in \mathbb{R}$. En remplaçant dans l'équation du dessus, on a~:
+$$
+n' = n(b - an) = bn(1 - \frac{an}{b})
+$$
+Et donc en posant $K = \frac{b}{a}$ et $r = b$:
+$$
+n' = rn (1 - \frac{n}{K})
+$$
+On dit alors que $K$ est la capacité biotique (c'est-à-dire la taille idéale de la population afin qu'elle respecte les contraintes de l'écosystème) et $r$ est la croissance intrinsèque de la population. On constate donc que les deux paramètres, $\bm r$ \textbf{et} $\bm K$, \textbf{dépendent de la population/chose à modéliser} et qu'il convient donc de les estimer.
+\end{tcolorbox}
 \end{tcolorbox}
 
 
-\subsection{Modèle Proie-Prédateur de Lotka-Volterra}\label{Lokta-Volterra}
+\subsection{Modèle Proie-Prédateur de Lotka-Volterra}\label{Lotka-Volterra}
 
 
 \end{document}
