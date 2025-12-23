@@ -4,12 +4,13 @@
 \usepackage{amsfonts}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz, lipsum,lmodern}
-\usepackage[most]{tcolorbox}
+\usepackage[most, breakable]{tcolorbox}
 \usepackage{hyperref}
 \usepackage{bm}
 \usepackage{geometry}
 \usepackage{multicol}
 \usepackage{scalerel}
+\usepackage{enumitem}
 \usepackage[french]{babel}
 
 
@@ -32,7 +33,7 @@
 \maketitle
 
 \begin{abstract}
-Cette fiche fera une introduction au concept d'équations différentielles ordinaires, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentiels.\\
+Cette fiche fera une introduction au concept d'équations différentielles ordinaires, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentielles.\\
 
 \noindent Elle s'adresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple bagage en maths de lycée.\\
 Les prérequis sont minimes et les définitions se suffisent à elles-même sans avoir besoin d'une grande connaissance en analyse au-delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
@@ -66,8 +67,8 @@ Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au
 \begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Les blocs bleus: Hors-programme}},halign title=center]
   Ils contiennent des définitions hors programme, qui ne sont pas à apprendre mais qui aident à la définition de concepts qui vont nous aider pour la suite.
 \end{tcolorbox}
-\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Les blocs magentas: Cours}},halign title=center]
-Ils  contiennent les définitions à connaître. Il faut les comprendre et les apprendre
+\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Les blocs verts: Exercices}},halign title=left]
+Ils contiennent des exercices corrigés portant sur les thèmes des sections et qui aident à assimiler les notions. Ils sont tous abordables.
 \end{tcolorbox}
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 \subparagraph{Les blocs gris} Ils contiennent des informations complémentaires ou des notions annexes. Ils sont complémentaires aux blocs bleus.
@@ -77,8 +78,16 @@ Ils  contiennent les définitions à connaître. Il faut les comprendre et les a
 \begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Les blocs jaunes: Méthodes}},halign title=center]
 Ils contiennent des explications de méthodes annexes ou hors programme pour résoudre certains exercices.
 \end{tcolorbox}
-\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Les blocs verts: Exercices}},halign title=left]
-Ils contiennent des exercices corrigés portant sur les thèmes des sections et qui aident à assimiler les notions. Ils sont tous abordables.
+\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Les blocs magentas: Cours}},halign title=center]
+Ils  contiennent les définitions à connaître. Il faut les comprendre et les apprendre
+\end{tcolorbox}
+\begin{tcolorbox}[colback=white, colframe=gray!12!white, coltitle=black, title={\textbf{Autres blocs}},halign title=center]
+Ces blocs:
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{\textbf{Preuve}}
+\end{tcolorbox}
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{\textbf{Remarques}}
+\end{tcolorbox}
+Vont complémenter les informations des blocs de la couleur associée.
 \end{tcolorbox}
 \end{multicols}
 
@@ -285,7 +294,7 @@ Si on a une équation différentielle de la forme (E):
 $$
 (E): \text{   } y' + a(t)y = b(t)
 $$
-Alors, la \textbf{solution générale} de (E) est sous la forme $\boldsymbol{y = y_p + y_0}$\\
+Alors, la \textbf{solution générale} de (E) est sous la forme $\bm{y = y_p + y_0}$\\
 Avec $y_p$ une solution particulière (c'est à dire n'importe quelle fonction $y_p$ telle que $y_p' + a(t)y_p = b(t)$) et $y_0$ la solution de l'équation homogène associée (donc ici, une solution de $y' + a(t)y = 0$.)
 \end{tcolorbox}
 Évidemment, j'ai écrit la solution générale et la solution homogène mais on a unicité de la solution seulement si on pose une condition initiale. Sinon, c'est toujours à une constante multiplicative près (le $\lambda$ dans (2) et (3).)\\
@@ -296,7 +305,7 @@ Si on a une équation différentielle de la forme (E):
 $$
 (E): \text{   } y' + ay = b \quad \text{avec} \quad a,b \in \mathbb{R}
 $$
-Alors, on vérifie facilement qu'une solution particulière est: $\bm{y_p} \bbbold{= \frac{-b}{a}}$ et il suffit d'utiliser le théorème ci-dessus en ajoutant la solution homogène.\\
+Alors, on vérifie facilement qu'une solution particulière est: $\bm{y_p= \frac{-b}{a}}$ et il suffit d'utiliser le théorème ci-dessus en ajoutant la solution homogène.\\
 
 Si on nous donne une fonction $y_p$, il suffit de vérifier qu'elle est solution puis d'utiliser le théorème du dessus.
 \end{tcolorbox}
@@ -377,16 +386,23 @@ $$
 Avec $a,b,c \in \mathbb{K}$ (c'est très important car si $a, b$ et $c$ ne sont pas des scalaires, la suite ne fonctionne pas.)\\
 
 Alors, on appelle polynôme caractéristique associé à $E_0$ le polynôme: $aX^2 + bX + c = 0$. Si on note $\Delta = b^2 - 4ac$ son discriminant, les solutions $r_1$ et $r_2$ du polynôme sont décrites par:\\
-\textbf{Cas 1: $\mathbb{K} = \mathbb{R}$}
+\textbf{Cas 1:} $\bbbold{\mathbb{K} = \mathbb{R}}$
 $$
 \frac{-b \pm \sqrt{\Delta}}{2a} \text{    si    } \Delta \geq 0 \quad \quad \frac{-b \pm i\sqrt{-\Delta}}{2a} \text{   si   } \Delta < 0
 $$
-Et les solutions de $E_0$ sont: 
-$$\text{		Si 		} \Delta > 0: \quad \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}}$$
+Et les solutions de $E_0$ sont:\\
+Si $\Delta > 0$:
+$$\bm{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}}$$
 De plus si $\Delta = 0$ ($r_1 = r_2$), on a: 
-$$\bbbold{y = (\lambda t + \mu)e^{r_1t}}$$
+$$\bm{y = (\lambda t + \mu)e^{r_1t}}$$
 Et si $\Delta < 0$ alors $r_1 = m + i\omega$ et $r_2 = m - i\omega$ sont complexes et conjuguées, on peut alors écrire les solutions sous la forme:
-$$\bbbold{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
+$$\bm{y = e^{mt}(\lambda\sin(\omega t) + \mu\cos(\omega t))}$$
+
+\noindent \textbf{Cas 2:} $\bbbold{\mathbb{K} = \mathbb{C}}$
+$$
+\text{		Si 		} \Delta \neq 0: \bm{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}, \lambda_1 , \lambda_2 \in} \bbbold{\mathbb{C}} \quad \quad \text{		Si 		} \Delta = 0: \bm{y = (\lambda t + \mu)e^{r_1t}, \lambda, \mu \in} \bbbold{\mathbb{C}}
+$$
+\end{tcolorbox}
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=Magenta!12!white]{
 \subparagraph{Preuve (optionnelle)} On ne va pas expliquer comment trouver la formule $y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}$ (ce n'est pas dur mais vraiment chiant et pas intéressant) mais on va expliquer comment trouver les deux autres car c'est plutôt simple.\\
 
@@ -399,11 +415,6 @@ $y = \lambda e^{mt + i\omega t} + \mu e^{mt - i\omega t} = e^{mt}(\lambda e^{i\o
 Donc en posant: $\lambda^{'} = \text{Re}(\mu)+\text{Re}(\lambda)$ et $\mu^{'} = \text{Im}(\mu)-\text{Im}(\lambda)$, on obtient le résultat voulu.}
 \end{tcolorbox}
 
-\noindent \textbf{Cas 1: $\mathbb{K} = \mathbb{C}$}
-$$
-\text{		Si 		} \Delta \neq 0: \bbbold{y = \lambda_1 e^{r_1t} + \lambda_2 e^{r_2t}, \lambda_1 , \lambda_2 \in \mathbb{C}} \quad \quad \text{		Si 		} \Delta = 0: \bbbold{y = (\lambda t + \mu)e^{r_1t}, \lambda, \mu \in \mathbb{C}}
-$$
-\end{tcolorbox}
 
 Deux petites précisions avant de passer aux exercices et aux dernières méthodes. Déjà, il est important de bien faire attention aux constantes ($\mu, \lambda, \lambda^{'}$ etc) car elles sont quelconques, mais en fait ce n'est pas parce qu'elles sont quelconques qu'il n'y a pas des conditions sur elles. En particulier, dans la preuve du cas réel, au début on a $\mu, \lambda \in \mathbb{C}$ puis ensuite on change les constantes pour avoir des solutions réelles. \\
 C'est le deuxième point important: \textbf{On cherche toujours des solutions réelles} (réelles signifie ici dans $\mathbb{R}$, pas qu'autrement elles n'existeraient pas ou une autre connerie du genre qu'on entend souvent). \\
@@ -430,12 +441,12 @@ Et donc en utilisant la formule, on peut exprimer les solutions de (E) sous la f
 $$
 y = e^{-t}(\lambda \sin(\sqrt{2}t)+ \mu \cos(\sqrt{2}t)) \quad \quad \lambda, \mu \in \mathbb{R}
 $$
+\end{tcolorbox}
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-Deux petites remarques. \\
-D'abord, il est absolument faux de prendre une approximation de la racine. Si on prend par exemple: $\sqrt{32} \approx 6$, ça change complètement les solutions et on peut se retrouver avec des solutions qui n'ont plus du tout les mêmes propriétés. \textbf{IL NE FAUT JAMAIS FAIRE ÇA.} À la place, on va utiliser des petites astuces pour simplifier les racines.\\ \textbf{On peut décomposer la racine qu'on veut calculer en produit plus simple dont on connait les racines.} Pour le cas de $32$, on a normalement tous appris la table de $4$ au primaire et donc on sait que $32 = 4 \times 8$ et $\sqrt{4} = 2$ (notez que c'est donc possible de prendre cette équation dans le sens droite gauche et donc de remplacer $2$ par $\sqrt{4}$). On a alors: $\sqrt{32} = 2 \sqrt{8}$. Cependant, dans l'exercice, on va chercher $\frac{\sqrt{32}}{4}$, donc on a $\frac{\sqrt{32}}{4} = \frac{2\sqrt{8}}{2\sqrt{4}} = \sqrt{\frac{8}{4}} = \sqrt{2}$. On peut étendre cette méthode à presque toutes les racines.\\
+\subparagraph{Deux petites remarques} D'abord, il est absolument faux de prendre une approximation de la racine. Si on prend par exemple: $\sqrt{32} \approx 6$, ça change complètement les solutions et on peut se retrouver avec des solutions qui n'ont plus du tout les mêmes propriétés. \textbf{IL NE FAUT JAMAIS FAIRE ÇA.} À la place, on va utiliser des petites astuces pour simplifier les racines.\\ \textbf{On peut décomposer la racine qu'on veut calculer en produit plus simple dont on connait les racines.} Pour le cas de $32$, on a normalement tous appris la table de $4$ au primaire et donc on sait que $32 = 4 \times 8$ et $\sqrt{4} = 2$ (notez que c'est donc possible de prendre cette équation dans le sens droite gauche et donc de remplacer $2$ par $\sqrt{4}$). On a alors: $\sqrt{32} = 2 \sqrt{8}$. Cependant, dans l'exercice, on va chercher $\frac{\sqrt{32}}{4}$, donc on a $\frac{\sqrt{32}}{4} = \frac{2\sqrt{8}}{2\sqrt{4}} = \sqrt{\frac{8}{4}} = \sqrt{2}$. On peut étendre cette méthode à presque toutes les racines.\\
 Ensuite, on peut remarquer qu'on n'a jamais besoin de calculer les deux solutions de l'équation caractéristique car elles sont conjuguées (c'est toujours le cas si $\Delta < 0$ par le théorème du dessus). Il suffit de calculer la première et puis de prendre le conjugué de celle-ci, c'est à dire, changer le signe de la partie imaginaire.}
 \end{tcolorbox}
-\end{tcolorbox}
+
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 3.2: Cas $\Delta = 0$}},halign title=left]
 Posons l'équation différentielle du second ordre suivante: (E):$2y'' +4y' + 2y = 0$.\\
@@ -455,9 +466,10 @@ D'où, en appliquant le théorème dans le cas $\Delta >0$:
 $$
 y = \lambda e^{(1+\frac{\sqrt{2}}{2})t} + \mu e^{(1-\frac{\sqrt{2}}{2})} \quad \quad \lambda, \mu \in \mathbb{R}
 $$
+\end{tcolorbox}
+
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-Petit remarque sur la simplification et le calcul des racines.\\
-J'ai expliqué plus haut qu'il était possible d'écrire presque toutes les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simples mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonctionne pour toutes les racines. Ex:\\
+\subparagraph {Remarques sur la simplification et le calcul des racines.} J'ai expliqué plus haut qu'il était possible d'écrire presque toutes les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simples mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonctionne pour toutes les racines. Ex:\\
 $$\frac{1}{\sqrt{9}} = \frac{1}{\sqrt{9}}\times \frac{\sqrt{9}}{\sqrt{9}} = \frac{\sqrt{9}}{9}$$. \\
 Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux racines d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a affaire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
 $$
@@ -465,7 +477,6 @@ $$
 $$
 Bien que ça n'a aucun n'ait intérêt ici (mais ça reste une égalité.)
 }
-\end{tcolorbox}
 \end{tcolorbox}
 
 \section{Les modèles d'équations différentielles}\label{modeles}
@@ -501,9 +512,10 @@ C'est une \textbf{équation différentielle non linéaire} (en effet, si on dév
 $$
 n = \frac{1}{1 + (\frac{K}{n_0} - 1)e^{-rt}}
 $$
-
-\begin{tcolorbox}[breakable,pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-}
+Ce modèle est efficace pour faire de la \textbf{prédiction d'évolution de population} sur des périodes de temps satisfaisantes en milieu fermé. Par exemple, il est utilité pour prédire l'évolution de la population française par l'INSEE. Cependant, il faut réévaluer les paramètres $r$ et $K$ tous les 10 ans en moyenne pour que le modèle colle à la réalité.\\
+\textbf{Vous trouverez plus d'informations sur la modélisation de population sur ce merveilleux site}~: \href{https://culturemath.ens.fr/thematiques/lycee/comment-construire-un-modele-logistique}{\textbf{CultureMath: Modèle logistique}}
+\end{tcolorbox}
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 \subparagraph{Preuve et origine de la formule (optionnelle)} On va rapidement aborder l'origine de la formule puis on va démontrer la formule qui nous permet de trouver les solutions.\\
 On va poser $f : \mathbb{R} \rightarrow \mathbb{R}$ le taux de croissance intrinsèque de la population (qui cette fois-ci dépend de la taille de la population, on pourra alors parler de taux de naissance) et de $d: \mathbb{R} \rightarrow \mathbb{R}$ le taux de décès de la population.\\
 On va alors pouvoir poser que la variation de la population ($n'$) peut s'écrire~:
@@ -519,11 +531,61 @@ $$
 n' = rn (1 - \frac{n}{K})
 $$
 On dit alors que $K$ est la capacité biotique (c'est-à-dire la taille idéale de la population afin qu'elle respecte les contraintes de l'écosystème) et $r$ est la croissance intrinsèque de la population. On constate donc que les deux paramètres, $\bm r$ \textbf{et} $\bm K$, \textbf{dépendent de la population/chose à modéliser} et qu'il convient donc de les estimer.
-\end{tcolorbox}
+
+
+Pour trouver une expression des solutions, on va développer la définition du modèle, diviser par $n^2$ (c'est possible, car on suppose que la population est non nulle, sinon, elle ne peut ni croitre ni décroitre) puis appliquer le changement de variable $y = \frac{1}{n} - \frac{1}{K}$:
+$$
+n' = rn(1 - \frac{n}{K}) = rn - \frac{rn^2}{K} \quad \Leftrightarrow \quad -\frac{n'}{n^2} + r(\frac{1}{n} - \frac{1}{K}) = 0 \quad\Leftrightarrow \quad(\frac{1}{n})' + r(\frac{1}{n} - \frac{1}{K}) = 0
+$$
+(ici il faut se rappeler que $n$ est une fonction qui dépend du temps, donc $(\frac{1}{n})' = -\frac{n'}{n^2}$)\\
+En posant le changement de variable, on se retrouve avec: $y' + ry = 0$
+On a alors affaire à une EDO homogène d'ordre 1, qu'on sait résoudre grâce aux théorèmes du \ref{sol1}. Ce qui nous donne le résultat.
+}
 \end{tcolorbox}
 
+Le modèle de Verhulst est donc utilisé pour modéliser des populations humaines (comme la population française), mais il est aussi utilisé pour déterminer la taille optimale de certaines espèces (animales donc) afin de garantir un équilibre des écosystèmes dans des parcs naturels, ou pour modéliser l'évolution d'une colonie de bactéries.\\
+Malgré de nombreuses recherches, contrairement à ce qui a été affirmé dans des fiches que j'ai pu voir, je n'ai trouvé aucunes traces d'utilisation de ce modèle pour faire de l'étude du cycle de vie d'une innovation.
+
+\subsubsection{Interprétation graphique*}
 
 \subsection{Modèle Proie-Prédateur de Lotka-Volterra}\label{Lotka-Volterra}
+À la fin de la première guerre mondiale, alors que la pêche a diminué pendant la période, on observe une baisse dans la quantité de poisson dans la Manche. Se pose alors la question de concevoir un modèle d'évolution d'espèces sous la contrainte de la chasse (proie) ou en prenant en compte l'abondance de sa nourriture (prédateur). Lotka et Volterra proposeront indépendamment le modèle qui porte maintenant leur nom.
+
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Modèle de Lotka-Volterra}},halign title=center]
+On considère $x$ une population de proies et $y$ une population de prédateurs. Soit $x(t)$ et $y(t)$ les fonctions d'évolution des populations respectives au cours du temps. De plus, on considère des coefficients $(\alpha, \beta, \gamma, \delta) \in \mathbb{R}^{4}_+$. L'évolution des populations $x$ et $y$ est alors décrite par le système suivant:
+$$
+\left\{
+  \begin{aligned}
+    & \bm{x' = \alpha x - \beta xy} \\
+    & \bm{y' = -\gamma y + \delta xy} \\
+  \end{aligned} 
+\right.
+$$
+De plus, on a:
+\begin{itemize}[leftmargin=*]
+\item[--]$\alpha$ qui représente le taux de croissance naturel des proies (c'est-à-dire le \textbf{taux de natalité} naturel) 
+\item[--] $\gamma$ représente de taux de décroissance naturel des prédateurs (c'est-à-dire le \textbf{taux de décès naturel}) 
+\item[--] $\beta$ représente le \textbf{taux de mortalité} de proies à la rencontre des prédateurs 
+\item[--] $\delta$ représente le \textbf{taux de reproduction} en fonction des proies rencontrées.
+\end{itemize}
+On a un \textbf{système d'équations non linéaires} à cause du produit $xy$
+\end{tcolorbox}
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]
+\subparagraph{Origine de la formule (optionnelle)} Il se trouve que présenter le modèle de Malthus n'avait pas juste un intérêt historique et scientifique, afin de vous montrer le chemin de la méthode scientifique. Le modèle de Lotka-Volterra est en fait un modèle de Malthus qui a été adapté à une dynamique de population proie/prédateur. \\
+On va alors faire les hypothèses suivantes:\\
+D'abord, on va supposer que les proies suivent un modèle de Malthus. On peut donc noter $$x' = \alpha x$$
+Ensuite, on peut dire que comme les prédateurs se nourrissent uniquement des proies, leur population décroit naturellement suivant un modèle de Malthus. On peut donc noter $$y' = -\gamma y$$
+Maintenant, on a dit plus haut, que contrairement aux modèles présentés avant, celui-ci prenait en compte les interactions entre les différents partis concernés. On peut donc considérer un terme de rencontre, qu'on va noter $xy$ avec un certain coefficient. Les rencontres des prédateurs avec les proies vont faire baisser leur population (et oui, les prédateurs mangent les proies, donc leur nombre va diminuer). Il faudra alors soustraire le terme de rencontre à la population de proies et on écrira $$x' = \alpha x - \beta xy$$
+À l'inverse, les rencontres des prédateurs avec les proies vont faire augmenter leur population (des prédateurs bien nourris devraient faire plus d'enfants, où en tout cas, on peut en faire l'hypothèse.) Il faudra alors ajouter le terme de rencontre à la population de prédateurs, on écrira $$y' = \gamma y + \delta xy$$
+Étant donné que les deux équations dépendent des deux termes ($x$ et $y$), il faut les deux pour les résoudre, on se retrouve alors bien avec le système attendu.
+\end{tcolorbox}
+
+
+\subsubsection{Interprétation graphique}
+
+\subsubsection{Possibilités d'améliorations du modèle de Lotka-Volterra*}
+
+\subsection{Pour aller plus loin sur les modèles en biologie*}
 
 
 \end{document}
