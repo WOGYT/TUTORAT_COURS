@@ -12,6 +12,8 @@
 \usepackage{scalerel}
 \usepackage{enumitem}
 \usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
 
 
 \geometry{hmargin=2.25cm,vmargin=2cm}
@@ -24,6 +26,7 @@
   \kern-\bshft$\SavedStyle#1$\cr%
   \kern\bshft$\SavedStyle#1$}}}
 
+\graphicspath{{Images/}}
 
 \title{Fiche équations différentielles ordinaires (EDO)}
 \author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
@@ -58,7 +61,7 @@ Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas
 Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaître magiquement des formules.
 Évidemment, les démonstrations ne sont pas à connaître et peuvent être sautées. Certaines parties ont été ajoutées pour donner du contexte ou expliquer certaines parties plus subtiles.
 
-\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des sections "optionnelles" qui pourront être sautées en première lecture mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaires pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérisque (*) ou par la mention optionnelle dans le corps du texte.} \\
+\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des parties "optionnelles" qui pourront être sautées en première lecture, mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaires pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérisque (*) ou par la mention optionnelle dans le corps du texte.} \\
 Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour se donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
 
 \subparagraph{Code couleur} Les théorèmes, définitions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
@@ -132,7 +135,7 @@ La plupart des équations différentielles ne sont pas solvables de manière ana
 
 Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur laquelle je me base donc j'imagine que c'est à connaître. \\
 
-Résoudre une équation différentielle, ça va donc être chercher les différentes fonctions qui, à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
+Résoudre une équation différentielle, ça va donc être de chercher les différentes fonctions qui, à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
 Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
 
 
@@ -164,9 +167,24 @@ Si je veux démontrer $\bm{A \Rightarrow B}$ c'est équivalent à montrer sa con
 Maintenant, parlons du \textbf{raisonement par l'absurde}. C'est un type de raisonnement rarement présenté comme tel au lycée alors qu'il est bien utile et même à l'origine du procédé de preuve par contraposée expliqué ci-dessus. On a dit plus haut que prouver en mathématique, ça voulait dire montrer une suite correcte d'implications à partir des axiomes de la théorie. Cela nécessite alors de faire une preuve que l'on nomme \textit{constructive}, c'est à dire qu'il faut trouver explicitement les bons axiomes et les bonnes implications pour trouver le résultat.\\
 Le raisonnement par l'absurde permet de s'affranchir de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\\
 
-\textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste, c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux. 
+\textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste (pour la majeur partie), c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux. 
 }
 \end{tcolorbox}
+
+\subsection{Rappels d'analyse et notations}
+
+En mathématiques, on utilise des ensembles de nombres qu'on manipule à l'aide de fonctions.\\
+
+\noindent Dans ce cours, on va surtout utiliser $\mathbb{R}$, qui est l'ensemble des réels, c'est-à-dire tous les nombres tel qu'on l'entend classiquement~: les nombres rationnels (qui s'écrivent comme un quotient d'entiers: $\frac{p}{q} \quad p,q \in \mathbb{Z}$, donc par exemple $\frac{1}{3}$) et les irrationnels (par exemple: $\sqrt{2}, \pi, e$ etc). On notera $\mathbb{R}^+$ ou $\mathbb{R}_+$ pour désigner les réels positifs et $\mathbb{R}^*$ pour désigner le réels différents de 0.\\
+
+\noindent Ensuite, on va manipuler des fonctions. Une fonction, c'est un objet qui va prendre en entrée un nombre (qu'on nomme "antécédent" et qu'on note souvent $x$ quand on est en dimension 1) et qui va lui faire subir une transformation qui va nous donner un résultat (qu'on appelle image de $x$). On notera $f$ sous cette forme: "$f: E \rightarrow F$" pour signifier que les antécédents sont à valeurs dans $E$ (ça sera $\mathbb{R}$ pour presque tout le cours) et que les images sont à valeurs dans $F$ (ça sera aussi $\mathbb{R}$ pour presque tout le cours.) Pour parler de la fonction et non de son image par $x$, on pourra noter $f(\cdot)$ (donc $\sqrt{\cdot}$ pour désigner la fonction racine carré par exemple.)\\
+
+\noindent Tout au long du texte, on aura affaire à des variables ou des constantes dans certains ensembles. On pourra donc noter $x \in E$ qui signifie "$x$ appartient à $E$". On se permettra aussi de ne pas noter le symbole $\times$ de la multiplication. Si vous lisez $ab$, alors vous faites face au produit de $a$ par $b$. On utilisera les fonctions exponentielles ($e^{(\cdot)}$) et logarithme népérien ($\ln(\cdot)$) tout au long du texte. Si vous n'êtes pas familier avec ces fonctions, vous pouvez consulter \href{https://www.maths-et-tiques.fr/telech/Texplog.pdf}{ce lien}.\\
+
+\begin{center}
+  \textbf{Assez parlé, place au cours.}
+\end{center}
+\newpage 
 
 \section{Un peu de formalisation du problème}\label{formalisation}
 
@@ -547,6 +565,7 @@ Le modèle de Verhulst est donc utilisé pour modéliser des populations humaine
 Malgré de nombreuses recherches, contrairement à ce qui a été affirmé dans des fiches que j'ai pu voir, je n'ai trouvé aucunes traces d'utilisation de ce modèle pour faire de l'étude du cycle de vie d'une innovation.
 
 \subsubsection{Interprétation graphique*}
+Vide
 
 \subsection{Modèle Proie-Prédateur de Lotka-Volterra}\label{Lotka-Volterra}
 À la fin de la première guerre mondiale, alors que la pêche a diminué pendant la période, on observe une baisse dans la quantité de poisson dans la Manche. Se pose alors la question de concevoir un modèle d'évolution d'espèces sous la contrainte de la chasse (proie) ou en prenant en compte l'abondance de sa nourriture (prédateur). Lotka et Volterra proposeront indépendamment le modèle qui porte maintenant leur nom.
@@ -582,10 +601,21 @@ Maintenant, on a dit plus haut, que contrairement aux modèles présentés avant
 
 
 \subsubsection{Interprétation graphique}
+Voici une image d'un graphe d'une approximation numérique des solutions du système d'équation du modèle de Lotka-Volterra: 
+\begin{figure}[htp!]
+    \centering
+    \includegraphics[width=8cm]{Lotka_Volterra_x_y.png}
+    \caption{Graphe du nombre de proies en fonction du nombre de prédateurs}
+    \text{$\alpha = 0,6$, $\beta = 0,8$, $\gamma = 0,3$ et $\delta = 0,6$}
+    \label{fig:galaxy}
+\end{figure}
+
+\noindent On constate que les solutions sont stables. Ici, il faut faire attention au fait qu'on ne trace pas l'évolution des populations au cours du temps mais, en fonction de l'autre population. Par ailleurs, si le graphe ne boucle pas totalement, c'est à cause de la précision de la méthode numérique utilisée ainsi que les échelles de grandeur (ici 5000 ans).
 
 \subsubsection{Possibilités d'améliorations du modèle de Lotka-Volterra*}
-
+Vide
 \subsection{Pour aller plus loin sur les modèles en biologie*}
+Vide
 
 
 \end{document}
