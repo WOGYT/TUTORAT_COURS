@@ -43,7 +43,7 @@ Les prérequis sont minimes et les définitions se suffisent à elles-même sans
 
 \noindent Comprendre les outils mathématiques de base en modélisation (statistique, probas, équadiffs) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
 
-\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispensé par votre prof mais apporte des précisions et des explications qui permettent une meilleure compréhension des notions pas évidentes qui sont présentées dans le cours de Biostatistique.\\
+\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispensé par votre prof mais apporte des précisions et des explications qui permettent une meilleure compréhension des notions pas évidentes qui sont présentées dans le cours de Biostatistique ou de mathématiques pour la biologie.\\
 
 Enfin, si cette fiche contient des typos, des fautes d'orthographe ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionnée au début de la fiche.
 Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça! (reste à montrer leur unicité.)\\
@@ -610,10 +610,11 @@ Voici une image d'un graphe d'une approximation numérique des solutions du syst
     \label{fig:galaxy}
 \end{figure}
 
-\noindent On constate que les solutions sont stables. Ici, il faut faire attention au fait qu'on ne trace pas l'évolution des populations au cours du temps mais, en fonction de l'autre population. Par ailleurs, si le graphe ne boucle pas totalement, c'est à cause de la précision de la méthode numérique utilisée ainsi que les échelles de grandeur (ici 5000 ans).
+\noindent On constate que les solutions sont stables (pas de passage par une extermination d'une des populations par exemple) et périodiques (il y a d'abord moins de prédateur, mais à mesure que le nombrede proies augmente, il y a plus de prédateur jusqu'à un certain point où il n'y a plus suffisamment de proies et leur population décline et puis ça recommence). Ceci est illustré par le fait que le graphe boucle (à peu près.)\\ 
+Ici, il faut faire attention au fait qu'on ne trace pas l'évolution des populations au cours du temps mais, en fonction de l'autre population. Par ailleurs, si le graphe ne boucle pas totalement, c'est à cause de la précision de la méthode numérique utilisée ainsi que les échelles de grandeur (ici 5000 ans).
 
 \subsubsection{Possibilités d'améliorations du modèle de Lotka-Volterra*}
-On a vu juste avant que le modèle de Lotka-Volterra est un modèle proie-prédateur où on suppose que les proies se comportent suivant un modèle de Malthus, c'est-à-dire avec des ressources en nourriture illimitée, pas de problèmes de territoire et donc une croissance exponentielle. Mais, on a aussi dit juste avant que ce sont des hypothèses simplistes qui modélisent mal la réalité de l'évolution d'une population dans le cadre général.\\
+On a vu juste avant que le modèle de Lotka-Volterra est un modèle proie-prédateur où on suppose que les proies se comportent suivant un modèle de Malthus, c'est-à-dire avec des ressources en nourriture illimitée, pas de problèmes de territoire et donc une croissance exponentielle. Mais, on a aussi dit, juste avant, que ce sont des hypothèses simplistes qui modélisent mal la réalité de l'évolution d'une population dans le cadre général.\\
 On peut donc réfléchir à implémenter un modèle alternatif où l'on ferait suivre un modèle de Verhulst aux proies.
 \begin{tcolorbox}[breakable, pad at break*=3mm, colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Modèle Proie-Prédateur bis}},halign title=center]
 On considère $x$ une population de proies et $y$ une population de prédateurs. Soit $x(t)$ et $y(t)$ les fonctions d'évolution des populations respectives au cours du temps. De plus, on considère des coefficients $(\alpha, \beta, \gamma, \delta) \in \mathbb{R}^{4}_+$. L'évolution des populations $x$ et $y$ est alors décrite par le système suivant:
@@ -633,14 +634,26 @@ De plus, on a:
 \item[--] $\delta$ représente le \textbf{taux de reproduction} en fonction des proies rencontrées
 \item[--] $K$ représente la \textbf{capacité biotique} de la population de proies.
 \end{itemize}
+C'est toujours un modèle non linéaire. Ce modèle, contrairement à Lotka-Volterra, ne met pas en évidence une périodicité de la quantité de proies et de prédateur, mais qu'il prédit plutôt un équilibre entre les deux populations au bout d'un certain temps. 
 \end{tcolorbox}
 On pourrait alors faire des études de terrain et des simulations pour voir si ce modèle colle avec la réalité et permet de simuler certains écosystèmes en particulier.\\
-C'est peut-être un point important à souligner~: tout n'est pas modéliser par le même modèle. \textbf{Tous les modèles ont des hypothèses différentes}, il convient alors de déterminer quels sont les hypothèses qui collent le mieux avec nos donnés observés.\\
+C'est peut-être un point important à souligner~: tout n'est pas modélisé par le même modèle. \textbf{Tous les modèles ont des hypothèses différentes}, il convient alors de déterminer quels sont les hypothèses qui collent le mieux avec nos données observées.\\
 
-Enfin, on pourrait s'amuser à changer la loi de décès intrinsèques des prédateurs, modéliser un écosystème plus complexe en ajouter des équations, pour par exemple, ajouter une espèce de plantes dont pourrait se nourrir les proies, etc. \\
-Je vous laisserai chercher tout ça pour ceux que ça intéresse. 
+Enfin, on pourrait s'amuser à changer la loi de décès intrinsèques des prédateurs, modéliser un écosystème plus complexe en ajoutant des équations, pour par exemple, ajouter une espèce de plantes dont pourrait se nourrir les proies, etc. \\
+Je vous laisserai chercher tout ça pour ceux que ça intéresse. Vous trouverez des informations utiles \href{https://math.univ-cotedazur.fr/~hoering/bio-s2-19/cours-lotka-volterra.pdf}{ici (cours de l'UniCA)} pour commencer et puis \href{https://www.eccorev.fr/IMG/pdf/Equations_LRoques.pdf#page=11}{sur ce cours} pour plus d'informations. 
 \subsection{Pour aller plus loin sur les modèles en biologie*}
 Vide
 
+
+\begin{center}
+\textbf{Fin. J'espère que cette fiche vous aura été utile.}\\
+\textbf{Bon courage pour les études.}\\[5mm]
+\textit{Si vous relevez des erreurs ou souhaitez formuler des remarques concernant cette fiche, n'hésitez pas à me contacter à l'adresse e-mail indiquée en première page de ce document.}
+\end{center}
+\newpage
+
+\section{Références}
+Uniquement mon imagination débordante hahaha. \\
+Vous trouverez tous les liens nécessaires dans le corps du texte. Pour la partie "historique" vous pouvez passer vos nuits à lire des pages Wikipédia dans l'espoir, peut-être, de gagner question pour un champion ou bien vous pouvez vous contenter des informations que j'ai données, sans que je puisse toutefois en garantir l'exactitude. 
 
 \end{document}
