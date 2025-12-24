@@ -182,7 +182,7 @@ En mathématiques, on utilise des ensembles de nombres qu'on manipule à l'aide 
 \noindent Tout au long du texte, on aura affaire à des variables ou des constantes dans certains ensembles. On pourra donc noter $x \in E$ qui signifie "$x$ appartient à $E$". On se permettra aussi de ne pas noter le symbole $\times$ de la multiplication. Si vous lisez $ab$, alors vous faites face au produit de $a$ par $b$. On utilisera les fonctions exponentielles ($e^{(\cdot)}$) et logarithme népérien ($\ln(\cdot)$) tout au long du texte. Si vous n'êtes pas familier avec ces fonctions, vous pouvez consulter \href{https://www.maths-et-tiques.fr/telech/Texplog.pdf}{ce lien}.\\
 
 \begin{center}
-  \textbf{Assez parlé, place au cours.}
+  \textbf{Assez parlé, place au cours !}
 \end{center}
 \newpage 
 
@@ -601,7 +601,7 @@ Maintenant, on a dit plus haut, que contrairement aux modèles présentés avant
 
 
 \subsubsection{Interprétation graphique}
-Voici une image d'un graphe d'une approximation numérique des solutions du système d'équation du modèle de Lotka-Volterra: 
+Voici une image d'un graphe d'une approximation numérique des solutions du système d'équations du modèle de Lotka-Volterra: 
 \begin{figure}[htp!]
     \centering
     \includegraphics[width=8cm]{Lotka_Volterra_x_y.png}
@@ -613,7 +613,32 @@ Voici une image d'un graphe d'une approximation numérique des solutions du syst
 \noindent On constate que les solutions sont stables. Ici, il faut faire attention au fait qu'on ne trace pas l'évolution des populations au cours du temps mais, en fonction de l'autre population. Par ailleurs, si le graphe ne boucle pas totalement, c'est à cause de la précision de la méthode numérique utilisée ainsi que les échelles de grandeur (ici 5000 ans).
 
 \subsubsection{Possibilités d'améliorations du modèle de Lotka-Volterra*}
-Vide
+On a vu juste avant que le modèle de Lotka-Volterra est un modèle proie-prédateur où on suppose que les proies se comportent suivant un modèle de Malthus, c'est-à-dire avec des ressources en nourriture illimitée, pas de problèmes de territoire et donc une croissance exponentielle. Mais, on a aussi dit juste avant que ce sont des hypothèses simplistes qui modélisent mal la réalité de l'évolution d'une population dans le cadre général.\\
+On peut donc réfléchir à implémenter un modèle alternatif où l'on ferait suivre un modèle de Verhulst aux proies.
+\begin{tcolorbox}[breakable, pad at break*=3mm, colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Modèle Proie-Prédateur bis}},halign title=center]
+On considère $x$ une population de proies et $y$ une population de prédateurs. Soit $x(t)$ et $y(t)$ les fonctions d'évolution des populations respectives au cours du temps. De plus, on considère des coefficients $(\alpha, \beta, \gamma, \delta) \in \mathbb{R}^{4}_+$. L'évolution des populations $x$ et $y$ est alors décrite par le système suivant:
+$$
+\left\{
+  \begin{aligned}
+    & \bm{x' = \alpha x(1 - \frac{x}{K}) - \beta xy} \\
+    & \bm{y' = -\gamma y + \delta xy} \\
+  \end{aligned} 
+\right.
+$$
+De plus, on a:
+\begin{itemize}[leftmargin=*]
+\item[--]$\alpha$ qui représente le taux de croissance naturel des proies (c'est-à-dire le \textbf{taux de natalité} naturel) 
+\item[--] $\gamma$ représente de taux de décroissance naturel des prédateurs (c'est-à-dire le \textbf{taux de décès naturel}) 
+\item[--] $\beta$ représente le \textbf{taux de mortalité} de proies à la rencontre des prédateurs 
+\item[--] $\delta$ représente le \textbf{taux de reproduction} en fonction des proies rencontrées
+\item[--] $K$ représente la \textbf{capacité biotique} de la population de proies.
+\end{itemize}
+\end{tcolorbox}
+On pourrait alors faire des études de terrain et des simulations pour voir si ce modèle colle avec la réalité et permet de simuler certains écosystèmes en particulier.\\
+C'est peut-être un point important à souligner~: tout n'est pas modéliser par le même modèle. \textbf{Tous les modèles ont des hypothèses différentes}, il convient alors de déterminer quels sont les hypothèses qui collent le mieux avec nos donnés observés.\\
+
+Enfin, on pourrait s'amuser à changer la loi de décès intrinsèques des prédateurs, modéliser un écosystème plus complexe en ajouter des équations, pour par exemple, ajouter une espèce de plantes dont pourrait se nourrir les proies, etc. \\
+Je vous laisserai chercher tout ça pour ceux que ça intéresse. 
 \subsection{Pour aller plus loin sur les modèles en biologie*}
 Vide
 
