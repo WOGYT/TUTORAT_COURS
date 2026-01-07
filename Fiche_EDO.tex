@@ -38,15 +38,15 @@
 \begin{abstract}
 Cette fiche fera une introduction au concept d'équations différentielles ordinaires, en expliquant pourquoi on s'intéresse à ce concept, en quoi il est utile et quels sont les résultats et méthodes de résolution essentielles.\\
 
-\noindent Elle s'adresse avant tout aux étudiants en première année de médecine mais pourra intéresser des biologistes ou des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple bagage en maths de lycée.\\
+\noindent Elle s'adresse aux étudiants en première année de médecine et aux étudiants en licence de biologie, mais pourra aussi intéresser des économistes qui voudraient utiliser des équations différentielles mais ne savant pas par où commencer avec un simple bagage en maths de lycée.\\
 Les prérequis sont minimes et les définitions se suffisent à elles-même sans avoir besoin d'une grande connaissance en analyse au-delà des notions classiques de fonctions et de résolution d'équations d'ordre 1.\\
 
 \noindent Comprendre les outils mathématiques de base en modélisation (statistique, probas, équadiffs) est d'utilité publique. Il est important de s'intéresser au fonctionnement théorique des outils qu'on utilise afin de garder un regard critique sur leur utilisation.\\
 
-\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispensé par votre prof mais apporte des précisions et des explications qui permettent une meilleure compréhension des notions pas évidentes qui sont présentées dans le cours de Biostatistique ou de mathématiques pour la biologie.\\
+\noindent Cette fiche ne se substitue pas entièrement à celle du tutorat ou à un cours dispensé par votre prof, mais apporte des précisions et des explications qui permettent une meilleure compréhension des notions pas évidentes qui sont présentées dans le cours de Biostatistique ou de mathématiques pour la biologie.\\
 
 Enfin, si cette fiche contient des typos, des fautes d'orthographe ou pire, des erreurs, je m'en excuse. Vous pouvez néanmoins me les signaler à l'adresse email mentionnée au début de la fiche.
-Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça! (reste à montrer leur unicité.)\\
+Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas parfaites, elles ont le mérite d'exister, c'est déjà ça ! (reste à montrer leur unicité.)\\
 \begin{center}
   \textbf{Bonne lecture.}
 \end{center}
@@ -61,7 +61,7 @@ Ces fiches ont été écrites sur mon temps libre et bien qu'elles ne soient pas
 Certains concepts abordés sont compliqués et nécessitent parfois du recul, du travail et des démonstrations pour éviter de voir apparaître magiquement des formules.
 Évidemment, les démonstrations ne sont pas à connaître et peuvent être sautées. Certaines parties ont été ajoutées pour donner du contexte ou expliquer certaines parties plus subtiles.
 
-\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des parties "optionnelles" qui pourront être sautées en première lecture, mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaires pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérisque (*) ou par la mention optionnelle dans le corps du texte.} \\
+\subparagraph{Guide pour les sections} Les sections ont été organisées pour être lues dans l'ordre, des références à des théorèmes, définitions ou explications passées parsemant le texte. Cependant, il y a des \textbf{parties "optionnelles"} qui pourront être sautées en première lecture, mais qui permettent de replacer les notions dans leur contexte ou alors d'expliquer des concepts qui ne sont pas dans les programmes mais qui sont nécessaires pour comprendre la suite. \textbf{Ces sections seront indiquées par un astérisque (*) ou par la mention optionnelle dans le corps du texte.} \\
 Elles ne sont pas pour autant inutiles et je recommande fortement de les lire au moins une fois pour se donner une idée: elles ont de grandes chances de répondre à certaines de vos interrogations légitimes.
 
 \subparagraph{Code couleur} Les théorèmes, définitions, méthodes, exercices etc sont encapsulés dans des boites de couleurs, voici la signification de chaque couleur:\\
@@ -139,7 +139,7 @@ Résoudre une équation différentielle, ça va donc être de chercher les diff�
 Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
 
 
-\subsection{Rappels de logique mathématique et des principes de raisonnement}
+\subsection{Rappels de logique mathématique et des principes de raisonnement*}
 
 
 Afin de pouvoir mieux comprendre la suite, de vous aider dans vos UE, en mathématiques ou en physique, on va faire un rapide retour sur les techniques de logique permettant de déduire des résultats ainsi qu'un rapide retour sur les méthodes de démonstration en mathématiques.
@@ -165,9 +165,10 @@ D'abord on désigne par le symbole $\neg$ pour désigner la négation (ou simple
 Si je veux démontrer $\bm{A \Rightarrow B}$ c'est équivalent à montrer sa contraposée, c'est à dire $\bm{\neg{B} \Rightarrow \neg{A}}$ (\textbf{ET SURTOUT PAS} $\bm{\neg{A} \Rightarrow \neg B}$ qu'on appelle sa négation.) qu'il convient de ne pas confondre avec la réciproque que l'on écrit $B \Rightarrow A$. Je ne vais pas en proposer une preuve ici mais je vous laisse faire une comparaison des tables de vérité (vous trouverez une explication (peut-être un peu technique) \href{https://fr.wikipedia.org/wiki/Modus_tollens#Justification_par_la_table_de_v%C3%A9rit%C3%A9}{ici}). \\
 
 Maintenant, parlons du \textbf{raisonement par l'absurde}. C'est un type de raisonnement rarement présenté comme tel au lycée alors qu'il est bien utile et même à l'origine du procédé de preuve par contraposée expliqué ci-dessus. On a dit plus haut que prouver en mathématique, ça voulait dire montrer une suite correcte d'implications à partir des axiomes de la théorie. Cela nécessite alors de faire une preuve que l'on nomme \textit{constructive}, c'est à dire qu'il faut trouver explicitement les bons axiomes et les bonnes implications pour trouver le résultat.\\
-Le raisonnement par l'absurde permet de s'affranchir de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\\
+Le raisonnement par l'absurde permet de s'affranchir de ces contraintes en montrant que le théorème doit être vrai sans en expliciter la preuve en prouvant que si le résultat est faux, alors il y a une contradiction dans la théorie et donc comme on suppose que la théorie est cohérente, alors le théorème doit être vrai.\ Notez bien que ce type de raisonnement est nécesssaire en mathématique car il y a des résulats qu'on ne peut pas montrer sans.\\
 
-\textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste (pour la majeur partie), c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux. 
+\textbf{C'est important} de retenir tout ceci car cela s'applique également à la logique intuitionniste (pour la majeur partie), c'est-à-dire à la façon dont nous réfléchissons, débattons et raisonnons au quotidien.  Par conséquent, c'est extrêmement utile dans la vie de tous les jours pour vous aider à raisonner correctement et à éviter de tomber dans le piège de raisonnements fallacieux.\\
+Je ne ferrais évidement pas plus d'introduction à la logique formelle (tout bonnement car ça ne sert à rien ici), mais ça reste un domaine passionant pour les personnes qui se sont toujours posé la question "Mais pourquoi ce raisonement fonction, comment on montre que notre démonstration fonctionne ?". Je donne quand même la référence d'un excellent livre sur la logique formelle pour les plus curieux: \href{https://www.dunod.com/sciences-techniques/introduction-logique-theorie-demonstration-1}{Introduction à la logique (DUNOD)} (il dépasse très largement le cadre des cours que les lecteurs de cette fiche pourrait suivre mais il reste accessible à toute personne ayant un niveau terminale en mathématique.)
 }
 \end{tcolorbox}
 
@@ -179,7 +180,7 @@ En mathématiques, on utilise des ensembles de nombres qu'on manipule à l'aide 
 
 \noindent Ensuite, on va manipuler des fonctions. Une fonction, c'est un objet qui va prendre en entrée un nombre (qu'on nomme "antécédent" et qu'on note souvent $x$ quand on est en dimension 1) et qui va lui faire subir une transformation qui va nous donner un résultat (qu'on appelle image de $x$). On notera $f$ sous cette forme: "$f: E \rightarrow F$" pour signifier que les antécédents sont à valeurs dans $E$ (ça sera $\mathbb{R}$ pour presque tout le cours) et que les images sont à valeurs dans $F$ (ça sera aussi $\mathbb{R}$ pour presque tout le cours.) Pour parler de la fonction et non de son image par $x$, on pourra noter $f(\cdot)$ (donc $\sqrt{\cdot}$ pour désigner la fonction racine carré par exemple.)\\
 
-\noindent Tout au long du texte, on aura affaire à des variables ou des constantes dans certains ensembles. On pourra donc noter $x \in E$ qui signifie "$x$ appartient à $E$". On se permettra aussi de ne pas noter le symbole $\times$ de la multiplication. Si vous lisez $ab$, alors vous faites face au produit de $a$ par $b$. On utilisera les fonctions exponentielles ($e^{(\cdot)}$) et logarithme népérien ($\ln(\cdot)$) tout au long du texte. Si vous n'êtes pas familier avec ces fonctions, vous pouvez consulter \href{https://www.maths-et-tiques.fr/telech/Texplog.pdf}{ce lien}.\\
+\noindent Tout au long du texte, on aura affaire à des variables ou des constantes dans certains ensembles. On pourra donc noter $x \in E$ qui signifie "$x$ appartient à $E$". On se permettra aussi de ne pas noter le symbole $\times$ de la multiplication. Si vous lisez $ab$, alors vous faites face au produit de $a$ par $b$. On utilisera les fonctions exponentielles ($e^{(\cdot)}$) et logarithme népérien ($\ln(\cdot)$) tout au long du texte. Si vous n'êtes pas familier avec ces fonctions, vous pouvez consulter \href{https://www.maths-et-tiques.fr/telech/Texplog.pdf}{ce lien}. Pour les lettres grecques utilisées régulièrement en mathématiques, vous pouvez vous référer à \href{https://fr.wikipedia.org/wiki/Alphabet_grec#Graphies_courantes}{l'alphabet grec}.
 
 \begin{center}
   \textbf{Assez parlé, place au cours !}
@@ -222,7 +223,7 @@ Il est important de noter qu'on énonce les théorèmes suivants dans les cas \t
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition EDO linéaire homogène}},halign title=center]
 On appelle équation différentielle du premier ordre homogène une ED de la forme:
 $$
-(E_0): \text{   } y' + a(t)y = 0
+\bm{(E_0): \text{   } y' + a(t)y = 0}
 $$
 Avec $a(t) \in E $ une fonction quelconque qui dépend de t (évidemment, ça peut être une fonction constante auquel cas $a(t)$ est un scalaire.)
 \end{tcolorbox}
@@ -439,7 +440,7 @@ C'est le deuxième point important: \textbf{On cherche toujours des solutions r�
 Mais pourquoi me direz-vous ? Eh bien, c'est pas parce qu'elles existent qu'on peut leur donner un sens physique. Les solutions complexes permettent de résoudre des problèmes, c'est un artifice mathématique qui permet de simplifier (et même souvent qui est la seule manière de trouver) les solutions, mais elles donnent des conditions réalisables générales qui ne sont parfois pas d'un grand intérêt physique. Les solutions complexes sont des solutions mais on leur préfère les solutions réelles pour une raison d'interprétabilité physique. Je dirai que c'est même une question de si vous faites des maths ou de la physique. Le physicien veut des solutions réelles à son problème. Le mathématicien s'en fout complètement (ça ne veut pas dire que l'un ou l'autre a raison pour autant.)\\
 
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
-\subparagraph{Remarques} Enfin bref, le dernier point important est de comprendre le calcul du déterminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et ce n'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
+\subparagraph{Remarques} Enfin bref, le dernier point important est de comprendre le calcul du discriminant dans le cas où il est négatif ($\Delta < 0$) (le triangle se prononce "Delta" par ailleurs.) Je lis souvent des conneries à ce sujet aussi donc on va expliquer un peu pourquoi on se retrouve avec du $i\sqrt{\Delta}$. En fait, ce que vous devez retenir c'est qu'on ne peut pas prendre de racine d'un nombre négatif (et ce n'est pas une règle qu'on a décidé au pif, je vais l'expliquer après) et donc si $\Delta < 0$, $\sqrt{\Delta}$ n'existe pas. Cependant, une manière de voir un nombre négatif $a$ c'est simplement de l'écrire $a = (-1)|v|$ où $|.|$ est la valeur absolue, c'est une fonction qui à un nombre, associe simplement le nombre s'il est positif et moins le nombre s'il est négatif de manière à toujours avoir une image positive. \\
 Mais, on a vu dans \ref{rappels1} qu'on a inventé $i$ tel que $i^2 = -1$ donc pour revenir à notre histoire de $\Delta < 0$, avec ces notations, on peut noter $\delta \in \mathbb{C}$ (en fait comme $\Delta \in \mathbb{R}$, on sait que $\delta \in i\mathbb{R}$) tel que $\delta^2 = \Delta$ et donc $\delta^2 = i^2 |\Delta| \Rightarrow \delta = \pm \sqrt{i^2|\Delta|} = \pm i\sqrt{|\Delta|} = \pm i\sqrt{-\Delta}$, tout simplement. Ces notations permettent donc de donner un sens à une quantité qu'on ne peut pas exprimer à l'aide de notations dans $\mathbb{R}$.\\
 
 \noindent Maintenant, \textbf{pourquoi on ne peut pas avoir de racine (réelle) d'un nombre négatif ?} Il faut revenir un peu à la définition des fonctions en question. La fonction carré ($.^2$: $x \mapsto x \times x$) est une fonction réelle. On voit que des antécédents peuvent avoir la même image ($4$ et $-4$ par exemple, c'est même le cas pour tout $x,y \in \mathbb{R}$ si $y = -x$) et la fonction racine carré ($\sqrt{.^{ }}: x \mapsto x^{\frac{1}{2}}$, notation qui est un petit artifice mathématique circulaire car on n'a pas défini la puissance et en plus je suis en train de définir $\sqrt{.^{ }}$ comme la réciproque de $.^2$ ce qui n’apparaît pas clairement ici) est la fonction réciproque de  $.^2$, c'est à dire, si je les compose ($\sqrt{{.}^2}$ par exemple) ça donne $x$ (en mathématique, on appelle ça l'identité, c'est à dire la fonction qui à $x$, associe $x$.) Définie telle quelle, la fonction racine n'admet pas d'image pour un nombre négatif car la fonction carré n'a pas d'image négative (et oui, on l'a définie comme étant la réciproque de la fonction carré.) Mais vous allez me dire "Oui, mais pourquoi ça serait la bonne définition ? Pourquoi on pourrait pas prendre une autre définition qui autoriserait les images d'antécédents négatifs ?" et c'est en fait une très bonne question. \\
@@ -489,7 +490,7 @@ $$
 \begin{tcolorbox}[breakable,pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{
 \subparagraph {Remarques sur la simplification et le calcul des racines.} J'ai expliqué plus haut qu'il était possible d'écrire presque toutes les racines sous forme plus simple en utilisant une décomposition en facteurs. Ici, on obtient des solutions relativement simples mais tomber sur $\frac{\sqrt{2}}{2}$ me permet de vous montrer qu'il y a une méthode qui permet de mettre sous forme "plus simple" des quotients de racines. En effet: $\frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{\sqrt{2}\times\sqrt{2}} = \frac{1}{\sqrt{2}}$. Cette méthode fonctionne pour toutes les racines. Ex:\\
 $$\frac{1}{\sqrt{9}} = \frac{1}{\sqrt{9}}\times \frac{\sqrt{9}}{\sqrt{9}} = \frac{\sqrt{9}}{9}$$. \\
-Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux racines d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a affaire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
+Ceci est une méthode très classique permettant de faciliter les opérations avec des quotients de racines (en particulier car il est très courant de rencontrer des racines quand on s'intéresse aux solutions d'un polynôme du second degré.) Elle s'applique à une grande variété de problèmes différents. En math c'est souvent pratique de pouvoir changer la forme de nos objets, en particulier, quand on a affaire à un produit, on peut toujours multiplier par 1. Donc, on pourrait écrire: 
 $$
 \pi = e^{14} \times \cos(\frac{3}{2}) \times \pi e^{-14} \frac{1}{\cos(\frac{3}{2})}
 $$
@@ -634,14 +635,14 @@ De plus, on a:
 \item[--] $\delta$ représente le \textbf{taux de reproduction} en fonction des proies rencontrées
 \item[--] $K$ représente la \textbf{capacité biotique} de la population de proies.
 \end{itemize}
-C'est toujours un modèle non linéaire. Ce modèle, contrairement à Lotka-Volterra, ne met pas en évidence une périodicité de la quantité de proies et de prédateur, mais qu'il prédit plutôt un équilibre entre les deux populations au bout d'un certain temps. 
+C'est toujours un modèle non linéaire. Ce modèle, contrairement à Lotka-Volterra, ne met pas en évidence une périodicité de la quantité de proies et de prédateur, mais il prédit plutôt un équilibre entre les deux populations au bout d'un certain temps. 
 \end{tcolorbox}
 On pourrait alors faire des études de terrain et des simulations pour voir si ce modèle colle avec la réalité et permet de simuler certains écosystèmes en particulier.\\
 C'est peut-être un point important à souligner~: tout n'est pas modélisé par le même modèle. \textbf{Tous les modèles ont des hypothèses différentes}, il convient alors de déterminer quels sont les hypothèses qui collent le mieux avec nos données observées.\\
 
 Enfin, on pourrait s'amuser à changer la loi de décès intrinsèques des prédateurs, modéliser un écosystème plus complexe en ajoutant des équations, pour par exemple, ajouter une espèce de plantes dont pourrait se nourrir les proies, etc. \\
 Je vous laisserai chercher tout ça pour ceux que ça intéresse. Vous trouverez des informations utiles \href{https://math.univ-cotedazur.fr/~hoering/bio-s2-19/cours-lotka-volterra.pdf}{ici (cours de l'UniCA)} pour commencer et puis \href{https://www.eccorev.fr/IMG/pdf/Equations_LRoques.pdf#page=11}{sur ce cours} pour plus d'informations. 
-\subsection{Pour aller plus loin sur les modèles en biologie*}
+\subsection{Pour aller plus loin sur les modèles en biologie et en économie*}
 Vide
 
 
@@ -654,6 +655,6 @@ Vide
 
 \section{Références}
 Uniquement mon imagination débordante hahaha. \\
-Vous trouverez tous les liens nécessaires dans le corps du texte. Pour la partie "historique" vous pouvez passer vos nuits à lire des pages Wikipédia dans l'espoir, peut-être, de gagner question pour un champion ou bien vous pouvez vous contenter des informations que j'ai données, sans que je puisse toutefois en garantir l'exactitude. 
+Vous trouverez tous les liens nécessaires dans le corps du texte. Pour les parties "historiques", vous pouvez passer vos nuits à lire des pages Wikipédia dans l'espoir, peut-être, de gagner question pour un champion ou bien vous pouvez vous contenter des informations que j'ai données, sans que je puisse toutefois en garantir l'exactitude. 
 
 \end{document}
