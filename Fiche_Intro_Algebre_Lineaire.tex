@@ -23,7 +23,6 @@
   \kern-\bshft$\SavedStyle#1$\cr%
   \kern\bshft$\SavedStyle#1$}}}
 
-
 \newcommand{\tcolordef}[2][]{%
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{#1}},halign title=center]
 #2
@@ -34,6 +33,26 @@
 #2
 \end{tcolorbox}}
 
+\newcommand{\tcolorexo}[2][]{
+\begin{tcolorbox}[breakable,pad at break*=3mm, colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{#1}},halign title=left]
+#2
+\end{tcolorbox}
+}
+
+\newcommand{\tcolorgris}[2][]{
+\begin{tcolorbox}[breakable,pad at break*=2mm, colback=gray!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{\textbf{#1}}
+\, #2
+\end{tcolorbox}}
+
+\newcommand{\tcolormagenta}[2][]{
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=Magenta!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{\textbf{#1}} 
+#2
+\end{tcolorbox}}
+
+\newcommand{\tcolorvert}[2][]{
+\begin{tcolorbox}[breakable, pad at break*=2mm, colback=ForestGreen!12!white, boxrule=0pt,frame hidden, colframe=gray!12!white]{\textbf{#1}} 
+#2
+\end{tcolorbox}}
 
 \title{Draft fiche introduction à l'algèbre linéaire}
 \author{Gabriel Legout \\ \href{mailto:gabriel.legout9@gmail.com}{gabriel.legout9@gmail.com}}
@@ -142,32 +161,10 @@ On peut voir les matrices de comme des tableaux de nombres et donc celles de $M_
 5 &-1 \\
 2 & 10
 \end{pmatrix}$ , alors $M \in M_{3,2}(\mathbb{K})$\\
-Cependant, comme je l'ai expliqué au dessus, $M_{n,p}(\mathbb{K})$ est un espace vectoriel donc les matrices sont des points de l'espaces des matrices et se sont ce qu'on appelle en math des vecteurs. C'est essentiel de comprendre cela car c'est la raison pour laquelle on utilise des matrices et elles vérifient donc la stabilité par addition et multiplication scalaire expliqué plus haut. 
+Cependant, comme je l'ai expliqué au dessus, $M_{n,p}(\mathbb{K})$ est un espace vectoriel donc les matrices sont des points de l'espaces des matrices et se sont ce qu'on appelle en math des vecteurs. C'est essentiel de comprendre cela car c'est la raison pour laquelle on utilise des matrices et elles vérifient donc la stabilité par addition et multiplication scalaire expliqué plus haut.\\
 
- 
-\section{Test section}\label{test}
-\begin{tcolorbox}[colback=Blue!5!white, colframe=Blue!75!black, title={\textbf{Définition dérivation}},halign title=center]
-test HP
-\end{tcolorbox}
-
-\begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition équation différentielle d'ordre 1}},halign title=center]
-test def classique
-\end{tcolorbox}
-
-\begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.1}},halign title=left]
-test exemples
-\end{tcolorbox}
+L'erreur serait de penser que les matrices ne sont que des tableaux de nombre. En effet, on peut les voir comme tel mais c'est loin d'être suffisant quand on les manipule en maths. En effet, les tableaux, c'est juste une représentation de nombre, en lui-même, sans structure, il sert à rien. On va donc munir l'espace des matrices de plusieurs opérations. 
 
 
-\begin{tcolorbox}[colback=YellowOrange!5!white, colframe=YellowOrange!75!black, title={\textbf{Méthode de variation de la constante (MVC) (Optionnel)}},halign title=center]
-test méthode 
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced,attach boxed title to top left={yshift=-3mm,yshifttext=-1mm, xshift=10mm},
-  colback=Magenta!5!white,colframe=Magenta!75!black,colbacktitle=Magenta!75!black,
-  title=Définition: stabilité par addition et multiplication scalaire,fonttitle=\bfseries,
-  boxed title style={size=small,colframe=Magenta!75!black} ]
-test B
-\end{tcolorbox} 
 
 \end{document}    

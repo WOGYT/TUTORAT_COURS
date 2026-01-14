@@ -133,11 +133,9 @@ Au lieu de devoir résoudre une équation avec plusieurs fonctions (position et 
 Une équation différentielle peut donc servir à modéliser de nombreux phénomènes comme le mouvement d'un pendule, des oscillations dans un circuit électrique, l'évolution de population dans le \textbf{modèle logistique (de Verhulst}) ou le modèle proie-prédateur de \textbf{Lokta-Volterra}. 
 La plupart des équations différentielles ne sont pas solvables de manière analytique (en fait c'est souvent le cas pour les EDO non linéaires.)\\
 
-Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur laquelle je me base donc j'imagine que c'est à connaître. \\
+Il est possible d'appeler l'ensemble des solutions d'une équation différentielle "\textbf{le flot}". C'est noté dans la fiche du tutorat sur les ED que j'ai lu donc j'imagine que c'est à connaître. \\
 
 Résoudre une équation différentielle, ça va donc être de chercher les différentes fonctions qui, à certaines conditions initiales, vérifient certaines conditions sur leurs dérivées successives. \\
-Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
-
 
 \subsection{Rappels de logique mathématique et des principes de raisonnement*}
 
@@ -188,7 +186,7 @@ En mathématiques, on utilise des ensembles de nombres qu'on manipule à l'aide 
 \newpage 
 
 \section{Un peu de formalisation du problème}\label{formalisation}
-
+Regardons maintenant comment formaliser un peu tout ça sans trop se compliquer la vie.
 \subsection{Petits rappels d'algèbre linéaire*}\label{rappels1}
 Un $\mathbb{K}$-espace vectoriel ($\mathbb{K}$-EV) est un ensemble de nombres qui est stable par addition et multiplication par un scalaire.\\
 Ici, $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$. Un scalaire va donc être un nombre qui va appartenir à $\mathbb{K}$. 
@@ -207,7 +205,7 @@ Ici, le rôle de $x$ et $y$ est interchangeable. Il suffit que la propriété so
 Pour la suite, on se place dans $\mathbb{K}^n$ c'est à dire l'ensemble des n-uplets (donc les éléments de $\mathbb{K}^n$ sont de la forme $x = (x_1, x_2, ..., x_ n)$ avec $x_i \in \mathbb{K} \forall i \in \{1, 2,..., n\}$). \\
 
 $\mathbb{C}$ est l'ensemble des nombres complexes, c'est à dire les nombres qui s'écrivent $x = a + ib$ avec $a,b \in \mathbb{R}$ et $i^2 = -1$ (on pourra donc considérer que $\mathbb{C}$ est simplement un ensemble à deux dimensions, homogène à un plan (donc $\mathbb{R}^2$) qu'on écrirait $\mathbb{R}\times i\mathbb{R}$, on voit donc les points de $\mathbb{C}$ comme des points du plan de la forme $x = (a,b)$). On ne va pas rentrer dans le détail des propriétés des nombres complexes ni de pourquoi ils sont utiles. Ce qu'il faut bien noter c'est qu'on ne peut pas ordonner les nombres complexes mais qu'on peut comparer leur module qu'on note $\lvert x \rvert = \lvert a + ib \rvert = \sqrt[]{a^2 + b^2}$ ce qui va servir à la définition de norme.\\
-Pour toute norme complexe $x = a + ib$, il existe un unique couple de réels $(r, \theta') \in \mathbb{R}^{2}$ avec $\theta\  = \theta' + 2k\pi, k\in \mathbb{Z}$ qui permet d'écrire $x$ sous forme exponentielle ou polaire: $x = re^{\theta} = r(\cos(\theta) + i\sin(\theta))$ avec $r = \lvert x \rvert$ (la distance à 0) et $\theta$ l'angle de $x$ rapporté sur le cercle trigonométrique. 
+Pour tout nombre complexe $x = a + ib$, il existe un unique couple de réels $(r, \theta') \in \mathbb{R}^{2}$ avec $\theta\  = \theta' + 2k\pi, k\in \mathbb{Z}$ qui permet d'écrire $x$ sous forme exponentielle ou polaire: $x = re^{\theta} = r(\cos(\theta) + i\sin(\theta))$ avec $r = \lvert x \rvert$ (la distance à 0) et $\theta$ l'angle de $x$ rapporté sur le cercle trigonométrique. 
 
 \subsection{Formalisation d'une équation différentielle à l'ordre 1}\label{ordre1}
 \begin{tcolorbox}[colback=Magenta!5!white, colframe=Magenta!75!black, title={\textbf{Définition équation différentielle d'ordre 1}},halign title=center]
@@ -250,17 +248,17 @@ On voit qu'\textbf{il faut faire attention au signe} en fonction de si on se tro
 On constate ensuite que cela induit $\lambda \neq 0$ et qu'il suffit de prendre $\lambda = 0$ pour la rajouter dans l'ensemble des solutions ce qui garantit que toutes les solutions sont de la forme (2). \\ 
 Si on veut déterminer $\lambda$, il suffit de poser une condition initiale $y(t_0) = y_0$ et on a $\lambda=t_0$ et on a alors unicité de la solution par le théorème de Cauchy-Lipschitz. Sinon il suffit de calculer une primitive pour un $t_0$ quelconque dans le domaine de définition de l'intégrale de $a(t)$. \\
 
-\textbf{En particulier}, si $a(t)$ est constant, $\bm{-\int_{t_0}^{t} a(x)dx = -at}$ (en fait pas exactement car le résultat de l'intégration nous donne un terme $-A(t_0)$ si $A$ est une primitive de $a$, on choisis alors $t_0$ tel que $A(t_0) =0$ pour simplifier les calculs. \\
+\textbf{En particulier}, si $a(t)$ est constant, $\bm{-\int_{t_0}^{t} a(x)dx = -at}$ (en fait pas exactement car le résultat de l'intégration nous donne un terme $-A(t_0)$) si $A$ est une primitive de $a$, on choisis alors $t_0$ tel que $A(t_0) =0$ pour simplifier les calculs. \\
 Dans le cas scalaire, vous allez donc avoir des solutions de la forme: 
 \begin{align}
 \bm{y = \lambda e^{-at} \quad \textbf{avec} \quad \lambda} \in \bbbold{\mathbb{R}} 
 \end{align}
-Parce que sans condition initiale il n'y a pas d'unique solution, on dit que (2) est \textbf{une} solution d'un certain ($E_0$). Si on trouve C, on dira que c'est \textbf{la} solution d'un certain ($E_0$)
+Comme sans condition initiale, il n'y a pas d'unique solution, on dit que (2) est \textbf{une} solution d'un certain ($E_0$). Si on trouve C, on dira que c'est \textbf{la} solution d'un certain ($E_0$)
 
 \subsubsection{Exemples}\label{ex1}
 
-J'espère qu'à ce stade vous n'êtes pas perdus. Si c'est le cas, c'est pas grave, on va formaliser tout ça avec des exemples:\\
-J'en profite pour vous signaler qu'en maths, les notions sont parfois assez abstraites mais il y a toujours un moyen de se rapprocher de quelque chose de plus "réel" sur lequel on peut avoir de l'intuition, mais pour cela, il faut faire des exercices et en connaître suffisamment sur le sujet pour être capable de faire des liens.
+J'espère qu'à ce stade, vous n'êtes pas perdus. Si c'est le cas, c'est pas grave, on va réexpliquer tout ça avec des exemples:\\
+J'en profite pour vous signaler qu'en maths, les notions sont parfois assez abstraites, mais il y a toujours un moyen de se rapprocher de quelque chose de plus "réel" sur lequel on peut avoir de l'intuition, mais pour cela, il faut faire des exercices et en connaître suffisamment sur le sujet pour être capable de faire des liens.
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.1}},halign title=left]
 On considère l'ED suivante: $y' +\frac{3}{4}y = 0$ \\
 On voit qu'il n'y a ni de scalaire ni de fonction qui dépend de $t$ devant le $y$ et on a bien une égalité avec le second membre nul et que des expressions qui dépendent de $y$ à gauche donc on peut appliquer la formule (3):
@@ -389,11 +387,11 @@ y_0 = \lambda e^{\ln(\sqrt{t})} = \lambda \sqrt{t}
 $$
 
 Vérifions maintenant que $f(t)$ est bien une solution particulière de (E): \\
-La dérivée $f'(t)$ de $f(t)$ est $1$, donc en remplaçant, on a $2t - t = t$ donc $f(t) = t$ est solution particulière et les solutions générales de (E) s'écrivent sous la forme: $y = \lambda \sqrt{t} + t$
+La dérivée $f'(t)$ de $f(t)$ est $1$, donc en remplaçant, on a $2t - t = t$ donc $f(t) = t$ est solution particulière et les solutions générales de (E) s'écrivent sous la forme: $y = \lambda \sqrt{t} + t$. Vous pouvez donc constater que les solutions d'une EDO ne sont pas toujours sous la forme d'une exponentielle. 
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=ForestGreen!5!white, colframe=ForestGreen!75!black, title={\textbf{Exercice 1.6: MVC sur une EDO linéaire non scalaire}},halign title=left]
-On considère l'ED suivante: 
+On considère l'ED suivante: \textbf{En construction}
 \end{tcolorbox}
 
 \subsection{Formalisation d'une équation différentielle à l'ordre 2}\label{ordre2}
